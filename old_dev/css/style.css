@@ -1,0 +1,3484 @@
+/*
+Theme Name: 8allocate
+Theme URI: http://new.8allocate.com
+Author: SourceMates
+Author URI: http://sourcemates.com
+Description: Test theme
+Version: 1.0
+*/
+
+html {
+  font-size: 16px;
+}
+
+.clutch {
+  position: fixed;
+  right: 0px;
+  top: 340px;
+  z-index: 1000;
+}
+
+@media(max-width: 991px) {
+  .clutch {
+    display: none;
+  }
+}
+
+.page-about {
+  background-image: url(../images/background.png);
+  background-repeat: no-repeat;
+}
+
+nav {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  padding: 5% 12%;
+}
+
+main {
+  margin-bottom: 5%;
+}
+
+.navbar-toggler {
+  border: 0;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.navbar {
+  z-index: 100;
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
+  position: absolute;
+}
+
+.dropdownpanel .subMenu-dark a {
+  color: #b7e8fe !important;
+}
+
+.dropdownpanel .subMenu-dark a:hover {
+  color: #ffffff !important;
+}
+
+.navbar .nav-item .nav-link {
+  color: #3c90b4;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 0 1.5rem !important;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #95d0ea;
+}
+
+a:hover {
+  color: #95d0ea;
+  text-decoration: none;
+}
+
+.about-section {
+  padding-top: 2vw;
+}
+
+.second_page {
+  height: 720px;
+}
+
+.back-for-header-on-dedication-team {
+  padding-top: 12% !important;
+}
+
+@media (max-width: 991px) {
+  .back-for-header-on-dedication-team {
+    padding-top: 120px !important;
+  }
+}
+
+.dropdown-menu {
+  border: 0 !important;
+}
+
+.dropdownpanel {
+  margin-left: 2.2rem;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  opacity: 0.9;
+}
+
+.dropdownpanel .dropdown-item {
+  padding: 6% 20% 0 0 !important;
+  color: #b7e8fe;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  opacity: 1;
+}
+
+.dropdownpanel .dropdown-item:last-child {
+  padding-bottom: 5% !important;
+}
+
+.dropdownpanel .dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.dropdownpanel .dropdown-menu {
+  top: 0rem;
+  left: -350% !important;
+  background-image: linear-gradient(200deg,
+    #274b62 0%,
+    rgba(87, 166, 200, 0.89) 100%);
+  width: 21rem;
+  padding: 0 0 5% 0;
+  margin-top: -10%;
+}
+
+.dropdown-item:hover {
+  color: #ffffff !important;
+}
+
+.black-theme .nav-link {
+  color: #b7e8fe !important;
+}
+
+.black-theme .nav-link:hover {
+  color: #ffffff !important;
+}
+
+.black-theme .dropdownpanel a {
+  color: #2b6387 !important;
+}
+
+.black-theme .dropdownpanel a:hover {
+  color: #57a6c8 !important;
+}
+
+.black-theme .dropdownpanel .dropdown-menu {
+  background-image: none;
+  background-color: rgba(235, 235, 235, 0.9) !important;
+}
+
+.dropdownpanel .xmark {
+  padding: 2% 2% 6% 0 !important;
+}
+
+.hidden-block {
+  display: none;
+}
+
+.mobile_block {
+  display: none;
+  background-image: url("../images/mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+}
+
+@media (max-width: 524px) {
+  .header__bottom .col-12 {
+    padding-top: 20% !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+.btn .discover {
+  margin-left: 80px;
+}
+
+.homepage_main_container {
+  display: none;
+}
+.center-button-hidden{
+  display:none;
+}
+
+@media (max-width: 991px) {
+  .nav__select__menu__our_work {
+    padding-top: 40px !important;
+
+  }
+
+  .block-on-dedicated-team .col-9 .col-12:last-child {
+    padding-bottom: 20px;
+  }
+
+  .fileContainer {
+    margin-top: 2.5% !important;
+  }
+
+  .homepage_main_container {
+    display: block;
+    background-image: linear-gradient(136deg, #274b62 0%, #57a6c8 100%);
+    padding-top: 20%;
+    padding-bottom: 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -20px;
+    display: block;
+  }
+
+
+  .btn .discover {
+    margin-left: 0px !important;
+  }
+
+  .choose__leftText {
+    padding: 0 !important;
+  }
+
+  @media(max-width: 991px) {
+    .choose__leftText .text-center {
+      text-align: left !important;
+    }
+
+    .choose__rightText .text-center {
+      text-align: right !important;
+    }
+
+    .images-whith-featured {
+      display: none !important;
+    }
+
+    .explore {
+      margin-left: 0px !important;
+    }
+
+    .discover {
+      margin-right: 0px !important;
+    }
+
+    .choose__rightText {
+      margin-top: 30px !important;
+    }
+  }
+
+  @media(max-width: 661px) {
+    .animation_cont {
+      margin-right: 30px !important;
+    }
+
+    .counter-title {
+      margin-top: 5%;
+
+    }
+  }
+
+  .animation_container {
+    display: none;
+  }
+
+
+  .job-openings-main .privacy-policy {
+    padding-top: 20px;
+  }
+
+  .job-openings-main .navbar {
+    background: #387496 !important;
+  }
+
+  .job-openings-main .navbar .dropdown-menu {
+    background: #387496 !important;
+  }
+
+  .contact_block {
+    margin-top: 27% !important;
+  }
+
+  .top_left .col-md-4 {
+    display: none;
+  }
+
+  .header {
+    height: 1200px !important;
+  }
+
+  .header__bottom .col-12 {
+    padding-top: 1%;
+    font-size: 0.8rem !important;
+  }
+
+  footer h2 {
+    font-size: 16px !important;
+  }
+
+  .about-header {
+    display: none;
+  }
+
+  .select__menu__our_work {
+    padding-top: 18% !important;
+  }
+
+  .blog-article .crumbs {
+    visibility: hidden;
+  }
+
+  .mobile_block {
+    display: block;
+    padding-top: 10%;
+  }
+
+  nav .dropdownpanel {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 2.5% 0 !important;
+  }
+
+  .about-section {
+    padding-top: 8rem !important;
+  }
+
+  .navbar-nav {
+    margin-top: 2rem;
+  }
+
+  nav {
+    position: fixed !important;
+  }
+
+  .main-menu {
+    display: none;
+  }
+
+  .hidden-block {
+    display: block;
+    background: black;
+    opacity: 0.5;
+  }
+
+  .navbar {
+    z-index: 1001;
+    background: #fefefe !important;
+  }
+
+  .black-theme {
+    background-image: linear-gradient(1deg,
+      #274b62 0%,
+      rgba(87, 166, 200, 0.89) 100%) !important;
+    background-color: transparent !important;
+  }
+
+  .black-theme .hidden-block .dropdown-menu {
+    background: transparent !important;
+  }
+
+  #animation_container {
+    padding-top: 10%;
+  }
+
+  .subMenu-dark li a {
+    color: #b7e8fe !important;
+  }
+
+  .hidden-block .dropdown-item {
+    font-family: "Futura BT - Medium";
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    color: #b7e8fe !important;
+  }
+
+  .section__our_process {
+    display: none;
+  }
+
+  .section__what_for_you {
+    padding-top: 19rem;
+  }
+}
+
+.about_us {
+  color: #fafafa;
+  font-family: Helvetica;
+  font-size: 1.1rem;
+  font-stretch: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 155px;
+  font-style: italic;
+}
+
+
+.about-header span {
+  color: #3c90b4;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.1px;
+  padding-left: 10px;
+}
+
+.about-header {
+  padding-top: 140px;
+}
+
+.breakout {
+  border: 1px solid #646464;
+  width: 10px;
+  height: 10px;
+}
+
+.breakout::before {
+  position: absolute;
+  border-top: 1px solid #646464;
+  width: 10px;
+  height: 5px;
+  top: 8px;
+  margin-left: -10px;
+  content: "";
+}
+
+@media (max-width: 575px) {
+  .counter-container {
+    align-items: center;
+    padding-bottom: 50px;
+    padding-right: 20px;
+  }
+
+  .reasons-to-work-section {
+    display: none;
+  }
+}
+
+.about_us .col-md-6 {
+  padding: 0 7%;
+}
+
+.error_show_on_mob {
+  display: none;
+}
+
+.navbar-brand img {
+  width: 131px !important;
+}
+
+@media screen and (max-width: 770px) {
+  .center-button-hidden{
+    display: block;
+    text-align: center;
+  }
+  .choose__rightText .center-button{
+    display:none !important;
+  }
+  .choose__rightText{
+    text-align: left !important;
+    padding: 0;
+  }
+  .center-button{
+    text-align: center;
+  }
+
+  .home_page footer {
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+  }
+  .views{
+    text-align: left !important;
+  }
+  .job-openings-main {
+    background-position: 100% !important;
+    background-size: cover !important;
+  }
+
+  .homepage_main_container {
+    padding-top: 25%;
+    padding-bottom: 10%;
+  }
+
+  .headerMenu {
+    visibility: hidden;
+  }
+
+  .contact_block .privacy-policy {
+    margin-top: 10vw !important;
+    width: 100%;
+  }
+
+  .blog .featured {
+    height: 540px;
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+
+  .soc {
+    display: none;
+  }
+
+  .blog-article .bg-1 {
+    background: linear-gradient(to right,
+      rgba(201, 209, 214, 0) 0%,
+      #295b7a 0%,
+      rgba(97, 116, 124, 0) 120%) !important;
+  }
+
+  .page-about main {
+    margin: 0 5%;
+    margin-bottom: 5%;
+  }
+
+  .privacy-policy div {
+    margin-left: 0% !important;
+  }
+
+  ul.social-buttons li {
+    display: inline-block;
+  }
+
+  .sputnik {
+    display: none;
+  }
+
+  .job-openings-main .crumbs {
+    margin-bottom: 10%;
+  }
+
+  .job-openings-main .navbar-brand img {
+    content: url('../images/logo.png');
+  }
+
+  .job-openings-main .hidden-block a {
+    color: #95d0ea !important;
+  }
+
+  .job-openings-main .hidden-block a:hover {
+    color: #fff !important;
+  }
+
+
+  .about_us {
+    padding-top: 70px;
+    text-align: center;
+  }
+}
+
+.menuList-dark {
+  list-style: none;
+  text-align: right;
+  padding-right: 4rem;
+  padding-top: 3rem;
+  color: #b7e8fe;
+  font-weight: 500;
+  line-height: 2.7rem;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+}
+
+.subMenu {
+  list-style: none;
+  color: #2b6387;
+  line-height: 18px;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.subMenu-dark li {
+  padding: 0% 20% !important;
+  color: #2b6387 !important;
+}
+
+.subMenu-dark {
+  list-style: none;
+  text-align: right;
+  color: #8bdbff;
+  line-height: 18px;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.menuList li:hover {
+  cursor: pointer;
+  color: #8bdbff;
+}
+
+.xBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  z-index: 1200;
+}
+
+.xBtn:hover {
+  cursor: pointer;
+}
+
+/* HomePage */
+.text_in_header {
+  color: #8bdbff;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+}
+
+.row_with_contact {
+  margin-top: 220px !important;
+}
+
+.text_in_header {
+  font-size: 14px;
+}
+
+.block_about_us {
+  width: 100%;
+  margin-top: 25%;
+}
+
+.talk-to-us h2 {
+  color: #646464;
+  font-family: Futura - Bold;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.talk-to-us .privacy-policy {
+  padding: 0 15px;
+}
+
+.block_about_us_menu {
+  padding: 0 0 8% 0;
+}
+
+.block_about_us_menu .first {
+  margin-top: 10px !important;
+}
+
+.block_about_us_menu img {
+  position: absolute;
+}
+
+.block_about_us_menu a {
+  color: #57a6c8;
+}
+
+.block_about_us_menu a:hover {
+  color: #95d0ea;
+}
+
+.block_about_us_menu .col-3,
+.block_about_us_menu .col-6 {
+  padding: 2% 0;
+}
+
+.block_about_us_about {
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 18px;
+  font-weight: 300 !important;
+  letter-spacing: 0.15px;
+  line-height: 28px;
+  padding: 2%;
+}
+
+.block_about_us_logo {
+  padding: 5% 2%;
+}
+
+.block_about_us_logo_text {
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  line-height: 28px;
+  padding: 8% 2%;
+}
+
+@media(max-width: 572px) {
+  .block_about_us_logo {
+    padding-top: 220px;
+  }
+}
+
+/*section about us*/
+/* section with rocket*/
+
+.rocket-section {
+  background-image: linear-gradient(180deg, #274b62 0%, #57a6c8 100%);
+}
+
+.center-text {
+  width: 500px;
+  height: 47px;
+  color: #fafafa;
+  font-family: "Futura";
+  font-size: 2rem;
+  font-stretch: normal;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1955556px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.left-text {
+  width: 387px;
+  height: 42px;
+  color: #fafafa;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+  margin-left: 19%;
+  margin-top: 6%;
+  padding: 7% 4%;
+}
+
+.left-text-bold {
+  width: 333px;
+  height: 21px;
+  color: #fafafa;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 24px;
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+  margin-left: 25%;
+  margin-top: 18px;
+}
+
+.btn {
+  width: 141px;
+  height: 40px;
+  color: #323232;
+  background-color: #95d0ea;
+  font-family: Futura;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0, 5);
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  outline: none !important;
+}
+
+.btn:hover {
+  width: 141px;
+  height: 40px;
+  background-color: #b2dff2;
+}
+
+.btn-left {
+  background-color: #ffda44;
+  color: #fff;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.btn-right {
+  margin: auto;
+  margin-top: 50%;
+}
+
+.right-text-bold {
+  width: 275, 56px;
+  height: 24px;
+  color: #fafafa;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 24px;
+  text-align: right;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.right-text {
+  width: 290px;
+  height: 63px;
+  color: #fafafa;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: right;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+  margin-left: 75px;
+  margin-top: 50px;
+}
+
+.line {
+  width: 3px;
+  height: 130px;
+  border: 0.01rem solid #ebebeb;
+  background-color: #ebebeb;
+  margin: auto;
+  margin-top: 50px;
+}
+
+/*8 reasons*/
+.reasons-to-work-section {
+  padding-bottom: 70px;
+}
+
+.color-blue {
+  color: #3c90b4 !important;
+}
+
+/*8 reasons*/
+
+/*our_work_animate*/
+.our_work_animate {
+  background-image: linear-gradient(188deg, #274b62 0%, #57a6c8 100%);
+  padding-bottom: 70px;
+}
+
+/*our_work_animate*/
+/**/
+.contact-btn {
+  background-color: #f2c40a;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  margin: 0 15px 5px;
+  color: #323232;
+  font-family: Futura;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  outline: none !important;
+}
+
+@media (max-width: 767px) {
+  .talk-to-us {
+    margin-bottom: 85px;
+  }
+
+  .top_right {
+    padding: 10px !important;
+  }
+
+  .contact-btn {
+    background-color: #f2c40a;
+    position: absolute;
+    bottom: -615px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    color: #323232;
+    font-family: Futura;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.15px;
+  }
+
+  .input-textarea {
+    margin-top: 2.3%;
+  }
+}
+
+.contact-btn:hover {
+  background-color: #ffda44;
+}
+
+.data-input {
+  padding: 17px !important;
+  height: 50px !important;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #323232;
+  font-size: 1.1rem;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  background-color: transparent;
+  font-family: "Futura BT - Book";
+}
+
+.data-input:hover {
+  border: 1px solid #c8c8c8;
+}
+
+.data-input:focus {
+  outline: none;
+  border: 1px solid #ebebeb;
+  background-color: #fafafa;
+}
+
+.data-input:not([value=""]) {
+  outline: none;
+  border: 1px solid #ebebeb;
+  color: #646464;
+  background-color: #fafafa;
+}
+
+.input-textarea {
+  border-radius: 4px;
+  border: 1px solid #323232;
+  padding: 11px 13px !important;
+  font-size: 1.1rem;
+  width: 100%;
+  height: 260px !important;
+  font-family: "Futura BT - Book";
+  background-color: transparent;
+}
+
+.input-textarea::placeholder {
+  font-style: italic;
+  font-family: "Futura BT - Light Italic";
+}
+
+.input-textarea:hover {
+  border: 1px solid #c8c8c8;
+}
+
+.input-textarea:focus {
+  outline: none;
+  border: 1px solid #ebebeb;
+  background-color: #fafafa;
+}
+
+.input-textarea:not([value=""]) {
+  outline: none;
+  border: 1px solid #ebebeb;
+  color: #646464;
+  background-color: #fafafa;
+}
+
+.data-form input::placeholder {
+  font-family: "Futura BT - Light Italic";
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.data-form-in-focus {
+  border: 1px solid #ebebeb;
+  background: #fafafa;
+}
+
+.talk-to-us input[type="checkbox"] {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.talk-to-us input[type="checkbox"]:before,
+input[type="checkbox"]:checked:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: red;
+  content: "";
+}
+
+.talk-to-us input[type="checkbox"]:checked:before {
+  position: absolute;
+  width: 20px;
+  margin-top: -10px;
+  height: 30px;
+  background-image: url("../images/arrow.png");
+  content: "";
+}
+
+.data-input:nth-child(2) {
+  margin: 2.18% 0;
+}
+
+.data-set-elements {
+  height: 500px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.privacy-policy {
+  margin-top: 1vw !important;
+  width: 100%;
+}
+
+.privacy-policy div:first-child {
+  padding: 0;
+}
+
+.privacy-policy div:last-child {
+  padding: 0;
+}
+
+.privacy-policy div a {
+  height: 96px !important;
+  margin: 0 !important;
+  font-weight: lighter;
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 0.8rem;
+  line-height: 0.1px;
+  letter-spacing: 0.9px;
+  text-decoration: none;
+}
+
+.privacy-policy input {
+  margin-top: 12px !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ebebeb;
+  cursor: pointer;
+}
+
+/*footer*/
+footer {
+  background-color: #f5f5f5;
+}
+
+footer h2 {
+  color: #323232;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 52px;
+  font-family: "Futura BT - Medium";
+  letter-spacing: 0.15px;
+}
+
+footer p {
+  color: #646464;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 200;
+  line-height: 10px;
+  margin-left: 10px;
+}
+
+.footer_information p {
+  font-weight: 500;
+  color: #3c90b4;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  line-height: 10px;
+  margin-left: 10px;
+  letter-spacing: 0.11px;
+}
+
+.footer_information p:hover {
+  cursor: pointer;
+  color: #b7e8fe;
+}
+
+.btn-in-footer {
+  background: #3c90b4 !important;
+  color: #fafafa;
+  font-family: "Futura";
+  font-size: 18px !important;
+  font-weight: bold;
+  letter-spacing: 0.13px;
+  width: 5rem;
+  border: 1px solid #979797;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.btn-in-footer:focus {
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  outline: none !important;
+}
+
+.btn-in-footer:hover {
+  background-color: #57a6c8 !important;
+  border: 1px solid #57a6c8;
+  border-radius: 0 4px 4px 0;
+}
+
+.social-buttons {
+  list-style: none;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 0px !important;
+  font-size: 1.4rem;
+}
+
+ul.social-buttons li a {
+  font-size: 1.9rem;
+  line-height: 48px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 100%;
+  outline: none;
+  background-color: #2b6387;
+}
+
+ul.social-buttons li a:hover {
+  background-color: #3c90b4;
+}
+
+ul.social-buttons li i {
+  font-size: 1.9rem;
+}
+
+.form-control-input {
+  border: 1px solid #323232;
+  border-width: 1px 0px 1px 1px;
+  font-family: "Futura BT - Light";
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  height: 3rem;
+  width: 100%;
+}
+
+.form-control-input:hover {
+  border: 1px solid #c8c8c8;
+}
+
+.form-control-input:focus {
+  border: 1px solid #c8c8c8;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.form-control-input:not([value=""]) {
+  outline: none;
+  border: 1px solid #ebebeb;
+  color: #646464;
+}
+
+.list-item:not(:last-child) {
+  margin-bottom: 1.4rem;
+}
+
+.input-group {
+  width: 100% !important;
+}
+
+/*footer*/
+.images-whith-featured {
+  padding-top: 70px;
+}
+
+.images-whith-featured img {
+  max-width: 80%;
+}
+
+/* about us*/
+
+nav {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 4% 12% !important;
+  background-color: transparent !important;
+}
+
+.headline {
+  color: #646464;
+  font-family: "Futura BT - Medium";
+  font-size: 1.2rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: bold;
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.paragraph-left {
+  padding-top: 2%;
+  color: #646464;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  /*line-height: 28px;*/
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+}
+
+.photo1 {
+  width: 120%;
+  height: 0%;
+}
+
+.photo2 {
+  width: 130%;
+  height: 130%;
+}
+
+@media (max-width: 767.98px) {
+  .photo2 {
+    width: 100%;
+    height: 100%;
+  }
+
+  .photo3 {
+    display: none;
+  }
+}
+
+.photo3 {
+  /*width: 95%;*/
+  /*height: auto;*/
+  margin-bottom: 7%;
+}
+
+.roundphoto {
+  margin-left: 73.5%;
+  margin-top: -22%;
+  border: solid white 3px;
+  border-radius: 50%;
+}
+
+.paragraph-right {
+  padding-top: 2%;
+  color: #646464;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 300;
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0.1466667px;
+}
+
+/* about us*/
+
+/*team*/
+.top_left {
+  background-image: url("../images/Bitmap.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 13%;
+  padding-bottom: 38%;
+}
+
+.top_left .col-md-4 {
+  padding: 0 !important;
+  margin-bottom: 30px;
+  width: 99px;
+  height: 17px;
+  color: #b7e8fe;
+  font-size: 1vw;
+}
+
+.top_left .col-md-4 span {
+  margin-left: 10px;
+  color: #b7e8fe;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.1px;
+  font-family: "Futura BT - Medium";
+}
+
+.top_left .col-12 {
+  height: 100%;
+}
+
+.top_left .col-md-8 div {
+  width: 100%;
+  height: 76px;
+  color: #ffffff;
+  padding: 0 20px;
+  font-family: Helvetica;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+  margin: 0 82px 0 auto;
+  margin-top: 20px;
+}
+
+@media(max-width: 991px) {
+  .top_left .col-md-8 div {
+    padding-top: 70px;
+  }
+
+  .blacklogo {
+    display: block !important;
+  }
+
+  .whitelogo {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .home_page .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    overflow: hidden !important;
+  }
+}
+
+.top_right {
+  background-image: url(../images/Managed_Teams_Cover_Copy.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 25%;
+  color: #fafafa;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-weight: 100;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+
+.section_1 {
+  max-height: 100%;
+  margin-bottom: 64px;
+  font-family: "Futura BT - Light";
+}
+
+.section_1 h2 {
+  width: 182px;
+  height: 32px;
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin: 45px auto 0;
+}
+
+.section_1 .col-9 {
+  margin: 42px auto 0;
+}
+
+.section_1 .col-6 {
+  width: 469px;
+  height: 100%;
+}
+
+.section_1 .col-md-6 p {
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.section_1 .col-6 img {
+  max-width: 100px;
+  height: auto;
+}
+
+.section_1 .col-6:nth-child(-n + 4) {
+  margin-bottom: 100px;
+}
+
+.section_2 h2 {
+  margin: 50px 0 40px 0;
+  color: #fafafa;
+  font-family: Futura;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.section_2 {
+  background-image: url("../images/Mask.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .section_2 .col-md-8 {
+  max-width: 548px;
+  max-height: 389px;
+  margin: 0 auto 117px;
+} */
+
+/* .section_2 .col-md-8 ul {
+  margin: 0;
+  padding: 0;
+} */
+
+.section_2 .col-md-8 ul li {
+  font-family: "Futura BT - Light";
+  max-height: 80px;
+  color: #fafafa;
+  font-size: 1em;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  margin-left: 5px;
+}
+
+.section_2 img {
+  margin: 0px 0 10px 0;
+  height: 100%;
+}
+
+.blacklogo {
+  display: none;
+}
+
+/* @media (max-width: 767.98px) {
+  .section_2 img {
+    max-width: 112px;
+    max-height: 243px;
+    margin: 0px;
+    display: none;
+  } */
+
+
+
+.photo1 {
+  width: 100%;
+  height: 0%;
+}
+
+.photo2 {
+  width: 100%;
+}
+
+.top_left .col-md-3 {
+  padding: 0 !important;
+  margin: 35px;
+  width: auto;
+  height: 17px;
+  color: #b7e8fe;
+  font-size: 1vw;
+}
+
+/*team*/
+/*solution*/
+.solution header {
+  background-image: linear-gradient(188deg, #274b62 0%, #57a6c8 100%);
+}
+
+@media (max-width: 991px) {
+  .solution .header-for-solution {
+    padding-top: 140px;
+  }
+
+  .error_show_on_mob {
+    display: block;
+    color: #F5F5F5;
+    font-family: Futura;
+    font-size: 39px;
+    letter-spacing: 0.32px;
+    line-height: 51px;
+    text-align: center;
+    margin-top: 10%;
+  }
+}
+
+.expertise-for-solution {
+  height: 17px;
+  color: #b7e8fe;
+  font-size: 1vw;
+  padding-top: 12%;
+  padding-left: 2.6%;
+}
+
+@media (max-width: 776px) {
+  .expertise-for-solution {
+    display: none;
+  }
+
+  .header .view-btn {
+    margin: auto;
+  }
+}
+
+.expertise-for-solution span {
+  margin-left: 0.1rem;
+  color: #b7e8fe;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.1px;
+  margin-left: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .solution .button-container {
+    text-align: center;
+  }
+
+  .section_2 .col-md-4 {
+    text-align: center;
+  }
+
+  .expertise-for-solution {
+    height: 17px;
+    color: #b7e8fe;
+    font-size: 1vw;
+    padding-top: 15%;
+  }
+
+  .header-for-solution {
+    display: none;
+  }
+
+  .circles {
+    padding-top: 30% !important;
+  }
+}
+
+.header-for-solution {
+  color: #ffffff;
+  padding-top: 3%;
+  margin-bottom: 5%;
+  font-family: Helvetica;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+}
+
+
+.not-active-circle {
+  display: inline-block;
+  float: left;
+  border: solid black 1px;
+  border-radius: 100%;
+  width: 45%;
+  padding-top: 45%;
+  position: relative;
+  margin-bottom: 7%;
+  margin-right: 5%;
+  box-shadow: inset 0 0 9px #323232;
+  color: #b7e8fe;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.not-active-circle:hover {
+  cursor: pointer;
+}
+
+.active-circle {
+  display: inline-block;
+  float: left;
+  border-radius: 100%;
+  width: 45%;
+  padding-top: 45%;
+  position: relative;
+  margin-bottom: 7%;
+  margin-right: 5%;
+  color: white;
+  border: solid 1px white;
+  box-shadow: inset 0 0 100px #ffffff;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.circle-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  margin: 0 25%;
+  text-align: center;
+}
+
+.not-active-text {
+  display: none;
+}
+
+.view-btn {
+  color: white;
+  width: auto;
+  margin-bottom: 5%;
+  font-family: Futura;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13px;
+}
+
+.view-btn:hover {
+  background: #b7e8fe;
+  color: black;
+  width: auto;
+  margin-bottom: 5%;
+  box-shadow: none;
+}
+
+.active-text {
+  font-family: "Futura BT - Light";
+  color: #fafafa;
+  height: 300px;
+  overflow-x: auto;
+  font-size: 18px;
+}
+
+.active-text::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+.active-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.active-text::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #f0f2f5;
+}
+
+@media (max-width: 991.98px) {
+  .circle-text {
+    font-size: 13px;
+  }
+}
+
+/*solution*/
+
+/*dedicated team*/
+.back-for-header-on-dedication-team {
+  padding: 0;
+}
+
+.section__what_for_you h1 {
+  margin-bottom: 5%;
+}
+
+.dedicated-team .breakout {
+  margin: 5px 5px 0 20px;
+}
+
+.dedicated-team .breakout:before {
+  top: 10px;
+  margin-left: -15px;
+}
+
+.block-on-dedicated-team {
+  border-radius: 0 30px 30px;
+  background-image: linear-gradient(270deg, #387496 0%, #f2f2f2 100%);
+  color: #323232;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  height: 100%;
+  padding: 0px 0px 0px 0px;
+}
+
+.block-on-dedicated-team .col-1 .col-12:after {
+  top: 0;
+  left: 2px;
+  position: absolute;
+  display: block;
+  content: "";
+  border-right: 1px solid #2b6387;
+  width: 25px;
+  height: 100%;
+}
+
+.block-on-dedicated-team .col-9 .col-12 {
+  color: #323232;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.11px;
+  margin-bottom: 13px;
+  padding-left: 0px;
+}
+
+.block-on-dedicated-team .col-1 {
+  padding-right: 10px;
+}
+
+.block-on-dedicated-team .col-1 .col-12 {
+  padding-left: 17px;
+}
+
+.block-on-dedicated-team .col-2 {
+  border-left: 1px solid #2b6387;
+  padding-top: 20px;
+  padding-left: 0px;
+  padding-right: 9%;
+  padding-bottom: 40px;
+}
+
+.block-on-dedicated-team .col-1 .col-12::before {
+  top: 0;
+  left: 13px;
+  position: absolute;
+  display: block;
+  content: "";
+  border-left: 1px solid #2b6387;
+  width: 25px;
+  height: 100%;
+}
+
+.block-on-dedicated-team::before {
+  right: 0px;
+  bottom: 25px;
+  position: absolute;
+  display: block;
+  content: "";
+  border-bottom: 1px solid #2b6387;
+  width: 100%;
+  z-index: 1000;
+}
+
+.block-on-dedicated-team:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 30px solid white;
+  border-right: 30px solid #00800000;
+}
+
+.header__board__title {
+  width: 10rem;
+  color: #2b6387;
+  font-family: "Futura BT - Medium";
+  font-size: 1.2vh;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+  border-style: 1px;
+  height: 50px;
+  padding: 1.5% 8% 0 4rem;
+  border-bottom: 1px solid #2b6387;
+}
+
+.header__board__title span {
+  color: #2b6387;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 2vh;
+  letter-spacing: 0.16px;
+  width: 10px;
+}
+
+.header__board__title:before {
+  top: 0px;
+  left: 4px;
+  position: absolute;
+  display: block;
+  content: "";
+  border-right: 1px solid #2b6387;
+  width: 25px;
+  height: 100%;
+  z-index: 2;
+}
+
+.header__board__title:after {
+  top: 0px;
+  left: 17px;
+  position: absolute;
+  display: block;
+  content: "";
+  border-right: 1px solid #2b6387;
+  width: 25px;
+  height: 100%;
+  z-index: 2;
+}
+
+.text-border:after {
+  top: 0px;
+  right: 8.1%;
+  position: absolute;
+  display: block;
+  content: "";
+  border-right: 1px solid #2b6387;
+  width: 0px;
+  height: 100%;
+  z-index: 2;
+}
+
+.block-on-dedicated-team input {
+  border: 0;
+  width: 0.5rem;
+  height: 1rem;
+  cursor: auto;
+}
+
+.back-for-header-on-dedication-team .col-md-6 span:first-child {
+  color: #3c90b4;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.col-md-6 span:last-child {
+  color: #3c90b4;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  text-decoration: underline;
+}
+
+@media (max-width: 770px) {
+  header .col-md-6 {
+    visibility: hidden;
+  }
+}
+
+.back-for-header-on-dedication-team .col-md-5 {
+  padding-right: 5%;
+  padding-left: 4%;
+  padding-top: 5px;
+}
+
+.back-for-header-on-dedication-team .col-md-5 p {
+  color: #646464;
+  font-family: "Futura BT - Light";
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1px;
+  text-align: right;
+}
+
+.back-for-header-on-dedication-team .col-md-5 div {
+  width: 100%;
+  height: 17px;
+  color: #969696;
+  font-family: "Futura BT - Medium";
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  padding-left: 160px;
+}
+
+.header {
+  background-image: url("../images/background-dteam.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 961px;
+  margin-top: 47px;
+}
+
+.back-for-header-on-dedication-team .row {
+  margin: 0;
+}
+
+.header__bottom {
+  margin-top: 4% !important;
+}
+
+.header__bottom .col {
+  margin-top: 100px;
+  padding-left: 4%;
+}
+
+.header__bottom .col-3 {
+  width: 400px;
+  height: 177px;
+  background-color: #2b6387;
+  opacity: 0.84;
+}
+
+.header__bottom .col-5 {
+  margin-left: -23.5%;
+  margin-top: 20px;
+  text-shadow: 0 0 6px #b7e8fe;
+  color: #ffffff;
+  font-family: "Futura BT - Medium";
+  font-size: 1.2rem;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+}
+
+.header__bottom .col-12 {
+  width: 744px;
+  max-height: 400px;
+  background-image: radial-gradient(circle 700px at 135.21% 465.68%,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0.03) 100%);
+  margin-top: -100px;
+  margin-left: 25px;
+  height: 266px;
+  text-shadow: 0 0 6px #b7e8fe;
+  color: #ffffff;
+  font-family: "Futura BT - Book";
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 2rem;
+  color: #ffffff;
+  letter-spacing: 0.15px;
+  padding-left: 30px;
+}
+
+/* section our processc
+
+*/
+.section__our_process {
+  margin-top: 6rem;
+}
+
+/*body h1 {*/
+/*  height: 32px;*/
+/*  color: #3c90b4;*/
+/*  font-family: Futura;*/
+/*  font-size: 2rem;*/
+/*  font-weight: 700;*/
+/*  letter-spacing: 0.2px;*/
+/*}*/
+
+.section__our_process img {
+  margin-top: -230px;
+  width: 800px;
+
+  /* height: 100%; */
+}
+
+/* section_what_for_you */
+.section__what_for_you {
+  margin-top: -80px;
+  font-family: "Futura BT - Light";
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.dedicated-team main {
+  background-image: url("../images/mars.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: -100px 80%;
+}
+
+.section__what_for_you .col-12 div {
+  width: 100px;
+  height: 60px;
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-weight: lighter;
+  font-size: 1em;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.section__what_for_you img {
+  margin-bottom: 20px;
+}
+
+.section__what_for_you .col-10 .col-md-3 {
+  padding: 20px !important;
+}
+
+/* our_work */
+
+.header__our_work {
+  background-image: radial-gradient(circle 1892px at 90.58% -7.91%,
+    #274b62 0%,
+    #57a6c8 100%);
+  color: #b7e8fe;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  margin: 0;
+}
+
+@media (max-width: 940px) {
+  .blog .crumbs {
+    display: none;
+  }
+
+  .breakpoint {
+    visibility: hidden;
+  }
+
+  .expertise-for-solution {
+    display: none;
+  }
+}
+
+.our_work .about-header {
+  padding-bottom: 3%;
+}
+
+.our_work .about-header span {
+  color: #b7e8fe;
+}
+
+.our_work .about-header .breakout {
+  border-color: #b7e8fe;
+}
+
+.our_work .about-header .breakout::before {
+  border-color: #b7e8fe;
+}
+
+.our_work .navigation img {
+  width: 50px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.our_work .navigation {
+  padding-right: 5%;
+}
+
+.select__menu__our_work {
+  height: 100%;
+  /* Не забыть убрать */
+  background-image: url("../images/Singularity.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+.nav__select__menu__our_work .active__item a {
+  color: #57a6c8;
+  font-family: Futura;
+  font-size: 20px !important;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+}
+
+.nav__select__menu__our_work a {
+  color: #57a6c8;
+  font-family: "Futura BT - Book";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.16px;
+}
+
+.nav__select__menu__our_work a:hover {
+  color: #b7e8fe;
+}
+
+.nav__select__menu__our_work {
+  color: #57a6c8;
+  font-family: "Futura BT - Book";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 12px;
+  letter-spacing: 0.16px;
+  height: 100%;
+  cursor: pointer;
+  padding-bottom: 20px;
+}
+
+.nav__select__menu__our_work .col-lg-12 {
+  margin-bottom: 30px;
+}
+
+.button-item {
+  box-shadow: inset 0 0 20px 3px rgba(149, 208, 234, 0.4);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Futura BT - Medium";
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  max-width: 100%;
+  height: 200px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.button-item:hover {
+  box-shadow: inset 0 0 20px 3px rgba(62, 180, 231, 0.4);
+}
+
+.hidden-text {
+  display: none;
+}
+
+.hidden-text-block {
+  border-radius: 4px;
+  background-image: radial-gradient(circle 854px at 65.82% 22.99%,
+    #a6b7c1 0%,
+    rgba(16, 87, 117, 0) 100%);
+  color: #95d0ea;
+  font-family: "Futura BT - Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.11px;
+  opacity: 0.9;
+}
+
+.hidden-text h2 {
+  color: #95d0ea;
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.16px;
+  margin-top: 28px;
+  margin-bottom: 30px;
+}
+
+.hidden-text b {
+  color: #95d0ea;
+  font-family: "Futura BT - Medium";
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.text-block {
+  height: 582px;
+  overflow-x: auto;
+}
+
+.text-block::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+.text-block::-webkit-scrollbar {
+  width: 6px;
+}
+
+.text-block::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #f0f2f5;
+}
+
+@media (max-width: 991.98px) {
+  .section__our_process img {
+    width: 80%;
+    margin-top: -10px;
+    margin-bottom: 100px;
+  }
+}
+
+/*dedicated team*/
+
+/*home_page*/
+
+.home_page .talk-to-us {
+  background-image: url("../images/orbita.png");
+  background-repeat: no-repeat;
+  background-position: 25% 40%;
+}
+
+.home_page .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  overflow: hidden !important;
+}
+
+.home_page .row {
+  margin: 0;
+}
+
+.rocket-section .col-md-4 {
+  margin-top: 6%;
+}
+
+/* Blog */
+.blog {
+  background: url(../images/Coin.png);
+  background-repeat: no-repeat;
+  background-position: -410px 0%;
+}
+
+.blog .about-header {
+  padding: 0 0 3% 0;
+}
+
+.blog .block p {
+  font-family: "Futura BT - Light";
+  letter-spacing: 0.15px;
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.blog .featured p {
+  font-family: "Futura BT - Light";
+  letter-spacing: 0.15px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.blog .navigation {
+  padding: 40px 0;
+}
+
+.blog .navigation img {
+  width: 41px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.blog .date {
+  font-family: "Futura BT - Light";
+  letter-spacing: 0.11px;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.blog main {
+  padding-top: 100px;
+}
+
+.blog .views {
+  font-family: "Futura BT - Book";
+  letter-spacing: 0.11px;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.blog .bg-2 .views,
+.blog .bg-2 .date {
+  color: white;
+}
+
+.blog .crumbs {
+  margin: 0 0 50px 0;
+}
+
+.blog .crumbs a {
+  color: #3c90b4 !important;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.1px;
+}
+
+.blog .bg-1 {
+  margin-bottom: 30px;
+  background: linear-gradient(to right,
+    rgba(201, 209, 214, 0) 0%,
+    #295b7a 0%,
+    rgba(97, 116, 124, 0) 100%);
+}
+
+.blog .bg-1 a {
+  display: inline-block;
+  color: white;
+  padding: 10px 0;
+  font-family: "Futura BT - Medium";
+  letter-spacing: 0.16px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.blog .bg-1 a:hover {
+  display: inline-block;
+  color: #3c90b4 !important;
+  padding: 10px 0;
+  font-family: "Futura BT - Medium";
+  letter-spacing: 0.16px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.blog .bg-1 a:hover {
+  color: white;
+}
+
+.blog h3 {
+  padding-top: 25px;
+  color: white;
+  font-family: Futura;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+}
+
+.blog h4 {
+  padding: 10px 0 20px 0;
+  font-family: Futura;
+  font-size: 18px;
+  letter-spacing: 0.15px;
+  padding: 0px !important;
+  margin: 0;
+}
+
+.blog h6 {
+  padding: 15px 0 0 10px;
+  color: #969696;
+  font-family: Futura;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+}
+
+.blog .img-sm-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../images/blockchain.png") no-repeat 0 0;
+}
+
+.blog .img-sm-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../images/fintech.png") no-repeat 0 0;
+}
+
+.blog .img-sm-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../images/opinions.png") no-repeat 0 0;
+}
+
+.blog .img-sm {
+  height: 200px;
+  border-radius: 4px;
+  background-size: cover;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.blog .button {
+  width: 90px;
+  height: 60px;
+  border-radius: 6px;
+  border: 2px solid #ffffff;
+  background: none;
+  font-family: Futura;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  display: none;
+  color: white;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.blog .img-lg-1 {
+  background: url("../images/lg-1.png") no-repeat 0 0;
+}
+
+.blog .img-lg-2 {
+  background: url("../images/lg-2.png") no-repeat 0 0;
+}
+
+.blog .img-lg {
+  height: 300px;
+  border-radius: 4px;
+  background-size: cover;
+  margin-bottom: 10px;
+}
+
+.blog .block {
+  height: 200px;
+  overflow: hidden;
+}
+
+.blog .lines {
+  margin: 34px 0;
+  text-align: center;
+}
+
+.blog .lines div {
+  display: inline-block;
+  width: 45px;
+  height: 4px;
+  margin: 0 10px;
+}
+
+.blog .line-1 {
+  background-color: #7885c0;
+}
+
+.blog .line-2 {
+  background-color: #b1bac9;
+}
+
+.blog .bg-2 {
+  background: radial-gradient(circle 1059px at 50% 122%,
+    #233 12%,
+    #a6b7c1 0%,
+    #105775 100%);
+}
+
+.blog .featured {
+  height: 510px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.back {
+  font-family: "Futura BT - Medium";
+  letter-spacing: 0.1px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3c90b4;
+}
+
+.blog .breakout {
+  border: 1px solid #646464;
+  width: 10px;
+  height: 10px;
+}
+
+.blog .breakout::before {
+  position: absolute;
+  border-top: 1px solid #646464;
+  width: 10px;
+  height: 5px;
+  top: 9px;
+  margin-left: -10px;
+  content: "";
+}
+
+.solution .breakout {
+  border: 1px solid #b7e8fe;
+}
+
+.solution .breakout::before {
+  position: absolute;
+  border-top: 1px solid #b7e8fe;
+}
+
+.solution .about-header span {
+  color: #b7e8fe;
+}
+
+/* ------- */
+/* Blog Article */
+.blog-article .breakout {
+  border: 1px solid #646464;
+  width: 10px;
+  height: 10px;
+}
+
+.blog-article .breakout::before {
+  position: absolute;
+  border-top: 1px solid #646464;
+  width: 10px;
+  height: 5px;
+  top: 18px;
+  margin-left: -10px;
+  content: "";
+}
+
+.blog-article .bg-1 {
+  margin-bottom: 50px;
+  background: linear-gradient(to right,
+    rgba(201, 209, 214, 0) 0%,
+    #295b7a 0%,
+    rgba(97, 116, 124, 0) 100%);
+}
+
+.blog-article .bg-1 a {
+  display: inline-block;
+  color: white;
+  padding: 10px 0;
+  font-family: "Futura BT - Medium";
+  letter-spacing: 0.16px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.blog-article-main .main-menu a:hover {
+  color: #3c90b4 !important;
+}
+
+.blog-article .bg-1 a:hover {
+  color: #387496;
+}
+
+.blog-article .rel {
+  position: relative;
+}
+
+.blog-article .soc {
+  position: absolute;
+  top: 20px;
+  left: -7%;
+  width: 60px;
+  height: 274px;
+  text-align: center;
+  padding-top: 80px;
+  background: url(../images/hands.png) no-repeat 50% 0;
+}
+
+.blog-article .soc span {
+  color: #2b6387;
+  font-family: Futura;
+  font-size: 20px;
+  line-height: 14px;
+  letter-spacing: 0.11px;
+}
+
+.blog-article .soc ul {
+  padding: 0;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.blog-article .soc ul li {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 15px 10px;
+}
+
+.blog-article .soc ul li a {
+  font-size: 26px;
+  line-height: 42px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 100%;
+  outline: none;
+  background-color: #2b6387;
+}
+
+.blog-article .soc ul li a:hover {
+  background-color: #3c90b4;
+}
+
+.lines {
+  width: 42px;
+  height: 15px;
+  border-top: 1px solid #3c90b4;
+  border-right: 1px solid #3c90b4;
+  margin: 0 10px;
+}
+
+.lines::before {
+  position: absolute;
+  border: 1px solid #3c90b4;
+  width: 10px;
+  height: 10px;
+  left: 0;
+  top: -5px;
+  content: '';
+}
+
+.blog-article h6 {
+  padding-top: 25px;
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+}
+
+.blog-article h1 {
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 54px;
+  letter-spacing: 0.29px;
+  padding-bottom: 20px;
+  height: 100%;
+  color: #323232;
+}
+
+.blog-article h5 {
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.blog-article p {
+  color: #646464;
+  font-family: "Futura BT - Medium Italic";
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.11px;
+}
+
+.blog-article .img {
+  height: 300px;
+  width: 100%;
+  border-radius: 4px;
+  background: url(../images/img-lg.png) no-repeat 50% 0;
+  background-size: cover;
+  margin-top: 15px;
+}
+
+.blog-article .date {
+  display: inline-block;
+  font-family: "Futura BT - Light";
+  letter-spacing: 0.11px;
+  font-size: 14px;
+  line-height: 28px;
+  margin-bottom: 26px;
+}
+
+.blog-article .views {
+  font-family: "Futura BT - Book";
+  letter-spacing: 0.13px;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.blog-article h2 {
+  color: #646464;
+  font-family: "Futura BT - Medium";
+  font-size: 27px;
+  line-height: 36px;
+  letter-spacing: 0.22px;
+  padding: 15px 0;
+}
+
+.blog-article ol {
+  padding: 30px 10px;
+}
+
+.blog-article .outquote {
+  padding-left: 4px;
+  border-left: 2px ridge #2b6387;
+}
+
+.blog-article .quote {
+  padding-left: 24px;
+  border-left: 2px ridge #2b6387;
+}
+
+.blog-article blockquote p {
+  /* border-left: 2px ridge #2b6387; */
+  font-size: 18px;
+}
+
+.blog-article blockquote footer {
+  color: #2b6387;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0.15px;
+  background: none;
+}
+
+.blog-article-main .main-menu a {
+  color: white !important;
+}
+
+.blog-article {
+  font-family: "Futura BT - Light";
+  color: #323232;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 36px;
+  background-image: url("../images/Artboard_11.png");
+  background-repeat: no-repeat;
+  background-position: 200px 100%;
+  letter-spacing: 0.15px;
+}
+
+
+@media(max-width: 991px) {
+  .blog-article {
+    padding-top: 120px;
+  }
+
+  .hidden-text-block {
+    background: black;
+    opacity: 0.5;
+  }
+}
+
+.blog-article .bg {
+  background: linear-gradient(21deg, #58829d 0%, #57a6c8 100%);
+  color: #ffffff;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  padding: 20px 0;
+}
+
+.blog-article .form-control {
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  height: 80%;
+}
+
+.blog-article button {
+  background-color: #f2c40a;
+  border: none;
+  color: #323232;
+  font-family: Futura;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.13px;
+  width: 100%;
+}
+
+.blog-article .input-group {
+  height: 100%;
+  margin-top: 6px;
+
+}
+
+.blog-article .button {
+  width: 20vh;
+  height: 80%;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.blog-article .button:hover {
+  background-color: #ffda44;
+}
+
+.social-bar {
+  background-image: url("../images/social-bar.png");
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+/* ----------- */
+/* .job-openings-main */
+.job-openings-main {
+  background-image: url(../images/job-openings-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% -200px;
+}
+
+.job-openings {
+  padding-bottom: 30%;
+}
+
+.job-openings-main .main-menu .nav-item a {
+  color: white !important;
+}
+
+.job-openings-main .crumbs {
+  padding: 10% 0 2% 0;
+  color: #3c90b4;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  letter-spacing: 0.1px;
+}
+
+.job-openings-main {
+  color: #323232;
+  font-family: "Futura BT - Light";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.job-openings-main b {
+  font-family: "Futura BT - Medium";
+  font-weight: 500;
+  letter-spacing: 0.15px;
+}
+
+.job-openings-main .dropdown-transpanent {
+  border-radius: 4px;
+  border: 1px solid #3c90b4;
+  padding: 3%;
+}
+
+.job-openings-main .dropdown-transpanent a {
+  color: #646464 !important;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.job-openings-main .dropdown-transpanent .dropdown-toggle::after {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  color: #3c90b4 !important;
+}
+
+.job-openings-main .dropdown-transpanent .dropdown-menu {
+  left: 0px;
+  top: 0px;
+  width: 90%;
+}
+
+.job-openings-main .dropdown-blue {
+  border-radius: 4px;
+  border: 1px solid #3c90b4;
+  padding: 3.1%;
+  background-color: #3c90b4;
+}
+
+.job-openings-main .dropdown-blue a {
+  color: #ffffff;
+  font-family: "Futura BT - Medium";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.job-openings-main .dropdown-blue .dropdown-toggle::after {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  color: #ffffff !important;
+}
+
+.job-openings-main .dropdown-blue .dropdown-menu {
+  left: 0px;
+  top: 0px;
+  width: 90%;
+}
+
+.job-openings-main .pic {
+  width: 100%;
+}
+
+.job-openings-main .card-block {
+  padding: 4% 10% !important;
+}
+
+.job-openings-main .card {
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.11px;
+  padding: 10px 0 !important;
+}
+
+.job-openings-main .card span {
+  color: #646464;
+  font-family: "Futura BT - Light";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.11px;
+}
+
+.job-openings-main .card b {
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+}
+
+.job__inform {
+  margin-top: 5%;
+  background-color: #dcedf5;
+  box-shadow: 0 0 40px rgba(43, 99, 135, 0.2);
+  color: #323232;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  line-height: 36px;
+}
+
+.job__inform .buttonApply {
+  width: 91px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #f2c40a;
+  color: #323232;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.13px;
+  border: 0;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  cursor: pointer;
+}
+
+.job__inform .buttonApply:hover {
+  background-color: #3c90b4;
+}
+
+.job__inform .buttonApplyFacebook:hover {
+  background-color: #3c90b4;
+}
+
+
+.job__inform .buttonApplyFacebook {
+  width: 200px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #95d0ea;
+  color: #323232;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.13px;
+  border: 0;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  cursor: pointer;
+}
+
+.job__inform b {
+  color: #646464;
+  font-family: Helvetica;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.18px;
+  line-height: 36px;
+}
+
+.job__inform .navigation img {
+  width: 55px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.fileContainer {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #323232;
+  border-radius: 3px;
+  height: 100%;
+  background: transparent;
+  padding-top: 10%;
+  color: #3C90B4;
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.fileContainer [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  background: red;
+  border-radius: .5em;
+  padding: .5em;
+}
+
+.job__inform .button-submit {
+  width: 141px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #f2c40a;
+  color: #323232;
+  font-family: Futura;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.13px;
+  border: 0;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  cursor: pointer;
+}
+
+.job__inform .button-submit:hover {
+  background-color: #3c90b4 !important;
+}
+
+.job__inform input[type=checkbox] {
+  background-color: #c1e2f2;
+}
+
+.job__inform .data-input:not([value=""]) {
+  outline: none;
+  border: 1px solid #ebebeb;
+  color: #646464;
+  background-color: #c1e2f2 !important;
+}
+
+.job__inform .privacy-policy .col-md-4 {
+  font-family: "Futura BT - Light";
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  padding-bottom: 20vh;
+}
+
+
+.page404 {
+  background: url("../images/404bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1359px;
+}
+
+@media(max-width: 991px) {
+  .page404 {
+    background: url('../images/404bg-mobile.png');
+  }
+}
+
+.page404 .navbar .main-menu a {
+  color: #57A6C8 !important;
+}
+
+.page404 .col-lg-6 {
+  color: #57a6c8;
+  font-family: "Phosphate - Inline";
+  font-size: 82px;
+  letter-spacing: 0.67px;
+  padding-top: 200px;
+}
+
+.page404 main .col-12 {
+  transform: rotate(20deg);
+  color: #f5f5f5;
+  font-family: "Futura - Condensed Extra Bold";
+  font-size: 39px;
+  font-weight: 700;
+  letter-spacing: 0.32px;
+  padding-top: 15%;
+}
+
+.contact {
+  background: url("../images/contactbg.png");
+}
+
+.contact section .container {
+  width: 63.4% !important;
+}
+
+@media (max-width: 991px) {
+  .contact section {
+    padding-top: 30px;
+  }
+
+  .contact_block {
+    margin-top: 11% !important;
+  }
+}
+
+.contact_block {
+  background-color: rgba(245, 245, 245, 0.6);
+  font-family: "Futura BT - Book";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.13px;
+  margin-top: 10%;
+  padding-top: 5%;
+}
+
+.contact_block h2 {
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.contact_block h3 {
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+}
+
+.contact_block span {
+  color: #323232;
+  font-family: "Futura BT - Book";
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+  /* Text style for "Peterburi" */
+  letter-spacing: 0.1px;
+}
+
+.contact input,
+.contact textarea {
+  background-color: #f5f5f5 !important;
+}
+
+.contact .dropfile p {
+  color: #3c90b4;
+  font-family: Futura;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  margin: 0;
+}
+
+.contact .dropfile span {
+  color: #646464;
+  font-family: "Futura BT - Medium";
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  /* Text style for "delete" */
+  letter-spacing: 0.1px;
+}
+
+.contact input[type="checkbox"] {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+  background-color: #c8c8c8 !important;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
+
+.contact input[type="checkbox"]:before,
+input[type="checkbox"]:checked:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: red;
+  content: "";
+}
+
+.contact input[type="checkbox"]:checked:before {
+  position: absolute;
+  width: 20px;
+  margin-top: -10px;
+  height: 30px;
+  background-image: url("../images/arrow.png");
+  content: "";
+}
+
+.contact .attachButton {
+  border-radius: 4px;
+  background-color: #3c90b4;
+  border: 0;
+  width: 141px;
+  height: 40px;
+  color: #ffffff;
+  font-family: Futura;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  cursor: pointer;
+}
+
+.contact .attachButton:hover {
+  background-color: #8bdbff;
+}
+
+.contact .contactButton {
+  width: 141px;
+  height: 40px;
+  border: 0;
+  outline: none;
+  box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+  border-radius: 4px;
+  background-color: #f2c40a;
+  color: #323232;
+  font-family: Futura;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  cursor: pointer;
+}
+
+.contact .privacy-policy div:last-child {
+  margin-left: 10px;
+}
+
+.contact .contactButton:hover {
+  background-color: #8bdbff;
+}
+
+@media (max-width: 576px) {
+  .contact section .container {
+    width: 100% !important;
+  }
+
+  .blog {
+    background: #fefefe;
+  }
+
+}
+
+/* ------- */
+
+
+.choose .container {
+  padding-top: 50px
+}
+
+.choose {
+  height: 100%;
+  padding-bottom: 10%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#274b62), to(#57a6c8));
+  background-image: -webkit-linear-gradient(top, #274b62 0%, #57a6c8 100%);
+  background-image: -o-linear-gradient(top, #274b62 0%, #57a6c8 100%);
+  background-image: linear-gradient(180deg, #274b62 0%, #57a6c8 100%);
+
+}
+
+.choose .btn {
+  padding-bottom: 20px;
+}
+
+.choose__title {
+  font-family: 'Futura';
+  font-size: 2.4rem;
+  letter-spacing: .2px;
+  color: #fafafa;
+  margin-bottom: 40px
+}
+
+.choose__rightText {
+  margin-top: 13px;
+  color: #FAFAFA;
+  font-family: "Futura BT - Light";
+  font-size: 18px !important;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  line-height: 21px;
+}
+
+.choose__leftText {
+  margin-top: 13px;
+  color: #FAFAFA;
+  font-family: "Futura BT - Light";
+  font-size: 18px !important;
+  font-weight: 300;
+  letter-spacing: 0.15px;
+  line-height: 21px;
+  padding-left: 120px;
+}
+
+
+
+.choose__leftText .btn,
+.choose__rightText .choose .btn {
+  font-family: 'Futura'
+}
+
+.choose__rightText {
+  margin-top: 90px
+}
+
+.verticalLine {
+  margin: 10px 0 10px 145px;
+  background-color: #ebebeb;
+  width: 0;
+  height: 130px;
+  border: 1px solid #ebebeb
+}
+
+#js-wheel-rotate-switch {
+  font-family: "Futura BT - Light";
+}
+
+.explore {
+  width: 141px;
+  height: 40px;
+  font-size: 18px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-top: 30px;
+  margin-left: 75px
+}
+
+.btn-contact .contact-us:hover {
+  background: #fff !important;
+}
+
+.explore {
+  border-radius: 4px;
+  background-color: #f2c40a;
+  color: #fff;
+}
+
+.explore:hover {
+  background-color: #ffda44;
+  color: #fff;
+}
+
+.discover:hover {
+  background-color: #b7e8fe !important;
+}
+
+.rocket {
+  width: 247px;
+  height: 449px
+}
+
+.discover {
+  margin-bottom: 30px;
+  margin-right: 130px;
+  border: #95d0ea;
+  background-color: #95d0ea;
+  width: 141px;
+  height: 40px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #323232;
+  font-size: 18px;
+}
+
+.discover:hover {
+  background-color: #76a8c1;
+  border: #76a8c1
+}
+
+@media (max-width:1200px) {
+
+  .choose__leftText,
+  .choose__rightText {
+    font-size: 1.2rem
+  }
+
+  .explore {
+    margin-left: 40px
+  }
+
+  .discover {
+    margin-right: 35px
+  }
+}
+
+@media (max-width:992px) {
+
+  .rocket,
+  .verticalLine {
+    display: none
+  }
+
+  .choose__leftText div,
+  .choose__rightText div {
+    margin: 15px 0
+  }
+
+
+  .choose__leftText,
+  .choose__rightText {
+    font-size: 1.4rem
+  }
+}
+
+@font-face {
+  font-family: "Futura BT - Medium";
+  src: url("fonts/Futura/futura\ medium\ bt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Futura BT - Light";
+  src: url("fonts/Futura/futura\ light\ bt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: lighter;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("./fonts/Futura/Futura\ Bold\ font.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Futura BT - Light Italic";
+  src: url("fonts/Futura/Futura\ Light\ Italic\ font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Futura BT - Medium Italic";
+  src: url("fonts/Futura/Futura\ Medium\ Italic\ font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Futura BT - Book";
+  src: url("fonts/Futura/Futura\ Book\ font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Phosphate - Inline";
+  src: url("fonts/PhosphateInline.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

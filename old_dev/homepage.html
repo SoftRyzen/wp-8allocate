@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="authoring-tool" content="Adobe_Animate_CC">
+    <title>8allocate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/new/fonts.css">
+    <link rel="stylesheet" href="css/new/buttons.css">
+    <link rel="stylesheet" href="css/new/titles.css">
+    <link rel="stylesheet" href="css/new/nav.css">
+    <link rel="stylesheet" href="css/new/home-banner.css">
+    <link rel="stylesheet" href="css/new/blue-banner.css">
+
+    <link rel="stylesheet" href="css/circle-wheel.css">
+    <link rel="stylesheet" href="css/projects-counter.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="js/createjs.min.js"></script>
+    <script src="js/Flight Trajectory.js"></script>
+    <script>
+      var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+
+      function init() {
+        // canvas = document.getElementById("canvas");
+        // anim_container = document.getElementById("animation_container");
+        // dom_overlay_container = document.getElementById("dom_overlay_container");
+        header_on_homepage = document.getElementById("header-on-homepage");
+        images = images || {};
+        ss = ss || {};
+        var loader = new createjs.LoadQueue(false);
+        loader.addEventListener("fileload", handleFileLoad);
+        loader.addEventListener("complete", handleComplete);
+        loader.loadManifest(lib.properties.manifest);
+      }
+
+      function handleFileLoad(evt) {
+        if (evt.item.type == "image") {
+          images[evt.item.id] = evt.result;
+        }
+      }
+
+      function handleComplete(evt) {
+        //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+        var queue = evt.target;
+        var ssMetadata = lib.ssMetadata;
+        for (i = 0; i < ssMetadata.length; i++) {
+          ss[ssMetadata[i].name] = new createjs.SpriteSheet({
+            "images": [queue.getResult(ssMetadata[i].name)],
+            "frames": ssMetadata[i].frames
+          })
+        }
+        exportRoot = new lib.MoonflightAnimation();
+        stage = new createjs.Stage(canvas);
+        stage.addChild(exportRoot);
+        //Registers the "tick" event listener.
+        fnStartAnimation = function () {
+          createjs.Ticker.setFPS(lib.properties.fps);
+          createjs.Ticker.addEventListener("tick", stage);
+        }
+
+        //Code to support hidpi screens and responsive scaling.
+        function makeResponsive(isResp, respDim, isScale, scaleType) {
+          var lastW, lastH, lastS = 1;
+          window.addEventListener('resize', resizeCanvas);
+          resizeCanvas();
+
+          function resizeCanvas() {
+            var w = lib.properties.width, h = lib.properties.height;
+            var iw = window.innerWidth, ih = window.innerHeight;
+            var pRatio = window.devicePixelRatio || 1, xRatio = iw / w, yRatio = ih / h, sRatio = 1;
+            if (isResp) {
+              if ((respDim == 'width' && lastW == iw) || (respDim == 'height' && lastH == ih)) {
+                sRatio = lastS;
+              } else if (!isScale) {
+                if (iw < w || ih < h)
+                  sRatio = Math.min(xRatio, yRatio);
+              } else if (scaleType == 1) {
+                sRatio = Math.min(xRatio, yRatio);
+              } else if (scaleType == 2) {
+                sRatio = Math.max(xRatio, yRatio);
+              }
+            }
+            canvas.width = w * pRatio * sRatio;
+            canvas.height = h * pRatio * sRatio;
+            canvas.style.width = dom_overlay_container.style.width = anim_container.style.width = '100%';
+            canvas.style.height = dom_overlay_container.style.height = anim_container.style.height = 0.41 * canvas.style.width;
+            anim_container.style.height = canvas.height * 0.41 + 'px';
+            stage.scaleX = pRatio * sRatio;
+            stage.scaleY = pRatio * sRatio;
+            lastW = iw;
+            lastH = ih;
+            lastS = sRatio;
+          }
+        }
+
+        makeResponsive(false, 'both', false, 1);
+        fnStartAnimation();
+      }
+    </script>
+</head>
+
+<body onload="init();" style="margin:0px;" class="home_page">
+<div class="container-fluid">
+    <header id="header-on-homepage" class="row">
+        <nav class="navbar navbar-expand-lg navbar-light black-theme ">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png">
+            </a>
+            <span class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation"><img src="./images/1_objects.png"></span>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <div class="main-menu row">
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">About</a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">Work</a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">Openings</a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="b b-md b-blue-border">Contact us</a>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="home-banner">
+            <div class="home-banner__content">
+                <h1>
+                    We’re a software company that builds <span>world-class software solutions</span> across a variety of
+                    platforms
+                    and industries! Complete your software dev mission with our Talent and Expertise!
+                </h1>
+                <button type="button" class="b b-lg b-white b-contact">Contact Us</button>
+            </div>
+        </div>
+
+        <section class="blue-banner">
+            <div class="blue-banner__content">
+                <h2 class="blue-banner__title">
+                    Custom Software Engineering & IT Staff Augmentation
+                </h2>
+                <div class="blue-banner__text">
+                    We are a boutique provider of IT outsourcing and staff augmentation solutions for custom web,
+                    mobile, and enterprise software development. Our mission is to give you talent and resources for
+                    effective digital transformation and better software delivery to end-users. Augment your
+                    in-house/onshore software team with high-caliber pre-vetted tech talent in Ukraine or build a
+                    dedicated development team from scratch in our offshore R&D Centers to better meet your short-term
+                    and long-term business goals.
+                </div>
+
+                <div class="blue-banner__links">
+                    <a href="#" class="blue-banner-btn">AI/ML</a>
+                    <a href="#" class="blue-banner-btn">DevOps</a>
+                    <a href="#" class="blue-banner-btn">FinTech</a>
+                    <a href="#" class="blue-banner-btn">3D & CGI</a>
+                    <a href="#" class="blue-banner-btn">Big Data</a>
+                    <a href="#" class="blue-banner-btn">VR/AR</a>
+                    <a href="#" class="blue-banner-btn">eCommerce</a>
+                    <a href="#" class="blue-banner-btn">Blockchain</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="homepage_main_container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="./images/formula.png" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="row about_us justify-content-center">
+                <div class="col-md-10 col-9">We help our clients build first-class applications of any
+                    complexity.
+                    Trust us the delivery to the right destination!
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 text-center">
+                    <button type="button" class="btn mt-4 contact-us">Contact Us</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="block_about_us">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <h2 class="center-text color-blue">What we do</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-sm-12 offset-1 block_about_us_about">We help startups, mid-market
+                        and enterprise companies build dedicated software development teams in our R&D Center, and
+                        get
+                        ad-hoc resources for custom project development in the most innovative domains such as AI,
+                        Big
+                        Data, FinTech, AdTech, DevOps, Cloud, VR/AR, 3D modeling, and so on.
+                    </div>
+                    <div class="col-md-4 col-sm-5 offset-1  block_about_us_menu">
+                        <img src="images/image_for_block_about_us.png" class="img-fluid" alt="">
+                        <div class="row justify-content-center first">
+                            <div class="col-3 offset-1"><a href="">Al</a></div>
+                            <div class="col-3 "><a href="">DevOps</a></div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-3 offset-1"><a href="">Big Data</a></div>
+                            <div class="col-3 "><a href="">VR/AR</a></div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-3 offset-1"><a href="">FinTech</a></div>
+                            <div class="col-3 "><a href="">Cloud</a></div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6 offset-1"><a href="">3D Modelling</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-sm-12  block_about_us_logo align-self-center"><img
+                            src="images/logo_for_block_about_us.png"
+                            class="img-fluid" alt=""></div>
+                    <div class="col-md-5 col-lg-4 col-sm-12 offset-lg-1 offset-md-1  block_about_us_logo_text">Leverage
+                        our unique tech ecosystem
+                        comprised of Ukraine’s top coding bootcamp (over 6,000 IT graduates in the past 4 years, UN
+                        edu
+                        partner), and a broad network of resource partners, which allows us to source the best
+                        talent
+                        for your project development from untapped pools and closed developer communities as well
+                        as
+                        junior talent for your non mission critical software development tasks.
+                        We invite you to take advantage of our tribal knowledge and ROI-driven approaches to
+                        execute
+                        impactful digital solutions and jump fast on the Web 3.0 bandwagon!
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="choose">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="choose__title col-xl-7 col-lg-5 col-md-7 col-12 text-center ФФФФФФФФФ">Choose the value
+                        proposition
+                        that
+                        best meets your current need!
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="choose__leftText column col-xl-5 col-lg-5 col-md-5 col-sm-6 col-12 text-left justify-content-center">
+                        <div>Extend your in-house team with auxiliary remote talent?</div>
+                        <div style="margin-top: 30px">Launch your software product development department offshore?
+                        </div>
+                        <div style="margin-top: 15px">Find talent for your hard-to-fill positions / short-term
+                            project
+                            needs fast and cost-effectively?
+                        </div>
+                        <div class="verticalLine"></div>
+                        <div class="text-center">EXPLORE DEDICATED TEAM SOLUTION</div>
+                        <div class="center-button">
+                            <button type="button" class="btn explore">Explore</button>
+                        </div>
+                    </div>
+                    <img src="images/rocket.png" alt="rocket" class="rocket">
+                    <div class="column choose__rightText col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12 text-right">
+                        <div class="center-button">
+                            <button
+                                    type="button" class="btn btn-warning discover">Discover
+                            </button>
+                        </div>
+                        <div style="text-center">DISCOVER MANAGED PROJECTS</div>
+                        <div class="verticalLine"></div>
+                        <div>Outsource a software development project with a well-defined scope and a strictly
+                            fixed
+                            budget?
+                        </div>
+                        <div class="center-button-hidden">
+                            <button
+                                    type="button" class="btn btn-warning discover">Discover
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="reasons-to-work-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2 class="center-text color-blue">8 Reasons to work with us</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div id="js-wheel-rotate-switch" class="col-md-4 col-sm-5 align-self-center">MCSE boot camps
+                        have its supporters and its
+                        detractors. Some people do not understand why you should have to spend money on boot camp
+                        when
+                        you can get the MCSE study materials yourself at a fraction of the camp price. However, who
+                        has
+                        the willpower to actually sit through a self-imposed MCSE training? Not too many people!
+                        That is
+                        what the MCSE boot camps are for.
+
+                        These boot camps are typically an intense two-week long MCSE training course that prepares
+                        you
+                        for the MCSE exams. Some companies that conduct boot camps offering Microsoft
+                        certification,
+                        especially the MCSE, guarantee that you will pass your MCSE exams. If you happen to fail,
+                        they
+                        will usually issue a voucher to try it again. For many people
+                    </div>
+                    <div class="col-md-4 col-sm-5 align-self-center animation_cont" style="max-width: 386px;">
+                        <!--<img src="images/reasons.PNG" alt="" class="img-fluid">-->
+                        <div class="circle-reasons">
+                            <div class="reasons-container">
+                                <div class="reason start"><span>Clean code</span></div>
+                                <div class="reason deg315"><span>Resource partners</span></div>
+                                <div class="reason selected deg270"><span>Coding bootcamp</span></div>
+                                <div class="reason deg225"><span>Low attrition</span></div>
+                                <div class="reason deg180"><span>No bench</span></div>
+                                <div class="reason deg135"><span>Meticulous approach</span></div>
+                                <div class="reason deg90"><span>Account-based recruitment</span></div>
+                                <div class="reason deg45"><span>Work flexibility</span></div>
+                            </div>
+                            <div class="selected-reason-area">
+                                <img src="images/circle-wheel-selected-reason-area.png" alt="">
+                            </div>
+                            <div id="js-circle-rotate" class="rotate-transparent-wheel">
+                                <div class="white-wheel">
+                                    <div class="segmentation">
+                                        <img src="images/circle-wheel-segmantation.png" alt="">
+                                    </div>
+                                    <div class="pointer">
+                                        <img src="images/circle-wheel-pointer.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="our_work_animate">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2 class="center-text px-2 ">Our clients speak for themselves </h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3 col-sm-4 align-self-center">
+                        <div class="row counter-container">
+                            <div class="counter-title text-center">Projects we’ve launched</div>
+                            <div class="counter text-center align-self-center">
+                                <div class="digit-box"><span class="digit">0</span></div>
+                                <div class="digit-box"><span class="digit">0</span></div>
+                                <div class="digit-splitter"></div>
+                                <div class="digit-box"><span class="digit">0</span></div>
+                                <div class="digit-box"><span class="digit">1</span></div>
+                            </div>
+                            <div class="vertical-carousel align-self-center">
+                                <div class="projects">
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-1.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-1.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-2.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-2.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-2.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-1.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-1.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-1.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-2.png"
+                                                              alt="Project"></div>
+                                    <div class="project"><img class="carousel-project-image"
+                                                              src="images/project-test-2.png"
+                                                              alt="Project"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 align-self-center">
+                        <div class="row justify-content-center">
+                            <div class="buttons-person">
+                                <button class="btn lft"><span>LFT</span></button>
+                                <button class="btn rght"><span>RGHT</span></button>
+                            </div>
+                        </div>
+                        <div class="project-feedback-container">
+                            <div class="project-feedback">
+                                <div class="row m-0">
+                                    <div class="text-person">8allocate's high-quality code maintains the business's
+                                        software in excellent condition. Their team is proactive and meticulously
+                                        reviews the code for errors. Their ability to autonomously handle QA and
+                                        competence in their field are impressive.
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <div class="person-description">
+                                        <span class="fullname">Roger Sarazin,</span>
+                                        <span class="position">VP of Products and Services, On-Board Data Systems</span>
+                                    </div>
+                                    <div class="company-project-image"><img src="images/project-feedback-image-1.png"
+                                                                            alt=""></div>
+                                </div>
+                            </div>
+                            <div class="project-feedback">
+                                <div class="row m-0">
+                                    <div class="text-person">The team was excellent throughout the project, finding
+                                        professional, dedicated resources and managing the entire hiring process.
+                                        They were focused and found ideal candidates quickly, resulting in an 80%
+                                        hiring rate, while thinking of long-term aspects of the project.
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <div class="person-description">
+                                        <span class="fullname">Tal D.,</span>
+                                        <span class="position">External Consultant, Skycoin</span>
+                                    </div>
+                                    <div class="company-project-image"><img src="images/project-feedback-image-2.png"
+                                                                            alt=""></div>
+                                </div>
+                            </div>
+                            <div class="project-feedback">
+                                <div class="row m-0">
+                                    <div class="text-person">8allocate sourced and secured two qualified, highly
+                                        skilled candidates to work with the in-house team. Both of these resources
+                                        come at a competitive rate that’s half the cost of hiring internally. The
+                                        team excels at communication and offers prompt responses. They understand
+                                        business needs.
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <div class="person-description">
+                                        <span class="fullname">PM,</span>
+                                        <span class="position">Trading Technology Company</span>
+                                    </div>
+                                    <div class="company-project-image"><img src="" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="images-whith-featured">
+            <div class="container-fluid">
+                <div class="row justify-content-center ">
+                    <div class="col-2 align-self-center"><img class="img-fluid" src="images/1.png" alt=""></div>
+                    <div class="col-2 align-self-center"><img class="img-fluid" src="images/2.jpg" alt=""></div>
+                    <div class="col-2 align-self-center"><img class="img-fluid" src="images/3.jpg" alt=""></div>
+                    <div class="col-2 align-self-center"><img class="img-fluid" src="images/4.png" alt=""></div>
+                    <div class="col-2 align-self-center"><img class="img-fluid" src="images/5.png" alt=""></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <!--Contact-->
+            <div class="talk-to-us container-fluid">
+                <div class="row justify-content-center  ">
+                    <h2 class="center-text color-blue">Talk to us</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-12">
+                        <form>
+                            <div class="data-form" align="right">
+                                <input class="data-input" value="" required
+                                       onkeyup="this.setAttribute('value',this.value);"
+                                       placeholder="your name">
+                                <input class="data-input" value="" required
+                                       onkeyup="this.setAttribute('value',this.value);"
+                                       placeholder="email">
+                                <input class="data-input" value="" required
+                                       onkeyup="this.setAttribute('value',this.value);"
+                                       placeholder="phone">
+                                <button class="btn contact-btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <textarea class="input-textarea" value="" onkeyup="this.setAttribute('value',this.value);"
+                                  placeholder="your message"></textarea>
+                    </div>
+                    <div class="row justify-content-center privacy-policy">
+                        <div class="col-1 col-sm-1 text-center">
+                            <input type="checkbox" name="" id="">
+                        </div>
+                        <div class="col-md-6 col-sm-11 px-3">
+                            <a href="http://www.8allocate.com/privacy-policy/">I would like to be added to 8allocate's
+                                internal
+                                systems and receive additional offers, marketing materials and other information by
+                                email sent from
+                                8allocate.
+                                <br>You can opt-out at any time. Each email has a link to unsubscribe. We will never
+                                sell or transfer
+                                your personal details to anyone else.
+                                By pressing Contact now you confirm that you accept 8allocate’s use of cookies and have
+                                read and accept
+                                our privacy policy.</a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-2  col-sm-4 col-6  footer_information">
+                            <h2>Information</h2>
+                            <p>services</p>
+                            <p>projects</p>
+                            <p>studio</p>
+                            <p>blog</p>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-6 ">
+                            <h2>Headquarters</h2>
+                            <p>USA</p>
+                            <p>1100W Olympic Blvrd</p>
+                            <p>Los Angeles</p>
+                            <p>CA 90015 </p>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-12 ">
+                            <h2>Contact</h2>
+                            <p>info@8allocate.com</p>
+                            <br>
+                            <p>Israel: +972 3376 2525</p>
+                            <p>USA: +972 3376 2525</p>
+                        </div>
+                        <div class="col-md-5">
+                            <h2>Subscribe to our news and blogs</h2>
+                            <form class="form-inline">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control form-control-input" value=""
+                                           onkeyup="this.setAttribute('value',this.value);"
+                                           placeholder="email address " aria-label="email address">
+                                    <button class="btn-in-footer btn-outline-secondary" type="button"
+                                            id="button-addon2">Send
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <ul class="list social-buttons">
+                        <li class="list-item">
+                            <a href="">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+<script type="text/javascript" src="js/propeller.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/projects-counter.js"></script>
+<script src="js/circle-wheel.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+.blue-banner {
+    position: relative;
+
+    max-width: 1180px;
+    margin: -105px auto 0;
+    padding: 110px 125px 135px;
+
+    background: #0091D1;
+    box-shadow: 0px 10px 50px rgba(0, 145, 209, 0.1);
+    overflow: hidden;
+}
+
+.blue-banner:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 310px;
+    height: 183px;
+    display: block;
+
+    background-repeat: no-repeat;
+    background-image: url('../../images/new/Union-2.svg');
+}
+.blue-banner:after {
+    content: '';
+    position: absolute;
+    left: -95px;
+    bottom: 70px;
+
+    width: 239px;
+    height: 239px;
+    display: block;
+
+    background-repeat: no-repeat;
+    background-image: url('../../images/new/Union.svg');
+}
+
+.blue-banner__content {
+    position: relative;
+
+    text-align: center;
+    z-index: 1;
+}
+
+.blue-banner__title {
+    margin-bottom: 40px;
+
+    color: #fff;
+    font-size: 38px;
+    line-height: 45px;
+    font-family: "Roboto-bold";
+}
+
+.blue-banner__text {
+    margin-bottom: 60px;
+
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.blue-banner__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blue-banner-btn {
+    width: 150px;
+    margin: 0 25px 20px;
+    padding: 15px 10px;
+
+    color: #fff;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: "Roboto-black";
+
+    border: 2px solid rgba(255, 255, 255, 0.21);
+    transition: background-color .2s linear, color .2s linear;
+}
+
+.blue-banner-btn:hover {
+    color: #0091D1;
+    background-color: rgba(255, 255, 255, 1);
+}

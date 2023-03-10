@@ -1,0 +1,40 @@
+.home-banner {
+    position: relative;
+
+    height: 960px;
+    padding-top: 260px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../images/new/home-banner.jpg');
+}
+
+.home-banner:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home-banner__content {
+    position: relative;
+
+    max-width: 1005px;
+    width: 100%;
+    margin: 0 auto;
+
+    z-index: 1;
+}
+
+.home-banner .b-contact {
+    margin-top: 60px;
+}
