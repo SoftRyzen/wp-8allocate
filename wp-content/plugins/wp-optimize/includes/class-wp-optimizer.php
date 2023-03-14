@@ -6,7 +6,20 @@ if (!defined('WPO_VERSION')) die('No direct access allowed');
  * This class invokes optimiazations. The optimizations themselves live in the 'optimizations' sub-directory of the plugin.  The proper way to obtain access to the instance is via WP_Optimize()->get_optimizer()
  */
 class WP_Optimizer {
-	
+
+	/**
+	 * Returns singleton instance object
+	 *
+	 * @return WP_Optimizer Returns `WP_Optimizer` object
+	 */
+	public static function instance() {
+		static $_instance = null;
+		if (null === $_instance) {
+			$_instance = new self();
+		}
+		return $_instance;
+	}
+
 	public function get_retain_info() {
 	
 		$options = WP_Optimize()->get_options();
@@ -291,7 +304,7 @@ class WP_Optimizer {
 
 		$wpo_db_info = WP_Optimize()->get_db_info();
 
-		$table_status = WP_Optimize()->get_db_info()->get_show_table_status($update);
+		$table_status = $wpo_db_info->get_show_table_status($update);
 
 		// Filter on the site's DB prefix (was not done in releases up to 1.9.1).
 		$table_prefix = $this->get_table_prefix();
@@ -504,20 +517,21 @@ class WP_Optimizer {
 
 		$total_gain = 0;
 		$total_size = 0;
-		$row_usage = 0;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Used in the foreach below
+		$row_usage = 0;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $row_usage Used in the foreach below
 		$data_usage = 0;
 		$index_usage = 0;
-		$overhead_usage = 0; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- Used in the foreach below
+		$overhead_usage = 0;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $overhead_usage Used in the foreach below
 		
 		$tablesstatus = $this->get_tables();
 
 		foreach ($tablesstatus as $tablestatus) {
-			$row_usage += $tablestatus->Rows;
+			$row_usage += $tablestatus->Rows;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $row_usage declared up above
+			$total_gain += $tablestatus->Data_free;
 			$data_usage += $tablestatus->Data_length;
 			$index_usage += $tablestatus->Index_length;
 
 			if ('InnoDB' != $tablestatus->Engine) {
-				$overhead_usage += $tablestatus->Data_free;
+				$overhead_usage += $tablestatus->Data_free;// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- $overhead_usage declared up above
 				$total_gain += $tablestatus->Data_free;
 			}
 		}

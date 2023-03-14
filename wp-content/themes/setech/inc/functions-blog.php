@@ -41,7 +41,6 @@ function setech__post_featured( $post_hide_meta = '', $cropped = false, $layout 
 		if( !$cropped ){
 			ob_start();
 				the_post_thumbnail( 'full', array(
-					'title' => esc_attr($thumb_title),
 					'alt' => esc_attr($thumb_alt),
 					'sizes' => esc_attr($img_sizes)
 				) );
@@ -134,7 +133,7 @@ function setech__post_title( $post_hide_meta = '' ){
 	<?php endif;
 }
 
-function setech__post_category( $post_hide_meta = '' ){
+function setech__post_category( $post_hide_meta = '' ){			
 	$post_cats = get_the_category();
 	$uniq_cats = array();
 
@@ -202,10 +201,10 @@ function setech__post_share( $post_hide_meta = '' ){
 }
 
 function setech__post_meta( $post_hide_meta = '' ){
-	if(
-		strripos($post_hide_meta, 'author') === false ||
+	if( 
+		strripos($post_hide_meta, 'author') === false || 
 		strripos($post_hide_meta, 'date') === false ||
-		strripos($post_hide_meta, 'comments') === false
+		strripos($post_hide_meta, 'comments') === false 
 	){
 		echo '<div class="post-meta-wrapper">';
 			setech__post_author( $post_hide_meta );
@@ -220,6 +219,7 @@ function setech__post_meta( $post_hide_meta = '' ){
 
 function setech__read_more( $title = '', $post_hide_meta = '', $button_type = '', $button_size = 'small' ){
 	$post_permalink = get_permalink();
+	// var_dump($post_permalink);
 	$post_target    = '_self';
 	$out 			= '';
 	$title 			= empty($title) ? get_theme_mod('blog_read_more') : $title;
@@ -243,17 +243,16 @@ function setech__read_more( $title = '', $post_hide_meta = '', $button_type = ''
 }
 
 function setech__the_content( $max_length = '', $read_more = '', $post_hide_meta = '', $button_type = '', $button_size = 'small' ){
-	$excerpt 	= get_the_excerpt();
-	$content 	= get_the_content();
-	$content 	= apply_filters( 'the_content', $content );
-	$content 	= str_replace( ']]>', ']]&gt;', $content );
-	$max_length = !empty($max_length) ? (int)$max_length : get_theme_mod('blog_chars_count');
-
 
 	if( has_excerpt() ){
+		$excerpt 	= get_the_excerpt();
 		$content = esc_html($excerpt);
 		$content .= setech__read_more($read_more, $post_hide_meta, $button_type, $button_size);
 	} else {
+		$content 	= get_the_content();
+		$content 	= apply_filters( 'the_content', $content );
+		$content 	= str_replace( ']]>', ']]&gt;', $content );
+		$max_length = !empty($max_length) ? (int)$max_length : get_theme_mod('blog_chars_count');
 		if( $max_length != '-1' ){
 			if( strlen($content) > $max_length ){
 				$content = str_replace( setech__read_more(), '', $content);

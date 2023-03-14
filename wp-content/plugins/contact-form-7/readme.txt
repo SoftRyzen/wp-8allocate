@@ -2,9 +2,9 @@
 Contributors: takayukister
 Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
-Requires at least: 5.4
-Tested up to: 5.5
-Stable tag: 5.3
+Requires at least: 6.0
+Tested up to: 6.1
+Stable tag: 5.7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Contact Form 7 can manage multiple contact forms, plus you can customize the for
 
 = Docs and support =
 
-You can find [docs](https://contactform7.com/docs/), [FAQ](https://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](https://contactform7.com/). When you can't find the answer to your question on the FAQ or in any of the documentation, check the [support forum](https://wordpress.org/support/plugin/contact-form-7/) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
+You can find [docs](https://contactform7.com/docs/), [FAQ](https://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](https://contactform7.com/). When you cannot find the answer to your question on the FAQ or in any of the documentation, check the [support forum](https://wordpress.org/support/plugin/contact-form-7/) on WordPress.org. If you cannot locate any topics that pertain to your particular issue, post a new topic for it.
 
 = Contact Form 7 needs your support =
 
@@ -36,13 +36,15 @@ If you activate certain features in this plugin, the contact form submitter's pe
 * reCAPTCHA ([Google](https://policies.google.com/?hl=en))
 * Akismet ([Automattic](https://automattic.com/privacy/))
 * Constant Contact ([Endurance International Group](https://www.endurance.com/privacy))
+* [Sendinblue](https://www.sendinblue.com/legal/privacypolicy/)
+* [Stripe](https://stripe.com/privacy)
 
 = Recommended plugins =
 
 The following plugins are recommended for Contact Form 7 users:
 
 * [Flamingo](https://wordpress.org/plugins/flamingo/) by Takayuki Miyoshi - With Flamingo, you can save submitted messages via contact forms in the database.
-* [Bogo](https://wordpress.org/plugins/bogo/) by Takayuki Miyoshi - Bogo is a straight-forward multilingual plugin that doesn't cause headaches.
+* [Bogo](https://wordpress.org/plugins/bogo/) by Takayuki Miyoshi - Bogo is a straight-forward multilingual plugin that does not cause headaches.
 
 = Translations =
 
@@ -75,45 +77,44 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](https://contactform7.com/category/releases/).
 
-= 5.3 =
+= 5.7.4 =
 
-* Block Editor: Introduces the contact form selector block type.
-* Renames the 'images' directory to 'assets'.
-* New filter hook: `wpcf7_form_tag_date_option`.
-* Date: Makes all DateTime date formats available for `min` and `max` options.
-* Date: Converts the default value to Y-m-d date format string.
-* Disallowed list: Deprecates the `wpcf7_submission_is_blacklisted` filter hook in favor of `wpcf7_submission_has_disallowed_words`.
-* Accessibility: Sets the `aria-describedby` attribute for invalid fields.
-* Default form template: Removes the "(required)" labels from required fields. Adds "(optional)" to optional fields instead.
-* Default mail template: Uses site-related special mail-tags.
+[https://contactform7.com/contact-form-7-574/](https://contactform7.com/contact-form-7-574/)
 
-= 5.2.2 =
+= 5.7.3 =
 
-* Fixed: A REST API call aborted with a PHP fatal error when the `WPCF7_USE_PIPE` constant value was false.
-* Introduces the `wpcf7_doing_it_wrong()` function.
-* Sets the `trigger_error()` function’s `$error_type` parameter explicitly.
-* Makes the `wpcf7_special_mail_tags` filter functions’ `$mail_tag` parameter optional.
+[https://contactform7.com/contact-form-7-573/](https://contactform7.com/contact-form-7-573/)
 
-= 5.2.1 =
+= 5.7.2 =
 
-* Makes the [contact-form-7 404 "Not Found"] message localizable.
-* REST API: Adds the `permission_callback` argument to every endpoint definition.
-* Flamingo: Uses `id()` instead of `id`, if available.
-* Fixed: The `free_text` option did not work correctly with the `exclusive` option.
-* Applies `wpcf7_mail_tag_replaced` filters even when the `$posted_data` is null.
-* Adds custom mail-tag replacement for quiz fields.
-* Admin: Updates the date column format in the list table.
+[https://contactform7.com/contact-form-7-572/](https://contactform7.com/contact-form-7-572/)
 
-= 5.2 =
+= 5.7.1 =
 
-* Submission: Introduces the `$posted_data_hash` and `$skip_spam_check` properties.
-* Submission: Introduces the `wpcf7_skip_spam_check` filter hook.
-* Contact form: Introduces the `pref()` method.
-* REST API: Adds parsed form-tags data to the response.
-* REST API: Deprecates the `wpcf7_ajax_json_echo` and `wpcf7_ajax_onload` filter hooks and introduces the `wpcf7_feedback_response` and `wpcf7_refill_response` filter hooks as alternatives.
-* Frontend CSS: Style rules for the response output refer to the `form` element’s `class` attribute.
-* Frontend JavaScript: Abolishes the use of jQuery events.
-* reCAPTCHA: Moves script code to a separate file.
-* reCAPTCHA: Changes the name of the field for reCAPTCHA response token from `g-recaptcha-response` to `_wpcf7_recaptcha_response`.
+[https://contactform7.com/contact-form-7-571/](https://contactform7.com/contact-form-7-571/)
+
+= 5.7 =
+
+[https://contactform7.com/contact-form-7-57/](https://contactform7.com/contact-form-7-57/)
+
+= 5.6.4 =
+
+[https://contactform7.com/contact-form-7-564/](https://contactform7.com/contact-form-7-564/)
+
+= 5.6.3 =
+
+[https://contactform7.com/contact-form-7-563/](https://contactform7.com/contact-form-7-563/)
+
+= 5.6.2 =
+
+[https://contactform7.com/contact-form-7-562/](https://contactform7.com/contact-form-7-562/)
+
+= 5.6.1 =
+
+[https://contactform7.com/contact-form-7-561/](https://contactform7.com/contact-form-7-561/)
+
+= 5.6 =
+
+[https://contactform7.com/contact-form-7-56/](https://contactform7.com/contact-form-7-56/)
 
 == Upgrade Notice ==

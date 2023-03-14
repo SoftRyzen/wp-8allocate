@@ -16,11 +16,11 @@ function setech_sanitize_dropdown_pages( $page_id, $setting ) {
  * @param   string  $wp_customuze is wordpress customizer main variable
  * @param   string  $extensions is array with all custom customizer extensions
  * @return  mixed
- */
+ */ 
 function setech_read_options( $wp_customize, $extensions ){
     $ajax_data = array();
     $count = 0;
-
+    
     foreach( $extensions as $key => $value ){
         $panel_atts = $section_atts = array();
 
@@ -151,7 +151,7 @@ function setech_read_options( $wp_customize, $extensions ){
  *
  * @param   string  $extensions is array with all custom customizer extensions
  * @return  mixed
- */
+ */ 
 function setech_get_defaults( $extensions ){
     $defaults = array();
 
@@ -195,7 +195,7 @@ function setech_get_defaults( $extensions ){
  * get google fonts array
  *
  * @return  mixed
- */
+ */ 
 function setech_get_google_fonts(){
     global $wp_filesystem;
 
@@ -230,7 +230,7 @@ function setech_get_google_fonts(){
  * @param   string  $def_size is default value for font-size control
  * @param   string  $def_height is default value for font-height control
  * @return  mixed
- */
+ */	
 function setech_typography_control( $location, $def_family, $def_weight, $def_subset, $def_color, $def_size, $def_height ){
     $font_choices = array();
     $loc = esc_html($location);
@@ -279,7 +279,7 @@ function setech_typography_control( $location, $def_family, $def_weight, $def_su
             $font_default = $font['variants'];
         }
     }
-
+        
     // Create choices for font-family
     foreach ($theme_fonts as $k => $v) {
         $font_choices[$k.','.$v['var']] = $k;

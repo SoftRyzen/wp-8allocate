@@ -85,5 +85,7 @@ defined( 'ABSPATH' ) or die();
 			<span class="frame_bottom"></span>
 			<span class="frame_left"></span>
 		</div>
+		
 		<?php wp_footer() ?>
+	</body>
 </html>

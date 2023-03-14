@@ -1,382 +1,423 @@
-=== WordPress Zero Spam ===
-Contributors: bmarshall511, jaredatch, EusebiuOprinoiu
-Tags: comments, spam, antispam, anti-spam, comment spam, spambot, spammer, spam free, spam blocker, registration spam
-Donate link: https://www.benmarshall.me/donate/?utm_source=wordpress_zero_spam&utm_medium=wordpress_repo&utm_campaign=donate
+=== Zero Spam for WordPress ===
+Contributors: bmarshall511
+Tags: protection, firewall, security, spam, spam blocker
+Donate link: https://www.zerospam.org/subscribe/
 Requires at least: 5.2
-Tested up to: 5.5
-Requires PHP: 7.1
-Stable tag: 4.10.2
+Tested up to: 6.1.1
+Requires PHP: 7.4
+Stable tag: 5.4.4
 License: GNU GPLv3
 License URI: https://choosealicense.com/licenses/gpl-3.0/
 
-WordPress Zero Spam makes blocking spam & malicious visitors a cinch. Just install, activate and enjoy a spam-free site.
+Protection against spam, malicious users & common attacks using an advanced behavior detection engine. Integrates with other 3rd-party plugins.
 
 == Description ==
 
-Quit forcing users to answer silly questions, read confusing captchas, or take additional steps just to prove they're not spam. Stop malicious bots & hackers in their tracks before they ever have a chance to infiltrate your site &mdash; **introducing WordPress Zero Spam**.
+Protect against spam, malicious users, attacks like web & port scans, brute force, and others. Zero Spam uses multiple methods to detect & stop threats including an advanced behavior detection engine that integrates with [Zero Spam](https://www.zerospam.org), [Stop Forum Spam](https://www.stopforumspam.com/) &amp; [Project Honeypot](https://www.projecthoneypot.org/). Integration with popular plugins like [WooCommerce](https://wordpress.org/plugins/woocommerce/), [GiveWP](https://givewp.com/ref/1118/), [Gravity Forms](https://www.gravityforms.com/) & more help provides an extra level of protection.
 
-[WordPress Zero Spam](https://www.benmarshall.me/wordpress-zero-spam/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam) uses AI in combination with proven spam detection techniques and a database of known malicious IPs from around the world to detect and block unwanted visitors.
+**Install, activate, configure, then put your mind at ease!**
 
-In addition, it integrates with other popular plugins to provide all around protection. **Just install, activate, and enjoy a spam-free site!**
+= Worry-free, Powerful Protection =
 
-= WordPress Zero Spam features =
+* No captcha, spam isn't a users' problem
+* No moderation queues, spam isn't a administrators' problem
+* Behavior detection engine able to dynamically block threats
+* Integrates with global IP reputation providers
+* Allows admins to block IPs temporarily or permanently
+* Geolocation integration to track where threats are coming from
+* Block entire countries, regions, zip/postal codes & cities
+* Optional disallowed list using [splorp's Comment Blacklist](https://github.com/splorp/wordpress-comment-blacklist)
+* Block known disposable &amp; malicious email domains using [disposable](https://github.com/disposable)
+* Multiple detection techniques including [David Walsh's solution](https://davidwalsh.name/wordpress-comment-spam)
 
-* **Blocks 99.9% of spam** submissions
-* **No captcha**, spam isn't a users' problem
-* **No moderation queues**, spam isn't a administrators' problem
-* **Multiple spam detection techniques**, including *honeypot*.
-* **Site security enhancements**, no config required
-* **Blocks malicious IPs** from ever seeing your site
-* **IP blacklist spam checks** ([Zero Spam](https://zerospam.org), [Stop Forum Spam](https://www.stopforumspam.com/), [BotScout](https://botscout.com/))
-* **Auto-block IPs** when a spam detection is triggered
-* **Manually block IPs** either temporarily or permanently
-* **Whitelist IPs** to avoid getting blocked
-* **Geolocate IP addresses** to see where spammers are coming from
-* **Detailed logging** to catch & block recurring spammers
-* **Charts &amp; statistics** for easy to understand spam analytics
-* **Advanced settings** for complete control over spammers
-* **Developer-friendly**, integrate with any theme, plugin or form
+= But wait, there's more! =
 
-= WordPress Zero Spam also protects =
+* Protects comments, user registration &amp; login forms
+* Protects [GiveWP](https://givewp.com/ref/1118/) forms & helps prevent testing stolen credit cards
+* Protects [Gravity Forms](https://www.gravityforms.com/), [Contact Form 7](https://wordpress.org/plugins/contact-form-7/), [WPForms](https://wordpress.org/plugins/wpforms-lite/), [Formidable Form Builder](https://wordpress.org/plugins/formidable/), [Fluent Forms](https://wordpress.org/plugins/fluentform/) & [wpDiscuz](https://wordpress.org/plugins/wpdiscuz/) forms
+* Protects [WooCommerce](https://wordpress.org/plugins/woocommerce/) registrations
+* Protects [Mailchimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) sign-ups
+* and **can be integrated into any existing theme or plugin**
 
-* WordPress core comments & user registrations
-* [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) submissions
-* [BuddyPress](https://wordpress.org/plugins/buddypress/) registrations
-* [WPForms](https://wordpress.org/plugins/wpforms-lite/) submissions
-* [WP Fluent Form](https://wordpress.org/plugins/fluentform/) submissions
-* [Formidable Form Builder](https://wordpress.org/plugins/formidable/) submissions
-* and can be easily integrated into any existing theme or plugin
+= Expert Support =
 
-WordPress Zero Spam is great at blocking spam &mdash; as a site owner there's more you can do to [stop WordPress spam](https://www.benmarshall.me/stop-wordpress-spam/) in its tracks.
+We have a highly-experienced team of developers to provide incredible support. Ask your questions in the support forum, post a bug or feature request on [Github](https://github.com/Highfivery/zero-spam-for-wordpress/issues), or [contact us directly](https://www.zerospam.org/contact).
 
-= Multilingual Supported =
+= Optional 3rd-party Integrations =
 
-We’ve integrated multi language support within the framework of our plugin, so you get a translated dashboard out of the box, and developer options to add even more languages. Contribute new languages via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/zero-spam/).
+Zero Spam allows you to integrate with other services to improve the ability to detect spam and malicious users. These services are optional and not required for Zero Spam to work. Before opting into any of these services, please review their terms of use and/or privacy policies.
 
-* [French](https://translate.wordpress.org/locale/fr/default/wp-plugins/zero-spam/) – (fr_FR)
-* [Italian](https://translate.wordpress.org/locale/it/default/wp-plugins/zero-spam/) – (it_IT)
+* **[Zero Spam](https://www.zerospam.org/)** - Sends the visitor's IP &amp; when available email to check the spam score. Review their [Privacy Policy](https://www.zerospam.org/privacy/) &amp; [Terms of Use](https://www.zerospam.org/terms/).
+* **[ipbase.com](https://ipbase.com/)** - Sends the visitor's IP to gather detailed geolocation information. Review their [Privacy Policy](https://ipbase.com/privacy-policy/) & [Terms of Use](https://www.iubenda.com/terms-and-conditions/41661719).
+* **[ipinfo.io](https://ipinfo.io/)** - Sends the visitor's IP to gather detailed geolocation information. Review their [Privacy Policy](https://ipinfo.io/privacy-policy) & [Terms of Use](https://ipinfo.io/terms-of-service).
+* **[ipstack](https://ipstack.com/)** - Sends the visitor's IP to gather detailed geolocation information. Review their [Privacy Policy](https://www.ideracorp.com/Legal/APILayer/PrivacyStatement) & [Terms of Use](https://ipstack.com/terms).
+* **[Stop Forum Spam](https://www.stopforumspam.com/)** - Sends the visitor's IP to check if they've been reported. Review their [Privacy Policy](https://www.stopforumspam.com/privacy) & [Terms of Use](https://www.stopforumspam.com/legal).
+* **[Project Honeypot](https://www.projecthoneypot.org/)** - Sends the visitor's IP to check if they've been reported. Review their [Privacy Policy](https://www.projecthoneypot.org/privacy_policy.php) & [Terms of Use](https://www.projecthoneypot.org/terms_of_use.php).
+* **[Google Maps](https://developers.google.com/maps)** - Enables the ability to plot attack locations. Review their [Privacy Policy](https://www.ideracorp.com/Legal/APILayer/PrivacyStatement) & [Terms of Use](https://developers.google.com/terms/site-terms).
 
-= Developer API =
-
-WordPress Zero Spam is free and open source. It’s the perfect solution to stopping spam and can be extended and integrated further. It was created and developed with the developer in mind, and we have already seen some truly remarkable addons already developed.
-
-To help you get started and learn just how to integrate with WordPress Zero Spam, visit the [plugin's documentation](https://www.benmarshall.me/wordpress-zero-spam/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam).
-
-
-= Help test & contribute to WordPress Zero Spam =
-
-WordPress Zero Spam can only stay up-to-date and bug-free with the help of contributors and testers. You can help test upcoming releases and contribute by forking the project on [GitHub](https://github.com/bmarshall511/wordpress-zero-spam).
-
-= Plugin Support =
-
-* For usage &amp; tutorials, view the [documentation](https://www.benmarshall.me/wordpress-zero-spam/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam).
-* Have questions? Visit the [WordPress Zero Spam Forum](https://wordpress.org/support/plugin/zero-spam/).
-* More FAQs and API documentation can be found at [Zero Spam](https://zerospam.org/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam).
-
-= WordPress Zero Spam needs your support =
-
-**WordPress Zero Spam is free — completely free & always will be.** It's hard to continue development and provide support without contributions. If you find using WordPress Zero Spam useful, please consider making a [donation](https://www.benmarshall.me/donate/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam). Your donation will help encourage and support the plugin's continued development and user support.
-
-* Like our [Facebook Page](https://www.facebook.com/zerospamorg/)
-* Follow us on [Twitter](https://www.facebook.com/zerospamorg)
-* Rate us on [WordPress](https://wordpress.org/support/plugin/zero-spam/reviews/?filter=5/#new-post)
+Optionally, you can also help improve Zero Spam by enabling sharing detection information. For more info on what's shared, see our [FAQ](https://github.com/Highfivery/zero-spam-for-wordpress/wiki/FAQ)
 
 == Installation ==
 
-1. Upload the entire wordpress-zero-spam folder to the */wp-content/plugins/* directory.
+1. Upload the entire *zero-spam* folder to the */wp-content/plugins/* directory.
 2. Activate the plugin through the Plugins screen (*Plugins > Installed Plugins*).
-3. Visit the plugin setting to configure as needed (*Settings > WP Zero Spam*).
+3. Visit the plugin setting to configure as needed (*Settings > Zero Spam*).
 
-For more information & developer documentation, see the [plugin’s website](https://www.benmarshall.me/wordpress-zero-spam).
+For more information & developer documentation, see the [wiki](https://github.com/Highfivery/zero-spam-for-wordpress/wiki).
 
 == Frequently Asked Questions ==
 
-= Does WordPress Zero Spam check Ninja Forms submissions? =
+= Does Zero Spam for WordPress block user IPs? =
 
-**No.** As of v4.10.0, WordPress Zero Spam no longer checks Ninja Form submissions. Support was dropped due to its [requirement of JavaScript](https://developer.ninjaforms.com/codex/loading-the-form-via-ajax/) and how it submits forms. JavaScript is one of the techniques WordPress Zero Spam uses to determine if a submission is spam. Ninja Forms employs a similar method and has its own [spam detection](https://ninjaforms.com/blog/spam-wordpress-form/) feature.
+*Not by itself.* Zero Spam for WordPress does not block IP addresses by itself. Visitors that are getting blocked have either been manually blocked by the site admin or appear in one of the IP blacklist like [Stop Forum Spam](https://www.stopforumspam.com/), [Project Honeypot](https://www.projecthoneypot.org/), or the [Zero Spam IP database](https://www.zerospam.org).
 
-**Does this mean WPZP won't do you any good? Absolutely not.** WPZS employs other techniques and IP blacklist checks that will help prevent malicious IP and spambots from ever seeing your site. You will still get all of the benefits of this plugin, it just won't provide the extra check on Ninja Form submissions.
+If a legitimate user is getting blocked, check the Log (Admin > Dashboard > Zero Spam > Log) to get further details why they were blocked. You can adjust how strict the 3rd-party blacklist checks are or disable those if you find that your users are prone to being flagged as spam/malicious.
 
-= Does WordPress Zero Spam check Gravity Form submissions? =
+= Does Zero Spam for WordPress check Jetpack comments? =
 
-**No.** As of v4.9.9, WordPress Zero Spam no longer checks Gravity Form submissions. Support was dropped due the numerous addon plugins that can be installed & alter GF submissions. These addons will often conflict with how WPZS validates submissions. In addition, Gravity Forms already has a spam detection option that works  similar to how this plugin detects forms. You can enable it by going to the form settings and checking the *Enable anti-spam honeypot* option. For more information, see [Gravity Forms documentation](https://docs.gravityforms.com/form-settings/).
+**No.** Zero Spam for WordPress is unable to integrate Jetpack. For more information, see [https://wordpress.org/support/topic/incompatible-with-jetpack-comments](https://wordpress.org/support/topic/incompatible-with-jetpack-comments).
 
-**Does this mean WPZP won't do you any good? Absolutely not.** WPZS employs other techniques and IP blacklist checks that will help prevent malicious IP and spambots from ever seeing your site. You will still get all of the benefits of this plugin, it just won't provide the extra check on Gravity Form submissions.
+= How do I boost performance of Zero Spam for WordPress? =
 
-= Does WordPress Zero Spam check Jetpack comments? =
+**Enable caching.** Caching is highly recommended and will prevent repeated calls to third-party API and access checks on each page visit.
 
-**No.** WordPress Zero Spam is unable to integrate Jetpack. For more information, see [https://wordpress.org/support/topic/incompatible-with-jetpack-comments](https://wordpress.org/support/topic/incompatible-with-jetpack-comments).
+You can also adjust the cache and API timeout settings in admin depending on your server and specific needs.
 
-= Spam coments are still getting through, help! =
+= Does Zero Spam support WP-CLI commands? =
 
-WordPress Zero Spam relies on the default core form id (`#commentform`) in order to check comment submissions. Verify your comment forms have this ID or add the class `wpzerospam` to enable it on your site.
+* `wp zerospam autoconfigure` &mdash; Auto-configures with recommended settings.
+* `wp zerospam settings` &mdash; Displays all plugin settings.
+* `wp zerospam set --[SETTING_KEY]=[VALUE]` &mdash; Updates a plugin setting.
 
-= All registrations are marked as spam, help! =
+= Are you getting a `ftp_fget` PHP warning? =
 
-This is most likely due to a plugin or theme overriding the default markup of the registration form. Verify the form has an id of `registerform` or add the `wpzerospam` class to it.
+Some hosts have issues with they way they access files. If you're seeing a `ftp_fget` PHP notice, setting the `FS_METHOD` constant to `direct` in `wp-config.php` above the line `/* That's all, stop editing! Happy Pressing. */` should solve the problem:
 
-Example with `registerform` id:
+`define('FS_METHOD', 'direct');`
 
-`<form name="registerform" id="registerform" action="https://yourdomain.local/login/?action=register" method="post" novalidate="novalidate">`
-
-Example with `wpzerospam` class:
-
-`<form name="registerform" class="wpzerospam" action="https://yourdomain.local/login/?action=register" method="post" novalidate="novalidate">`
-
-If you need help, please don't hesitate to [reach out](https://www.benmarshall.me/contact/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam).
-
-= How do I integrate this into another plugin or theme? =
-
-It's easy as adding the class `wpzerospam` to the `form` element, then adding a check in the form processor that the `wpzerospam_key` post value matches the option value in the database using the `wpzerospam_key_check()` helper function. See the [plugin's documentation](https://www.benmarshall.me/wordpress-zero-spam/?utm_source=wordpress.org&utm_medium=plugin&utm_campaign=wordpress_zero_spam) for more information on available hooks & functions.
-
-= Is JavaScript required to check form submissions? =
-
-Yes. One of the many techniques WordPress Zero Spam employs requires JavaScript be enabled to work properly.
+If hosting with Pantheon, see their [known issues page](https://pantheon.io/docs/plugins-known-issues#define-fs_method) for more information and what to do to resolve it with their `$_ENV['PANTHEON_ENVIRONMENT']` variable check.
 
 == Screenshots ==
 
-1. WordPress Zero Spam dashboard
-2. WordPress Zero Spam detections log
-3. WordPress Zero Spam blocked IPs
-4. WordPress Zero Spam blacklisted IPs
-5. WordPress Zero Spam settings
+1. Dashboard
+2. Log
+3. Settings
+4. Add blocked IP address
+5. Add blocked location
 
 == Changelog ==
 
-= 4.10.2 =
+= v5.4.4 =
 
-* Added composer. See [#150](https://github.com/bmarshall511/wordpress-zero-spam/pull/150/).
-* Temporarily disabled sharing spam detection information.
+* refactor(project honeypot): resolves #344, added additional check & debug info for ip type support
+* fix(wpforms): resolves #343, fix for jquery dependency
+* fix(registration): resolves #342, fix for failed registration output
+* fix(php8): resolves #341, fix for php8+ compatibility issue
 
-= 4.10.2 =
+= v5.4.3 =
 
-* Update to comply with the GDPR/CCPA. See [#216](https://github.com/bmarshall511/wordpress-zero-spam/issues/216).
+* fix(emojis): fix for fatal error when emojis are disabled
 
-= 4.10.1 =
+= v5.4.2 =
 
-* Fix - PHP notice `Warning: array_merge(): Expected parameter 2 to be an array, bool given in /wp-content/plugins/zero-spam/classes/class-wordpress-zero-spam.php on line 532`. See https://wordpress.org/support/topic/warning-array_merge-14/#post-13319702.
-* Fix - StopForumSpam & BotScout being queried even if the options are disabled. See https://wordpress.org/support/topic/api-timeout/#post-13323551.
-* Enhancement - Moved the security functions into the new `WordPress_Zero_Spam_Security` class.
-* Enhancement - General code clean-up & documentation.
+* feat(ipbase): added support for ipbase.com
+* feat(security): added additional advanced security protections
 
-= 4.10.0 =
+= v5.4.1 =
 
-* Enhancement - Various performance improvements & caching added.
-* Enhancement - Easier to use class methods for integrating Zero Spam into any plugin or theme.
-* Enhancement - New `WordPress_Zero_Spam` class added.
-* Enhancement - IPs are now checked against known, safe hosts and user agents (i.e. search engine crawlers).
-* Enhancement - Added advanced debugging functionality.
+* feat(dashboard): dashboard ui enhancements
+* perf(sharing): performance improvements when sharing data
+* fix(memberpress): removed memberpress support, they made fundamental changes to their plugin that's ganna require a rework
+* fix(uninstall): fix issue where the plugin couldn't be deleted
+* fix(cli): resolves #33
+* chore(charts): updated chart.js to 3.9.1
 
-= 4.9.13 =
+= v5.4.0 =
 
-* Fix - PHP notices for comment options [#209](https://github.com/bmarshall511/wordpress-zero-spam/issues/209)
+* chore(admin): updated the after-activation message
+* chore(spam): updated splorp's wordpress comment blacklist
+* feat(givewp): enhanced security using the david walsh method on legacy forms
+* feat(admin): major ui enhancements
+* feat(gravityforms): adds support for gravity forms
+* feat(reports): improved error logs
+* feat(wpdiscuz): resolves #327, added support for wpdiscuz
+* feat(wpforms): now supports checking blocked email addresses
+* feat(email): enhanced email security checks
+* fix(double requests): issue with double checks being performed per page visit
+* fix(blocks): fix for blocked ips not getting properly blocked
+* fix(locations): fix for blocked locations not getting added/updated
+* fix(comments): fix for valid comment submissions being flagged
+* fix(admin): missing country flag in ip details modal
+* fix(woocommerce): fix for login woocommerce registrations fixed
+* fix(david walsh): fix for flagged submissions when using the david walsh technique
+* perf(misc): misc performance improvements related to 3rd-party api queries
 
-= 4.9.12 =
+= v5.3.9 =
 
-* Enhancement - Added support for the French & Italian languages. See [#207](https://github.com/bmarshall511/wordpress-zero-spam/issues/207).
-* Enhancement - Strengthened spam detection for registrations using a 'honeypot' field.
-* Enhancement - Strengthened spam detection for Contact Form 7 using a 'honeypot' field.
-* Fix - Fix for Contact Form 7 protection not firing.
+* fix(admin): fix issue with admin notice not dismissing properly, resolves #319
 
-= 4.9.11 =
+= v5.3.8 =
 
-* Optimization - Converted the WPZS JS to be a jQuery plugin to initialize and manage easier.
-* Fix - Fix for WPZS failing when the Autoptimize plugin is set to aggregate JS files. See [#205](https://github.com/bmarshall511/wordpress-zero-spam/issues/205).
+* chore(zero spam api): updated the zero spam api to v2
 
-= 4.9.10 =
+= v5.3.7 =
 
-* Fix - Fix for PHP notice relating to an undefined variable, `strip_comment_links`. See [https://wordpress.org/support/topic/im-getting-this-after-latest-update/](https://wordpress.org/support/topic/im-getting-this-after-latest-update/).
+* chore(readme): documentation updates
 
-= 4.9.9 =
+= v5.3.6 =
 
-* Enhancement - Strengthened spam detection for comment submission using a 'honeypot' field.
-* Enhancement - Added a 'honeypot' helper functions (`wpzerospam_honeypot_field()`, `wpzerospam_get_honeypot()`) to allow other forms, plugins, and themes to easily integrate a 'honeypot' check into submissions.
-* Enhancement - IP lookup links integrated in the admin dashboard and tables.
-* Deprecation - Gravity Forms is no longer supported &mdash; for the time being. See the plugin FAQs for more information.
+* fix(admin): fix for admin notice not getting dismissed when clicked, resolves #318
 
-= 4.9.8 =
+= v5.3.5 =
 
-* Fix - Fix for a reporting issue during detections.
+* chore(readme): added 3rd-party service integration documentation to the readme
+* chore(admin): revised the admin message that's displayed with zero spam enhanced protection is enabled, but a valid api key is not provided
 
-= 4.9.7 =
+= v5.3.4 =
 
-* Enhancement - Added enhanced site security features (no configuration required)
-* Enhancement - Added plugin version to the information shared to Zero Spam (optional).
-* Optimization - Misc. code clean-up
+* fix(notice): removed dismiss button on intial install to ensure plugin settings are configured before use
 
-= 4.9.6 =
+= v5.3.3 =
 
-* Fix - Gravity Forms not catching spam.
+* feat(zero spam settings): displays dismissible notices for enhanced protection and invalid license keys
+* feat(dates): updated the admin tables to display dates based on the site settings, resolves #305
+* fix(ukraine): removed the ukraine banner
 
-= 4.9.5 =
+= v5.3.2 =
 
-* Enhancement - Added the *BotScout Count Minimum* field in settings to allow sites to control when a BotScout result should be marked spam/malicious. See [BotScout's documentation](https://botscout.com/api.htm) for more information.
-* Enhancement - Improved performance by only querying the blacklist API once every X number of days (set in the admin settings).
-* Fix - Removed double slashes in some required PHP & JS paths.
+* feat(zero spam api): now reports spam and malicious email addresses
 
-= 4.9.4 =
+= v5.3.1 =
 
-* Fixed issued with BuddyPress checks not running.
+* fix(zero spam api): update to limit number of requests when sharing data
 
-= 4.9.3 =
+= v5.3.0 =
 
-* Added a confidence threshold for Stop Form Spam checks. See [#202](https://github.com/bmarshall511/wordpress-zero-spam/issues/202);
-* Added an API timeout field to adjust how long a response is allowed to take.
-* Restructred several functions which fixed some interment bugs users were experiencing.
-* Added ability to delete all entries from a table.
-* This update **will delete all exisiting blacklisted IPs** to ensure visitors aren't getting blocked when that shouldn't be.
+* fix(woocommerce): fix for spam getting triggered during woo checkout with create account checked, resolves #313
+* refactor(zero spam api): performance improvements when sharing detections
 
-= 4.9.2 =
+= v5.2.15 =
 
-* Removed Ninja Form submission support. See FAQs for more details.
-* Fix for PHP notice on the log page in the view details modal.
-* Fix for double slashes in the JS URLs.
-* Fix for BotScout not checking IPs
-* Fix for table not found notice on activation
+* feat(ukraine): we'll no longer provide protection for .ru, .su, and .by domains & will display a banner of support for the ukrainian people on those sites - united with ukraine
 
-= 4.9.1 =
+= v5.2.14 =
 
-Fix for PHP notice on the modals for spam detections
+* fix(woocommerce): fixes issues with woocommerce login not working, resolves #310
 
-= 4.9.0 =
+= v5.2.13 =
 
-* Added support for [Formidable Forms](https://wordpress.org/plugins/formidable/). See [#112](https://github.com/bmarshall511/wordpress-zero-spam/issues/112).
-* Added additional country regions
-* UI enhancments to the admin tables
-* Added a spam detection world map to the dashboard
+* feat(woocommerce): added support for woocommerce registrations, resolves #306
+* fix(admin): fix for displaying & adding blocked ip addresses, resolves #308
 
-= 4.8.2 =
+= v5.2.12 =
 
-* Fix for admin table paging keeping set filters
+* refactor(wordpress coding standards): misc updates to conform to wordpress coding standards
 
-= 4.8.1 =
+= v5.2.11
 
-* Fix for charts not showing up in the dashboard
+* fix(security): fixes the missing orderby parameter sanitization in the admin dashboard
+* fix(admin settings): fixed whitespace issue in textarea setting fields, resolves #303
+* fix(admin log): updated date column to use the local setting date & time format, resolves #305
 
-= 4.8.0 =
+= v5.2.10 =
 
-* Added filter & seach options to admin tables
-* Various performance enhancements
-* Added ability to whitelist IP addresses
+* fix(security): fixes the missing parameter sanitization in the admin dashboard, resolves #301
 
-= 4.7.1 =
+= v5.2.9 =
 
-* Update to the WP Zero Spam API
+* feat(zero spam): you can now define your zero spam license key in wp-config.php using the constant ZEROSPAM_LICENSE_KEY, resolves #298
+* fix(admin): fix for setting action buttons not doing anything, resolves #295
+* fix(admin): fixes php notice for in_array in class-utilities, resolves #299
 
-= 4.7.0 =
+= v5.2.8 =
 
-* Various performance enhancements
-* Updates to the admin tables
-* Improved UI
-* Added functionality & option to permanently auto-block after X spam detections
-* Added ability to share spam detections with WordPress Zero Spam to strengthen it's ability to detect spammers
+* feat(memberpress): resolves #286, added support for the memberpress login page
+* fix(memberpress): updated memberpress sign-up hook priority to ensure it runs
+* refactor(admin): now using nonces to process zero spam admin actions
 
-= 4.6.0 =
+= v5.2.7 =
 
-* Added option to strip links from comments
-* Added option to strip & disable the comment author website field
-* Added integration with the BotScout blacklist API
+* perf(settings): performance improvement to settings being loaded
+* style(admin): added check for zero spam license key when enabled
+* style(admin): misc. admin interface improvements
 
-= 4.5.0 =
+= v5.2.6 =
 
-* Added integration with the Stop Forum Spam known spammy IPs
-* Fixed issue with Gravity Forms not being enabled by default
+* fix(undefined method): fix for undefined types method
 
-= 4.4.1 =
+= v5.2.5 =
 
-* Fix for Gravity Forms not submitting
+* feat(givewp): now checks submitted emails against the blocked email domains list
+* perf(everything): refactoring of code for a boost in performance
+* docs(readme): misc. readme file updates
+* fix(admin): fix for error log not clearing
 
-= 4.4.0 =
+= v5.2.4 =
 
-* Misc. code clean-up
-* Added support for the Fluent Forms plugin
+* feat(memberpress): resolves #283, now supports memberpress registration forms
+* feat(mailchimp4wp): resolves #121, now supports mailchimp4wp forms
+* refactor(misc): misc. updates to comply with wordpress coding standards.
+* style(admin): misc. admin interface improvements
 
-= 4.3.10 =
+= v5.2.3 =
 
-* Updated get_plugin_data calls to use a constant. See [#196](https://github.com/bmarshall511/wordpress-zero-spam/issues/196)
-* Added additional country regions for geolocation lookup
-* Renamed 'addons' to 'integrations'
-* Fixed issue with WPForm spam detections
-* Fix for plugin deactivation from v3 to v4 upgrade
+* feat(givewp): now support givewp donation forms
+* style(notices): minor update to default detection notice
 
-= 4.3.9 =
+= v5.2.2 =
 
-* Fix for `Notice: Undefined index: verify_ninja_form`. See [#195](https://github.com/bmarshall511/wordpress-zero-spam/issues/195)
+* fix(db): resolves #281, fixes db update error for multisite installations
+* fix(db): fix for unsanitized db log entries
+* style(admin): new cf7 icon added for blocked log
 
-= 4.3.8 =
+= v5.2.1 =
 
-* Fix for `Call to undefined function wpzerospam_tables()` error
+* fix(woocommerce): resolves #280, fixes login integration breaking woocommerce login form
 
-= 4.3.7 =
+= v5.2.0 =
 
-* Optimized scripts & when they get loaded (only when needed)
-* Fixed bug with incrementing spam detections in the blocked IPs log
+* feat(login): now protects user login attempts
+* feat(project honeypot): resolves #201, project honeypot ip checks now integrated
+* perf(sharing): blocked ips are no longer shared with zerospam.org
+* perf(database): doesn't log .ico requests anymore that normally resulted in 2 entries per detection
+* style(admin): misc admin interface improvements
+* refactor(misc): cleaning up code & wordpress coding standards updates
+* refactor(zero spam api): updated version on the zero spam api endpoint
 
-= 4.3.6 =
+= v5.1.7 =
 
-* Added a check for the `is_plugin_active` functions to ensure they're available before calling it
+* fix(php notice): fix for some hosts firing a php notice when unable to retrieve the list of recommended blocked email domains
 
-= 4.3.5 =
+= v5.1.6 =
 
-* Fix for `Uncaught Error: Call to undefined function get_plugin_data()`. See [#193](https://github.com/bmarshall511/wordpress-zero-spam/issues/193).
+* feat(fluent forms): resolves #276, fluent forms is now supported
+* fix(php notice): resolves #277, fix for array_intersect(): Argument #2 must be of type array, bool
 
-= 4.3.4 =
+= v5.1.5 =
 
-* Fixed issue with adding/updating IP addresses manually
-* Fixed PHP notice for missing submission data on the log chart
-* Fixed PHP notice for "Undefined index: log_blocked_ips". See [#191](https://github.com/bmarshall511/wordpress-zero-spam/issues/191)
-* Updated the admin scripts to only login on the plugin admin pages
-* Fixed an issue with default add-on plugin options being disabled on first save. See [#192](https://github.com/bmarshall511/wordpress-zero-spam/issues/192)
+* feat(dashboard widget): resolves #275, added the ability to control the dashboard widget visibility
+* feat(settings): button to quickly override and update settings to zero spam's recommended
+* feat(email domains): resolves #246, ability to block disposable and malicious email domains
+* perf(sharing): sharing detections optimized
+* perf(disallowed list): removed the unused cron to sync disallowed words
+* chore(disallowed list): updated to the lastest splorp's disallowed list
+* docs(htaccess): added a notice & recommended max number of blocked ips when using .htaccess
+* fix(ipinfo): fix for uncaught ipinfo exception
 
-= 4.3.3 =
+= v5.1.4 =
 
-* Fix for `REFERRER_ANALYTICS` unknown constant
+* fix(htaccess): resolves #274, fix for newer apache versions and option to select the method ips are blocked
 
-= 4.3.2 =
+= v5.1.3 =
 
-* Fix for Gravity Forms PHP notice. See [#188](https://github.com/bmarshall511/wordpress-zero-spam/issues/188)
-* Add more stats & charts. See [#184](https://github.com/bmarshall511/wordpress-zero-spam/issues/184)
+* perf(blocked ips): moved blocked ips to .htacess for improved performance
+* refactor(woocommerce): woocommerce registration forms support dropped in place of 3rd-party IP checks
+* docs(admin): misc updates to admin interface
 
-= 4.3.1 =
+= v5.1.2 =
 
-* Fixing plugin version
+* perf(geolocation): improved performance for geolocation and data sharing
+* docs(readme): updated readme file
+* refactor(misc): added some functionality to make debugging easier
+* fix(ipinfo): resolves #273, loads the ipinfo library only if enabled
 
-= 4.3.0 =
+= v5.1.1 =
 
-* Added the ability to manually add blocked IPs. See [#185](https://github.com/bmarshall511/wordpress-zero-spam/issues/185)
-* Fixed the ignored start & end date of blocked IPs
-* Added the ability to auto-block an IP when spam is detected. See [#185](https://github.com/bmarshall511/wordpress-zero-spam/issues/185)
-* Added raw data to spammer log table
-* Added the ability to uninstall options on Multisite. See [#187](https://github.com/bmarshall511/wordpress-zero-spam/pull/187)
+* feat(geolocation): resolves #270, added support for ipinfo geolocation
+* feat(cli): resolves #271, added WP CLI support
+* feat(admin): resolves #237, new admin dashboard widget
+* refactor(admin): wordpress coding standards fixes
+* refactor(settings): minor update to settings section title
+* docs(readme): updated readme file
 
-= 4.2.0 =
+= v5.1.0 =
 
-* Re-implemented logging & added admin pages to prepare for charts & statistics. See [#181](https://github.com/bmarshall511/wordpress-zero-spam/issues/181)
+* feat(ipstack): ipstack errors are logged to the zerospam.log file in the uploads directory
+* feat(cloudflare): resolves #267, checks http_cf_ipcountry against blocked countries
+* feat(admin): resolves #264, adds ability to export & import settings
+* perf(davidwalsh): resolves #266, only loads the david walsh script on pages that are needed
+* fix(caching): resolves #258, added no-cache header to the blocked page output
+* refactor(stopforumspam): increased the default confidence score for stop forum spam to help prevent false positives
+* docs(faq): added common question about how to boost performance of the plugin
 
-= 4.1.3 =
+= v5.0.13 =
 
-* Fixed JS errors for some 3rd-party plugins. See [#178](https://github.com/bmarshall511/wordpress-zero-spam/issues/178)
-* Fixed caching conflicts issue relating to using cookies to set & get keys. See [#177](https://github.com/bmarshall511/wordpress-zero-spam/issues/177)
-* When plugin is uninstalled, plugin-related data is now deleted. See [#179](https://github.com/bmarshall511/wordpress-zero-spam/issues/179)
-* Added an option in the plugin settings to determine how spam detections are handled. See [#180](https://github.com/bmarshall511/wordpress-zero-spam/issues/180)
+* fix(updates): resolves #262, sanitized & escaped variables
+* fix(standards): resolved #261, sanitized & escaped variables
+* fix(cron jobs): resolves #260, removed the remote call to splorp's blacklist on Github
 
-= 4.1.2 =
+= v5.0.12 =
 
-* Fixed issue with plugin settings not saving. See [#176](https://github.com/bmarshall511/wordpress-zero-spam/issues/176).
-* Fixed some PHP notices. See [#175](https://github.com/bmarshall511/wordpress-zero-spam/issues/175).
+* Fixed issue with WPForms AJAX forms not getting validated by Zero Spam for WordPress [#238](https://github.com/bmarshall511/wordpress-zero-spam/issues/238)
+* David Walsh detection technique applied to WPForms & CF7
+* Miscellaneous admin UI improvements
+* Added ability to disable syncing WP's Disallowed Comment Keys
 
-= v4.1.1 =
+= v5.0.11 =
 
-* Fixed missing JS for new 3rd-party plugin support
+* Improved protection for comments, CF7, Formidbale, registrations, WooCommerce and WPForms submissions.
+* David Walsh detection technique applied to core WP registration forms.
 
-= v4.1.0 =
+= v5.0.10 =
 
-* Added support for [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
-* Added support for [Gravity Forms](https://www.gravityforms.com/)
-* Added support for [Ninja Forms](https://wordpress.org/plugins/ninja-forms/)
-* Added support for [BuddyPress](https://wordpress.org/plugins/buddypress/)
-* Added support for [Contact Form by WPForms](https://wordpress.org/plugins/wpforms-lite/)
+* PHP notice fix
 
-= v4.0.0 =
+= v5.0.9 =
 
-* A complete rewrite of the original plugin
+* Performance enhancements
+* Various admin UI improvements
+* Strengthened comment & registration spam detections
+
+= v5.0.8 =
+
+* Fix for admin first-time config notice
+
+= v5.0.7 =
+
+* Added first-time configuration notice & auto-configure recommended settings functionality
+* Added the ability to regenerate the honeypot ID
+* Various admin UI improvements
+* WP Disallowed Comment Keys are automatically updated weekly using https://github.com/splorp/wordpress-comment-blacklist
+* Strengthened comment spam detections using WP core disallowed list
+* [David Walsh's spam technique](https://davidwalsh.name/wordpress-comment-spam#utm_source=wordpresszerospam&utm_medium=admin_link&utm_campaign=wordpresszerospam) is back! https://github.com/bmarshall511/wordpress-zero-spam/issues/247
+
+= v5.0.6 =
+
+* Various admin UI improvements
+* Strengthened comment spam detections
+
+= v5.0.5 =
+
+* Fix autoloader compatibility with Windows paths (https://github.com/bmarshall511/wordpress-zero-spam/pull/236)
+* Various admin UI improvements
+
+= v5.0.4 =
+
+* Fix for when checks should be preformed
+
+= v5.0.3 =
+
+* Added support for Formidable Form Builder
+* Fixed PHP error related to a blacklist call
+
+= v5.0.2 =
+
+* Admin UI enhancements
+* Added support for WooCommerce
+* Added Cloudflare IP address support (https://github.com/bmarshall511/wordpress-zero-spam/issues/220)
+* Update to data sharing option
+* Added ability to block individual locations (country, region, zip & city)
+* Added support for WPForms
+
+= v5.0.1 =
+
+* Updated readme file & documentation
+* Can now be installed via composer
+* Updated the required PHP version
+
+= v5.0.0 =
+
+* Initial v5.0.0 release
+* Huge performance enhancements
+* More control over settings to fine-tune functionality
+* Lots of bug fixes & improvements

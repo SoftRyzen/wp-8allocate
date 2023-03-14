@@ -81,6 +81,7 @@ class CustomCSSandJS_Admin {
 		add_action( 'posts_where_paged', array( $this, 'posts_where_paged' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'post_row_actions' ), 10, 2 );
 		add_filter( 'parse_query', array( $this, 'parse_query' ), 10 );
+		add_filter( 'wp_statuses_get_supported_post_types', array( $this, 'wp_statuses_get_supported_post_types' ), 20 );
 
 		add_action( 'current_screen', array( $this, 'current_screen_2' ), 100 );
 
@@ -152,7 +153,6 @@ class CustomCSSandJS_Admin {
 			$cma = $cm . '/addon/';
 			wp_enqueue_script( 'ccj-closebrackets', $cma . 'edit/closebrackets.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'ccj-matchbrackets', $cma . 'edit/matchbrackets.js', array( 'ccj-codemirror' ), $v, false );
-			wp_enqueue_script( 'ccj-xmlfold', $cma . 'fold/xml-fold.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'ccj-matchtags', $cma . 'edit/matchtags.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'cm-dialog', $cma . 'dialog/dialog.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'cm-search', $cma . 'search/search.js', array( 'ccj-codemirror' ), $v, false );
@@ -172,6 +172,16 @@ class CustomCSSandJS_Admin {
 			wp_enqueue_script( 'ccj-hint-css', $cma . 'hint/css-hint.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'ccj-hint-anyword', $cma . 'hint/anyword-hint.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_style( 'ccj-hint', $cma . 'hint/show-hint.css', array(), $v );
+
+			// Fold Addons
+			wp_enqueue_script( 'ccj-fold-brace', $cma . 'fold/brace-fold.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-comment', $cma . 'fold/comment-fold.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-code', $cma . 'fold/foldcode.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-gutter', $cma . 'fold/foldgutter.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-indent', $cma . 'fold/indent-fold.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-markdown', $cma . 'fold/markdown-fold.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fold-xml', $cma . 'fold/xml-fold.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_style( 'ccj-fold-gutter', $cma . 'fold/foldgutter.css', array(), $v );
 
 			// remove the assets from other plugins so it doesn't interfere with CodeMirror
 			global $wp_scripts;
@@ -204,7 +214,7 @@ class CustomCSSandJS_Admin {
 	 */
 	public function cm_localize() {
 
-		$settings = get_option( 'ccj_settings' );
+		$settings = get_option( 'ccj_settings', array() );
 
 		$vars = array(
 			'autocomplete'   => isset( $settings['ccj_autocomplete'] ) && ! $settings['ccj_autocomplete'] ? false : true,
@@ -214,9 +224,36 @@ class CustomCSSandJS_Admin {
 			'deactivate'     => __( 'Deactivate', 'custom-css-js' ),
 			'active_title'   => __( 'The code is active. Click to deactivate it', 'custom-css-js' ),
 			'deactive_title' => __( 'The code is inactive. Click to activate it', 'custom-css-js' ),
+
+			/* CodeMirror options */
+			'codemirror' => array(
+				'indentUnit'       => 4,
+				'indentWithTabs'   => true,
+				'inputStyle'       => 'contenteditable',
+				'lineNumbers'      => true,
+				'lineWrapping'     => true,
+				'styleActiveLine'  => true,
+				'continueComments' => true,
+				'extraKeys'        => array(
+					'Ctrl-Space' => 'autocomplete',
+					'Cmd-Space'  => 'autocomplete',
+					'Ctrl-/'     => 'toggleComment',
+					'Cmd-/'      => 'toggleComment',
+					'Alt-F'      => 'findPersistent',
+					'Ctrl-F'     => 'findPersistent',
+					'Cmd-F'      => 'findPersistent',
+					'Ctrl-J'     =>  'toMatchingTag',
+				),
+				'direction'        => 'ltr', // Code is shown in LTR even in RTL languages.
+				'gutters'          => array( 'CodeMirror-lint-markers' ),
+				'matchBrackets'    => true,
+				'matchTags'        => array( 'bothTags' => true ),
+				'autoCloseBrackets' => true,
+				'autoCloseTags'    => true,
+			)
 		);
 
-		return $vars;
+		return apply_filters( 'ccj_code_editor_settings', $vars);
 	}
 
 	public function add_meta_boxes() {
@@ -241,7 +278,7 @@ class CustomCSSandJS_Admin {
 			return $this->default_options;
 		}
 
-		$options                   = unserialize( $options['options'][0] );
+		$options                   = @unserialize( $options['options'][0] );
 		$this->options[ $post_id ] = $options;
 		return $options;
 	}
@@ -398,6 +435,15 @@ class CustomCSSandJS_Admin {
 		$query->query_vars['post__in'] = $post_ids;
 
 		return $query;
+	}
+
+
+	/**
+	 * The "Publish"/"Update" button is missing if the "LH Archived Post Status" plugins is installed.
+	 */
+	function wp_statuses_get_supported_post_types( $post_types ) {
+		unset( $post_types['custom-css-js'] );
+		return $post_types;
 	}
 
 
@@ -647,7 +693,7 @@ class CustomCSSandJS_Admin {
 			return false;
 		}
 
-		if ( empty( $post->title ) && empty( $post->post_content ) ) {
+		if ( empty( $post->post_title ) && empty( $post->post_content ) ) {
 			$new_post = true;
 			$post_id  = false;
 		} else {
@@ -716,10 +762,10 @@ End of comment */ ',
 						'<!-- Add HTML code to the header or the footer.
 
 For example, you can use the following code for loading the jQuery library from Google CDN:
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-or the following one for loading the Bootstrap library from MaxCDN:
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+or the following one for loading the Bootstrap library from jsDelivr:
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 -- End of the comment --> ',
 						'custom-css-js'
@@ -774,7 +820,7 @@ End of comment */ ',
 				</div>
 
 				<div class="code-mirror-before"><div><?php echo htmlentities( $code_mirror_before ); ?></div></div>
-				<textarea class="wp-editor-area" id="ccj_content" mode="<?php echo htmlentities( $code_mirror_mode ); ?>" name="content"><?php echo $post->post_content; ?></textarea>
+				<textarea class="wp-editor-area" id="ccj_content" mode="<?php echo htmlentities( $code_mirror_mode ); ?>" name="content" autofocus><?php echo $post->post_content; ?></textarea>
 				<div class="code-mirror-after"><div><?php echo htmlentities( $code_mirror_after ); ?></div></div>
 
 				<table id="post-status-info"><tbody><tr>
@@ -821,7 +867,9 @@ End of comment */ ',
 			$meta = $this->get_options_meta_html();
 		}
 
-			wp_nonce_field( 'options_save_meta_box_data', 'custom-css-js_meta_box_nonce' );
+		$options['multisite'] = false;
+
+		wp_nonce_field( 'options_save_meta_box_data', 'custom-css-js_meta_box_nonce' );
 
 		?>
 			<div class="options_meta_box">
@@ -834,8 +882,7 @@ End of comment */ ',
 
 				if ( ( $_key == 'preprocessor' && $options['language'] == 'css' ) ||
 					( $_key == 'linking' && $options['language'] == 'html' ) ||
-					$_key == 'priority' ||
-					$_key == 'minify' ) {
+					in_array( $_key, ['priority', 'minify', 'multisite' ] ) ) {
 					$close_div = true;
 					$output   .= '<div class="ccj_opaque">';
 				}
@@ -845,7 +892,7 @@ End of comment */ ',
 					continue;
 				}
 
-				$output .= '<h3>' . $a['title'] . '</h3>' . PHP_EOL;
+				$output .= '<h3>' . esc_attr( $a['title'] ) . '</h3>' . PHP_EOL;
 
 				$output .= $this->render_input( $_key, $a, $options );
 
@@ -912,7 +959,7 @@ End of comment */ ',
 			),
 			'side'         => array(
 				'title'   => __( 'Where in site', 'custom-css-js' ),
-				'type'    => 'radio',
+				'type'    => 'checkbox',
 				'default' => 'frontend',
 				'values'  => array(
 					'frontend' => array(
@@ -974,6 +1021,16 @@ End of comment */ ',
 			),
 		);
 
+		if ( is_multisite() && is_super_admin() && is_main_site() ) {
+			$options['multisite'] = array(
+				'title'    => __( 'Apply network wide', 'custom-css-js-pro' ),
+				'type'     => 'checkbox',
+				'default'  => false,
+				'dashicon' => 'admin-multisite',
+				'disabled' => true,
+			);
+		}
+
 		return $options;
 	}
 
@@ -1000,7 +1057,7 @@ End of comment */ ',
 			),
 			'side'     => array(
 				'title'   => __( 'Where in site', 'custom-css-js' ),
-				'type'    => 'radio',
+				'type'    => 'checkbox',
 				'default' => 'frontend',
 				'values'  => array(
 					'frontend' => array(
@@ -1067,6 +1124,16 @@ End of comment */ ',
 			$options['type']['values']['footer']    = $tmp['footer'];
 		}
 
+		if ( is_multisite() && is_super_admin() && is_main_site() ) {
+			$options['multisite'] = array(
+				'title'    => __( 'Apply network wide', 'custom-css-js-pro' ),
+				'type'     => 'checkbox',
+				'default'  => false,
+				'dashicon' => 'admin-multisite',
+				'disabled' => true,
+			);
+		}
+
 		return $options;
 	}
 
@@ -1115,6 +1182,17 @@ End of comment */ ',
 		foreach ( $defaults as $_field => $_default ) {
 			$options[ $_field ] = isset( $_POST[ 'custom_code_' . $_field ] ) ? esc_attr( strtolower( $_POST[ 'custom_code_' . $_field ] ) ) : $_default;
 		}
+
+		$options['side'] = [];
+		foreach ( ['frontend', 'admin', 'login'] as $_side ) {
+			if ( isset( $_POST[ 'custom_code_side-' . $_side ] ) && $_POST[ 'custom_code_side-' . $_side ] == '1' ) {
+				$options['side'][] = $_side;
+			}
+		}
+		if ( count( $options['side'] ) === 0 ) {
+			$options['side'] = ['frontend'];
+		}
+		$options['side'] = implode(',', $options['side'] );
 
 		$options['language'] = in_array( $options['language'], array( 'html', 'css', 'js' ), true ) ? $options['language'] : $defaults['language'];
 
@@ -1249,17 +1327,18 @@ endif;
 
 			$options = $this->get_options( $_post->ID );
 
-			// Get the branch name, example: frontend-css-header-external
-			$tree_branch = $options['side'] . '-' . $options['language'] . '-' . $options['type'] . '-' . $options['linking'];
-
 			$filename = $_post->ID . '.' . $options['language'];
 
 			if ( $options['linking'] == 'external' ) {
 				$filename .= '?v=' . rand( 1, 10000 );
 			}
 
-			// Add the code file to the tree branch
-			$tree[ $tree_branch ][] = $filename;
+			// Add the code file names to the branches, example: frontend-css-header-external
+			$sides = explode( ',', $options['side'] );
+			$branch = $options['language'] . '-' . $options['type'] . '-' . $options['linking'];
+			foreach ( $sides as $_side ) {
+				$tree[ $_side . '-' . $branch ][] = $filename;
+			}
 
 			// Mark to enqueue the jQuery library, if necessary
 			if ( $options['language'] === 'js' ) {
@@ -1282,7 +1361,6 @@ endif;
 		$this->build_search_tree();
 	}
 
-
 	/**
 	 * Render the checkboxes, radios, selects and inputs
 	 */
@@ -1294,29 +1372,36 @@ endif;
 		if ( $a['type'] === 'radio' ) {
 			$output .= '<div class="radio-group">' . PHP_EOL;
 			foreach ( $a['values'] as $__key => $__value ) {
-				$selected  = '';
 				$id        = $name . '-' . $__key;
 				$dashicons = isset( $__value['dashicon'] ) ? 'dashicons-before dashicons-' . $__value['dashicon'] : '';
-				if ( isset( $a['disabled'] ) && $a['disabled'] ) {
-					$selected = ' disabled="disabled"';
-				}
+				$selected  = ( isset( $a['disabled'] ) && $a['disabled'] ) ? ' disabled="disabled"' : '';
 				$selected .= ( $__key == $options[ $_key ] ) ? ' checked="checked" ' : '';
 				$output   .= '<input type="radio" ' . $selected . 'value="' . $__key . '" name="' . $name . '" id="' . $id . '">' . PHP_EOL;
-				$output   .= '<label class="' . $dashicons . '" for="' . $id . '"> ' . $__value['title'] . '</label><br />' . PHP_EOL;
+				$output   .= '<label class="' . $dashicons . '" for="' . $id . '"> ' . esc_attr( $__value['title'] ) . '</label><br />' . PHP_EOL;
 			}
 			$output .= '</div>' . PHP_EOL;
 		}
 
 		// Show checkbox type options
 		if ( $a['type'] == 'checkbox' ) {
-			$dashicons = isset( $a['dashicon'] ) ? 'dashicons-before dashicons-' . $a['dashicon'] : '';
-			$selected  = ( isset( $options[ $_key ] ) && $options[ $_key ] == '1' ) ? ' checked="checked" ' : '';
-			if ( isset( $a['disabled'] ) && $a['disabled'] ) {
-				$selected .= ' disabled="disabled"';
-			}
 			$output .= '<div class="radio-group">' . PHP_EOL;
-			$output .= '<input type="checkbox" ' . $selected . ' value="1" name="' . $name . '" id="' . $name . '">' . PHP_EOL;
-			$output .= '<label class="' . $dashicons . '" for="' . $name . '"> ' . $a['title'] . '</label>';
+			if ( isset( $a['values'] ) && count( $a['values'] ) > 0 ) {
+				$current_values = explode(',', $options[ $_key ] );
+				foreach ( $a['values'] as $__key => $__value ) {
+					$id        = $name . '-' . $__key;
+					$dashicons = isset( $__value['dashicon'] ) ? 'dashicons-before dashicons-' . $__value['dashicon'] : '';
+					$selected  = ( isset( $a['disabled'] ) && $a['disabled'] ) ? ' disabled="disabled"' : '';
+					$selected .= ( in_array( $__key, $current_values ) ) ? ' checked="checked" ' : '';
+					$output   .= '<input type="checkbox" ' . $selected . ' value="1" name="' . $id . '" id="' . $id . '">' . PHP_EOL;
+					$output   .= '<label class="' . $dashicons . '" for="' . $id . '"> ' . esc_attr( $__value['title'] ) . '</label><br />' . PHP_EOL;
+				}
+			} else {
+				$dashicons = isset( $a['dashicon'] ) ? 'dashicons-before dashicons-' . $a['dashicon'] : '';
+				$selected  = ( isset( $options[ $_key ] ) && $options[ $_key ] == '1' ) ? ' checked="checked" ' : '';
+				$selected .= ( isset( $a['disabled'] ) && $a['disabled'] ) ? ' disabled="disabled"' : '';
+				$output   .= '<input type="checkbox" ' . $selected . ' value="1" name="' . $name . '" id="' . $name . '">' . PHP_EOL;
+				$output   .= '<label class="' . $dashicons . '" for="' . $name . '"> ' . esc_attr( $a['title'] ) . '</label>' . PHP_EOL;
+			}
 			$output .= '</div>' . PHP_EOL;
 		}
 
@@ -1326,7 +1411,7 @@ endif;
 			$output .= '<select name="' . $name . '" id="' . $name . '">' . PHP_EOL;
 			foreach ( $a['values'] as $__key => $__value ) {
 				$selected = ( isset( $options[ $_key ] ) && $options[ $_key ] == $__key ) ? ' selected="selected"' : '';
-				$output  .= '<option value="' . $__key . '"' . $selected . '>' . $__value . '</option>' . PHP_EOL;
+				$output  .= '<option value="' . $__key . '"' . $selected . '>' . esc_attr( $__value ) . '</option>' . PHP_EOL;
 			}
 			$output .= '</select>' . PHP_EOL;
 			$output .= '</div>' . PHP_EOL;
@@ -1437,7 +1522,7 @@ endif;
 			$slug    = get_post_meta( $post->ID, '_slug', true );
 			$options = get_post_meta( $post->ID, 'options', true );
 
-			if ( isset( $options['language'] ) ) {
+			if ( is_array( $options ) && isset( $options['language'] ) ) {
 				$filetype = $options['language'];
 			}
 			if ( $filetype === 'html' ) {
@@ -1514,7 +1599,9 @@ endif;
             <tr><td><strong>Auto Complete</strong></td><td> <code>Ctrl</code> + <code>Space</code></td></tr>
             <tr><td><strong>Find</strong></td><td> <code>Ctrl</code> + <code>F</code></td></tr>
             <tr><td><strong>Replace</strong></td><td> <code>Shift</code> + <code>Ctrl</code> + <code>F</code></td></tr>
+            <tr><td><strong>Save</strong></td><td> <code>Ctrl</code> + <code>S</code></td></tr>
             <tr><td><strong>Comment line/block</strong></td><td> <code>Ctrl</code> + <code>/</code></td></tr>
+            <tr><td><strong>Code folding</strong></td><td> <code>Ctrl</code> + <code>Q</code></td></tr>
             </table></p>',
 			)
 		);
@@ -1537,7 +1624,11 @@ endif;
 			return;
 		}
 
-		$options             = get_post_meta( $postid, 'options', true );
+		$options = get_post_meta( $postid, 'options', true );
+		if ( ! is_array( $options ) ) {
+			return;
+		}
+
 		$options['language'] = ( isset( $options['language'] ) ) ? strtolower( $options['language'] ) : 'css';
 		$options['language'] = in_array( $options['language'], array( 'html', 'js', 'css' ), true ) ? $options['language'] : 'css';
 

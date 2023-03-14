@@ -3,10 +3,10 @@ defined( 'ABSPATH' ) or die();
 
 global $post;
 
-$first_post_loop = get_posts( 'post_type='.get_post_type().'&numberposts=1&order=ASC' );
+$first_post_loop = get_posts( 'post_type='.get_post_type().'&numberposts=1&order=ASC&suppress_filters=0' );
 $first_post = $first_post_loop[0];
 
-$last_post_loop = get_posts( 'post_type='.get_post_type().'&numberposts=1' );
+$last_post_loop = get_posts( 'post_type='.get_post_type().'&numberposts=1&suppress_filters=0' );
 $last_post = $last_post_loop[0];
 
 $next_post = get_next_post() ? get_next_post() : $first_post;

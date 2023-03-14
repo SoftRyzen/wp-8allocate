@@ -9,14 +9,6 @@ define( 'SETECH__ACTIVE', class_exists('RB_Essentials') );
 define( 'SETECH__VERSION', '1.0.0' );
 define( 'SETECH__ID', 'setech' );
 
-//
-//add_action( 'wp_enqueue_scripts', 'jung_mobile_only_js');
-//function jung_mobile_only_js(){
-//    if( wp_is_mobile() ){
-//        wp_enqueue_script( 'js', get_template_directory_uri() . '/assets/js/theme.js', array(), '1.0', true );
-//    }
-//}
-
 
 // Action to load the theme translation
 add_action( 'after_setup_theme', 'setech__translation_import', 5 );
@@ -107,3 +99,4 @@ if( class_exists('Vc_Manager') ){
 	}
 	require_once( get_template_directory() . '/vc/rb_vc_config.php' );
 }
+

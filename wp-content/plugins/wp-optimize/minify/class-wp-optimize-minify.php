@@ -12,23 +12,8 @@ class WP_Optimize_Minify {
 	 * @return void
 	 */
 	public function __construct() {
-		if (!class_exists('WP_Optimize_Minify_Incompatible_Plugins')) include WP_OPTIMIZE_MINIFY_DIR.'/class-wp-optimize-minify-incompatible-plugins.php';
-		$found_incompatible_plugins = WP_Optimize_Minify_Incompatible_Plugins::instance()->found_incompatible_plugins();
 
-		if (!class_exists('WP_Optimize_Minify_Commands')) include_once(WPO_PLUGIN_MAIN_PATH . 'minify/class-wp-optimize-minify-commands.php');
 		$this->minify_commands = new WP_Optimize_Minify_Commands();
-
-		/**
-		 * Filters the list of plugins incompatible with minify which are currently active. Returning false will enable the feature anyways.
-		 *
-		 * @param array|boolean $found_incompatible_plugins - The active incompatible plugins
-		 * @return array|boolean
-		 */
-		if (apply_filters('wpo_minify_found_incompatible_plugins', $found_incompatible_plugins)) {
-			$this->incompatible_plugins = $found_incompatible_plugins;
-			add_action('wp_optimize_admin_page_wpo_minify_status', array($this, 'output_incompatible_status'), 20);
-			return;
-		}
 
 		if (!class_exists('WP_Optimize_Minify_Config')) {
 			include WP_OPTIMIZE_MINIFY_DIR.'/class-wp-optimize-minify-config.php';
@@ -66,6 +51,19 @@ class WP_Optimize_Minify {
 		// Handle minify cache purging.
 		add_action('wp_loaded', array($this, 'handle_purge_minify_cache'));
 
+	}
+
+	/**
+	 * Returns singleton instance object
+	 *
+	 * @return WP_Optimize_Minify Returns `WP_Optimize_Minify` object
+	 */
+	public static function instance() {
+		static $_instance = null;
+		if (null === $_instance) {
+			$_instance = new self();
+		}
+		return $_instance;
 	}
 
 	/**
@@ -142,10 +140,6 @@ class WP_Optimize_Minify {
 	 */
 	private function load_admin() {
 		if (!is_admin()) return;
-
-		if (!class_exists('WP_Optimize_Minify_Admin')) {
-			include WP_OPTIMIZE_MINIFY_DIR.'/class-wp-optimize-minify-admin.php';
-		}
 		new WP_Optimize_Minify_Admin();
 	}
 
@@ -156,9 +150,6 @@ class WP_Optimize_Minify {
 	 */
 	private function load_frontend() {
 		if ($this->enabled) {
-			if (!class_exists('WP_Optimize_Minify_Front_End')) {
-				include WP_OPTIMIZE_MINIFY_DIR.'/class-wp-optimize-minify-front-end.php';
-			}
 			new WP_Optimize_Minify_Front_End();
 		}
 	}
@@ -169,9 +160,6 @@ class WP_Optimize_Minify {
 	 * @return void
 	 */
 	private function load_premium() {
-		if (!class_exists('WP_Optimize_Minify_Premium')) {
-			include WP_OPTIMIZE_MINIFY_DIR.'/class-wp-optimize-minify-premium.php';
-		}
 		$this->premium = new WP_Optimize_Minify_Premium();
 	}
 
@@ -201,7 +189,7 @@ class WP_Optimize_Minify {
 	 */
 	public function plugin_deactivate() {
 		if (defined('WPO_MINIFY_PHP_VERSION_MET') && !WPO_MINIFY_PHP_VERSION_MET) return;
-		if (class_exists('WP_Optimize_Minify_Cache_Functions')) {
+		if (class_exists('WP_Optimize_Minify_Cache_Functions') && WP_Optimize()->get_page_cache()->should_purge) {
 			WP_Optimize_Minify_Cache_Functions::purge_temp_files();
 			WP_Optimize_Minify_Cache_Functions::purge_old();
 			WP_Optimize_Minify_Cache_Functions::purge_others();
@@ -228,21 +216,6 @@ class WP_Optimize_Minify {
 			WP_Optimize_Minify_Cache_Functions::purge();
 			WP_Optimize_Minify_Cache_Functions::purge_others();
 		}
-	}
-
-	/**
-	 * Outputs a message in the status tab, when the feature can't be loaded
-	 *
-	 * @return void
-	 */
-	public function output_incompatible_status() {
-		?>
-		<div class="notice notice-error below-h2">
-			<p>
-				<?php printf(__('Minify cannot be loaded, because an incompatible plugin was found: %s', 'wp-optimize'), implode(', ', $this->incompatible_plugins)); ?>
-			</p>
-		</div>
-		<?php
 	}
 
 	/**
@@ -284,5 +257,20 @@ class WP_Optimize_Minify {
 			</div>
 		<?php
 		endif;
+	}
+
+	/**
+	 * Check if current user can purge cache.
+	 *
+	 * @return bool
+	 */
+	public function can_purge_cache() {
+		$required_capability = is_multisite() ? 'manage_network_options' : 'manage_options';
+
+		if (WP_Optimize::is_premium()) {
+			return current_user_can($required_capability) || WP_Optimize_Premium()->can_purge_the_cache();
+		} else {
+			return current_user_can($required_capability);
+		}
 	}
 }

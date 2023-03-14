@@ -34,13 +34,13 @@ if ( ! class_exists( 'setech__welcome_page' ) ) {
 		/**
 		 * Serialization disabled
 		 */
-		private function __sleep() {
+		public function __sleep() {
 		}
 		
 		/**
 		 * De-serialization disabled
 		 */
-		private function __wakeup() {
+		public function __wakeup() {
 		}
 		
 		/**

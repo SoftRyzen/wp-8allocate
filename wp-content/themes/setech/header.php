@@ -25,12 +25,13 @@ $tb_sidebar = get_theme_mod('icon_custom_sb') ? setech__get_sidebar( get_queried
 	</head>
 	<body <?php body_class() ?> data-boxed="<?php echo get_theme_mod('boxed_layout') ? 'true' : 'false'; ?>" data-default="<?php echo !SETECH__ACTIVE ? 'true' : 'false'; ?>" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 		<?php do_action( 'theme/above_site_wrapper' ) ?>
-
+		
 		<?php get_template_part( 'tmpl/header-search' ) ?>
-<!-- 		<div class="rb-blank-preloader"></div>-->
-<!--		<div class="body-overlay"></div>-->
 
-		<?php
+		<div class="rb-blank-preloader"></div>
+		<div class="body-overlay"></div>
+
+		<?php 
 			if( get_theme_mod('icon_custom_sb') && !empty($tb_sidebar) ){
 				echo "<div class='custom_sidebars_wrapper'>";
 					echo sprintf('%s', $tb_sidebar);
@@ -40,7 +41,7 @@ $tb_sidebar = get_theme_mod('icon_custom_sb') ? setech__get_sidebar( get_queried
 
 		<div id="site" class="site wrap <?php echo esc_attr( join( ' ', $site_classes ) ) ?>">
 			<?php echo !empty($sidebar) && !is_attachment() ? '<div class="sidebar_trigger"><i></i></div>' : '' ?>
-
+		
 			<?php
 				// Sticky
 				if( get_theme_mod('custom_sticky_header') != 'disable' ){
@@ -169,8 +170,8 @@ $tb_sidebar = get_theme_mod('icon_custom_sb') ? setech__get_sidebar( get_queried
 						$sidebar_classes .= $temp_check && get_theme_mod('sticky_sidebars') ? ' sticky_sb' : '';
 					?>
 					<div class="<?php echo sprintf('main-content-inner%s', $sidebar_classes); ?>">
-
-						<?php
+							
+						<?php 
 							echo !empty($sidebar) && !is_attachment() ? $sidebar : '';
 						?>
 

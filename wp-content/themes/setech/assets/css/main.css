@@ -4132,7 +4132,8 @@ body .page_title_container {
   .rb_sticky_template.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; }
+    pointer-events: auto;
+    z-index: 10; }
 
 /*  -------------------
 	Sticky header media styles
@@ -10542,39 +10543,3 @@ body .tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.tinvwl-prod
     left: 0;
     right: 0;
     z-index: -1; } }
-
-
-/*  -----------  All style  -----------  */
-.banner-for-ukrane .custom_url {
-  font-weight: 500;
-  padding: 10px 0;
-  line-height: 22px;
-  width: 100%;
-}
-.banner-for-ukrane__link {
-  position: absolute !important;
-  top: 0;
-  left: 50%;
-  width: 100vw !important;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-.banner-for-ukrane .custom_url span {
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: .1s linear;
-}
-.banner-for-ukrane:hover .custom_url span {
-  text-decoration-color: currentColor;
-}
-.banner-for-ukrane .vc_col-sm-3 {
-  height: auto;
-  margin-bottom: 0;
-}
-.post-content li a {
-  color: #3b7eff !important;
-  text-decoration: none !important;
-}
-.post-content li a:hover {
-  text-decoration: underline !important;
-}

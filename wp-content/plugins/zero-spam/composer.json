@@ -3,7 +3,7 @@
 	"description": "WordPress Zero Spam makes blocking spam & malicious visitors a cinch. Just install, activate and enjoy a spam-free site.",
 	"keywords": ["wordpress-plugin"],
 	"type": "wordpress-plugin",
-	"homepage": "https://www.benmarshall.me/wordpress-zero-spam",
+	"homepage": "https://www.zerospam.org/",
 	"authors": [
 		{
 			"name": "Ben Marshall (bmarshall)",
@@ -31,6 +31,7 @@
 		}
 	],
 	"require": {
-		"php" : ">=7.1"
+		"php" : ">=7.2",
+		"ipinfo/ipinfo": "^2.3"
 	}
 }

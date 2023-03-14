@@ -3,14 +3,14 @@
 Plugin Name: PB SEO Friendly Images
 Plugin URI: https://wordpress.org/extend/plugins/pb-seo-friendly-images/
 Description: This plugin is a full-featured solution for SEO friendly images. Optimize "alt" and "title" attributes for all images and post thumbnails. This plugin helps you to improve your traffic from search engines.
-Version: 4.0.4
+Version: 4.0.5
 Author: Pascal Bajorat
 Author URI: https://www.bajorat-media.com
 Text Domain: pb-seo-friendly-images
 Domain Path: /lang
 License: GNU General Public License v.3 and Commercial for Pro-Parts
 
-Copyright (c) 2020 by Bajorat-Media.com.
+Copyright (c) 2022 by Bajorat-Media.com.
 */
 
 /* Security-Check */
@@ -21,7 +21,7 @@ if( ! class_exists('pbSEOFriendlyImages') ):
 	class pbSEOFriendlyImages
 	{
 		/** @var string Plugin version */
-		var $version = '4.0.4';
+		var $version = '4.0.5';
 
 		/** @var string DB version */
 		var $db_version = '4.0.0';

@@ -249,8 +249,9 @@ class pbsfi_optimizer
 
 		// Optimize encoding
 		if( function_exists('mb_convert_encoding') && $this->settings['encoding_mode'] != 'off' ) {
-			//$content = @mb_convert_encoding( $content, 'utf-8', $this->settings['encoding'] );
-			$content = @mb_convert_encoding( $content, 'HTML-ENTITIES', $this->settings['encoding'] );
+			$encoding = !empty($this->settings['encoding']) ? $this->settings['encoding'] : get_bloginfo( 'charset' );
+			//$content = @mb_convert_encoding( $content, 'utf-8', $encoding );
+			$content = @mb_convert_encoding( $content, 'HTML-ENTITIES', $encoding );
 		} else {
             $content = $encoding_declaration.$content;
         }

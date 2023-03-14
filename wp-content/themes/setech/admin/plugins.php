@@ -39,7 +39,7 @@ function setech_register_required_plugins() {
 			'slug'					=> 'rb-essentials', // The plugin slug (typically the folder name)
 			'source'				=> get_template_directory() . '/plugins/rb-essentials.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '1.0.2', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '1.0.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL

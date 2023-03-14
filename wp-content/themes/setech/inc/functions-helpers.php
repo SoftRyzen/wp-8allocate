@@ -212,22 +212,13 @@ function rb_print_template( $template, $type ){
 	if( get_theme_mod($template) != 'default' ){
 
 		$template = get_theme_mod($template) == 'inherit' ? 'custom_'.$type : $template;
-
-		if( class_exists('SitePress') ){
-			$rb_sitepress = new SitePress();
-		}
-
-		if( class_exists('SitePress') && $rb_sitepress->get_setting( 'setup_complete' ) ){
-			$cws_template_id = icl_object_id( get_theme_mod($template), 'page', false );
-		} else {
-			$cws_template_id = get_theme_mod($template);
-		}
+		$cws_template_id = get_theme_mod($template);
 
 		if( get_theme_mod($template) == 'default' ){
 			get_template_part( $default_template );
 			return;
 		} else {
-			$custom_template = get_post_field( 'post_content', get_theme_mod($template) );
+			$custom_template = get_post_field( 'post_content', $cws_template_id );
 		}
 
 		if( !empty($custom_template) ){

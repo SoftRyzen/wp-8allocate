@@ -44,32 +44,32 @@ class WPForms_Field_Select extends WPForms_Field {
 		$this->type     = 'select';
 		$this->icon     = 'fa-caret-square-o-down';
 		$this->order    = 70;
-		$this->defaults = array(
-			1 => array(
+		$this->defaults = [
+			1 => [
 				'label'   => esc_html__( 'First Choice', 'wpforms-lite' ),
 				'value'   => '',
 				'default' => '',
-			),
-			2 => array(
+			],
+			2 => [
 				'label'   => esc_html__( 'Second Choice', 'wpforms-lite' ),
 				'value'   => '',
 				'default' => '',
-			),
-			3 => array(
+			],
+			3 => [
 				'label'   => esc_html__( 'Third Choice', 'wpforms-lite' ),
 				'value'   => '',
 				'default' => '',
-			),
-		);
+			],
+		];
 
 		// Define additional field properties.
-		add_filter( 'wpforms_field_properties_' . $this->type, array( $this, 'field_properties' ), 5, 3 );
+		add_filter( 'wpforms_field_properties_' . $this->type, [ $this, 'field_properties' ], 5, 3 );
 
 		// Form frontend CSS enqueues.
-		add_action( 'wpforms_frontend_css', array( $this, 'enqueue_frontend_css' ) );
+		add_action( 'wpforms_frontend_css', [ $this, 'enqueue_frontend_css' ] );
 
 		// Form frontend JS enqueues.
-		add_action( 'wpforms_frontend_js', array( $this, 'enqueue_frontend_js' ) );
+		add_action( 'wpforms_frontend_js', [ $this, 'enqueue_frontend_js' ] );
 	}
 
 	/**
@@ -94,20 +94,20 @@ class WPForms_Field_Select extends WPForms_Field {
 		$choices  = $field['choices'];
 		$dynamic  = wpforms_get_field_dynamic_choices( $field, $form_id, $form_data );
 
-		if ( $dynamic ) {
+		if ( $dynamic !== false ) {
 			$choices              = $dynamic;
 			$field['show_values'] = true;
 		}
 
 		// Set options container (<select>) properties.
-		$properties['input_container'] = array(
-			'class' => array(),
-			'data'  => array(),
+		$properties['input_container'] = [
+			'class' => [],
+			'data'  => [],
 			'id'    => "wpforms-{$form_id}-field_{$field_id}",
-			'attr'  => array(
+			'attr'  => [
 				'name' => "wpforms[fields][{$field_id}]",
-			),
-		);
+			],
+		];
 
 		// Set properties.
 		foreach ( $choices as $key => $choice ) {
@@ -115,32 +115,32 @@ class WPForms_Field_Select extends WPForms_Field {
 			// Used for dynamic choices.
 			$depth = isset( $choice['depth'] ) ? absint( $choice['depth'] ) : 1;
 
-			$properties['inputs'][ $key ] = array(
-				'container' => array(
-					'attr'  => array(),
-					'class' => array( "choice-{$key}", "depth-{$depth}" ),
-					'data'  => array(),
+			$properties['inputs'][ $key ] = [
+				'container' => [
+					'attr'  => [],
+					'class' => [ "choice-{$key}", "depth-{$depth}" ],
+					'data'  => [],
 					'id'    => '',
-				),
-				'label'     => array(
-					'attr'  => array(
+				],
+				'label'     => [
+					'attr'  => [
 						'for' => "wpforms-{$form_id}-field_{$field_id}_{$key}",
-					),
-					'class' => array( 'wpforms-field-label-inline' ),
-					'data'  => array(),
+					],
+					'class' => [ 'wpforms-field-label-inline' ],
+					'data'  => [],
 					'id'    => '',
 					'text'  => $choice['label'],
-				),
-				'attr'      => array(
+				],
+				'attr'      => [
 					'name'  => "wpforms[fields][{$field_id}]",
 					'value' => isset( $field['show_values'] ) ? $choice['value'] : $choice['label'],
-				),
-				'class'     => array(),
-				'data'      => array(),
+				],
+				'class'     => [],
+				'data'      => [],
 				'id'        => "wpforms-{$form_id}-field_{$field_id}_{$key}",
 				'required'  => ! empty( $field['required'] ) ? 'required' : '',
 				'default'   => isset( $choice['default'] ),
-			);
+			];
 		}
 
 		// Add class that changes the field size.
@@ -156,7 +156,7 @@ class WPForms_Field_Select extends WPForms_Field {
 		// Add additional class for container.
 		if (
 			! empty( $field['style'] ) &&
-			in_array( $field['style'], array( self::STYLE_CLASSIC, self::STYLE_MODERN ), true )
+			in_array( $field['style'], [ self::STYLE_CLASSIC, self::STYLE_MODERN ], true )
 		) {
 			$properties['container']['class'][] = "wpforms-field-select-style-{$field['style']}";
 		}
@@ -181,9 +181,9 @@ class WPForms_Field_Select extends WPForms_Field {
 		$this->field_option(
 			'basic-options',
 			$field,
-			array(
+			[
 				'markup' => 'open',
-			)
+			]
 		);
 
 		// Label.
@@ -202,9 +202,9 @@ class WPForms_Field_Select extends WPForms_Field {
 		$this->field_option(
 			'basic-options',
 			$field,
-			array(
+			[
 				'markup' => 'close',
-			)
+			]
 		);
 
 		/*
@@ -215,90 +215,103 @@ class WPForms_Field_Select extends WPForms_Field {
 		$this->field_option(
 			'advanced-options',
 			$field,
-			array(
+			[
 				'markup' => 'open',
-			)
+			]
 		);
 
 		// Show Values toggle option. This option will only show if already used
 		// or if manually enabled by a filter.
 		if ( ! empty( $field['show_values'] ) || wpforms_show_fields_options_setting() ) {
 			$show_values = $this->field_element(
-				'checkbox',
+				'toggle',
 				$field,
-				array(
+				[
 					'slug'    => 'show_values',
 					'value'   => isset( $field['show_values'] ) ? $field['show_values'] : '0',
 					'desc'    => esc_html__( 'Show Values', 'wpforms-lite' ),
-					'tooltip' => esc_html__( 'Check this to manually set form field values.', 'wpforms-lite' ),
-				),
+					'tooltip' => esc_html__( 'Check this option to manually set form field values.', 'wpforms-lite' ),
+				],
 				false
 			);
 			$this->field_element(
 				'row',
 				$field,
-				array(
+				[
 					'slug'    => 'show_values',
 					'content' => $show_values,
-				)
+				]
 			);
 		}
 
 		// Multiple options selection.
 		$fld = $this->field_element(
-			'checkbox',
+			'toggle',
 			$field,
-			array(
+			[
 				'slug'    => 'multiple',
-				'value'   => ! empty( $field['multiple'] ) ? true : false,
+				'value'   => ! empty( $field['multiple'] ),
 				'desc'    => esc_html__( 'Multiple Options Selection', 'wpforms-lite' ),
-				'tooltip' => esc_html__( 'Allow users to select multiple choices in this field.', 'wpforms-lite' ),
-			),
+				'tooltip' => esc_html__( 'Allow users to select multiple choices in this field.', 'wpforms-lite' ) . '<br>' .
+							sprintf(
+								wp_kses( /* translators: %s - URL to WPForms.com doc article. */
+									esc_html__( 'For details, including how this looks and works for your site\'s visitors, please check out <a href="%s" target="_blank" rel="noopener noreferrer">our doc</a>.', 'wpforms-lite' ),
+									[
+										'a' => [
+											'href'   => [],
+											'target' => [],
+											'rel'    => [],
+										],
+									]
+								),
+								esc_url( wpforms_utm_link( 'https://wpforms.com/docs/how-to-allow-multiple-selections-to-a-dropdown-field-in-wpforms/', 'Field Options', 'Multiple Options Selection Documentation' ) )
+							),
+			],
 			false
 		);
 
 		$this->field_element(
 			'row',
 			$field,
-			array(
+			[
 				'slug'    => 'multiple',
 				'content' => $fld,
-			)
+			]
 		);
 
 		// Style.
 		$lbl = $this->field_element(
 			'label',
 			$field,
-			array(
+			[
 				'slug'    => 'style',
 				'value'   => esc_html__( 'Style', 'wpforms-lite' ),
 				'tooltip' => esc_html__( 'Classic style is the default one generated by your browser. Modern has a fresh look and displays all selected options in a single row.', 'wpforms-lite' ),
-			),
+			],
 			false
 		);
 
 		$fld = $this->field_element(
 			'select',
 			$field,
-			array(
+			[
 				'slug'    => 'style',
 				'value'   => ! empty( $field['style'] ) ? $field['style'] : self::STYLE_CLASSIC,
-				'options' => array(
+				'options' => [
 					self::STYLE_CLASSIC => esc_html__( 'Classic', 'wpforms-lite' ),
 					self::STYLE_MODERN  => esc_html__( 'Modern', 'wpforms-lite' ),
-				),
-			),
+				],
+			],
 			false
 		);
 
 		$this->field_element(
 			'row',
 			$field,
-			array(
+			[
 				'slug'    => 'style',
 				'content' => $lbl . $fld,
-			)
+			]
 		);
 
 		// Size.
@@ -307,25 +320,25 @@ class WPForms_Field_Select extends WPForms_Field {
 		// Placeholder.
 		$this->field_option( 'placeholder', $field );
 
-		// Hide label.
-		$this->field_option( 'label_hide', $field );
-
-		// Custom CSS classes.
-		$this->field_option( 'css', $field );
-
 		// Dynamic choice auto-populating toggle.
 		$this->field_option( 'dynamic_choices', $field );
 
 		// Dynamic choice source.
 		$this->field_option( 'dynamic_choices_source', $field );
 
+		// Custom CSS classes.
+		$this->field_option( 'css', $field );
+
+		// Hide label.
+		$this->field_option( 'label_hide', $field );
+
 		// Options close markup.
 		$this->field_option(
 			'advanced-options',
 			$field,
-			array(
+			[
 				'markup' => 'close',
-			)
+			]
 		);
 	}
 
@@ -339,7 +352,7 @@ class WPForms_Field_Select extends WPForms_Field {
 	 */
 	public function field_preview( $field ) {
 
-		$args = array();
+		$args = [];
 
 		// Label.
 		$this->field_preview_option( 'label', $field );
@@ -379,6 +392,11 @@ class WPForms_Field_Select extends WPForms_Field {
 		$field_placeholder = ! empty( $field['placeholder'] ) ? $field['placeholder'] : '';
 		$is_multiple       = ! empty( $field['multiple'] );
 		$is_modern         = ! empty( $field['style'] ) && self::STYLE_MODERN === $field['style'];
+		$choices           = $field['properties']['inputs'];
+
+		if ( ! $choices ) {
+			return;
+		}
 
 		if ( ! empty( $field['required'] ) ) {
 			$container['attr']['required'] = 'required';
@@ -402,9 +420,10 @@ class WPForms_Field_Select extends WPForms_Field {
 			if ( ! empty( $field['size'] ) ) {
 				$container['data']['size-class'] = 'wpforms-field-row wpforms-field-' . sanitize_html_class( $field['size'] );
 			}
+
+			$container['data']['search-enabled'] = $this->is_choicesjs_search_enabled( count( $choices ) );
 		}
 
-		$choices     = $field['properties']['inputs'];
 		$has_default = false;
 
 		// Check to see if any of the options were selected by default.
@@ -469,18 +488,18 @@ class WPForms_Field_Select extends WPForms_Field {
 
 		// Convert submitted field value to array.
 		if ( ! is_array( $field_submit ) ) {
-			$field_submit = array( $field_submit );
+			$field_submit = [ $field_submit ];
 		}
 
 		$value_raw = wpforms_sanitize_array_combine( $field_submit );
 
-		$data = array(
+		$data = [
 			'name'      => $name,
 			'value'     => '',
 			'value_raw' => $value_raw,
 			'id'        => absint( $field_id ),
 			'type'      => $this->type,
-		);
+		];
 
 		if ( 'post_type' === $dynamic && ! empty( $field['dynamic_post_type'] ) ) {
 
@@ -490,13 +509,13 @@ class WPForms_Field_Select extends WPForms_Field {
 			$data['dynamic']           = 'post_type';
 			$data['dynamic_items']     = $value_raw;
 			$data['dynamic_post_type'] = $field['dynamic_post_type'];
-			$posts                     = array();
+			$posts                     = [];
 
 			foreach ( $field_submit as $id ) {
 				$post = get_post( $id );
 
 				if ( ! is_wp_error( $post ) && ! empty( $post ) && $data['dynamic_post_type'] === $post->post_type ) {
-					$posts[] = esc_html( $post->post_title );
+					$posts[] = esc_html( wpforms_get_post_title( $post ) );
 				}
 			}
 
@@ -510,13 +529,13 @@ class WPForms_Field_Select extends WPForms_Field {
 			$data['dynamic']          = 'taxonomy';
 			$data['dynamic_items']    = $value_raw;
 			$data['dynamic_taxonomy'] = $field['dynamic_taxonomy'];
-			$terms                    = array();
+			$terms                    = [];
 
 			foreach ( $field_submit as $id ) {
 				$term = get_term( $id, $field['dynamic_taxonomy'] );
 
 				if ( ! is_wp_error( $term ) && ! empty( $term ) ) {
-					$terms[] = esc_html( $term->name );
+					$terms[] = esc_html( wpforms_get_term_name( $term ) );
 				}
 			}
 
@@ -528,12 +547,13 @@ class WPForms_Field_Select extends WPForms_Field {
 
 			// If show_values is true, that means values posted are the raw values
 			// and not the labels. So we need to get the label values.
-			if ( ! empty( $field['show_values'] ) && '1' == $field['show_values'] ) {
+			if ( ! empty( $field['show_values'] ) && (int) $field['show_values'] === 1 ) {
 
 				foreach ( $field_submit as $item ) {
 					foreach ( $field['choices'] as $choice ) {
 						if ( $item === $choice['value'] ) {
 							$value[] = $choice['label'];
+
 							break;
 						}
 					}
@@ -580,7 +600,7 @@ class WPForms_Field_Select extends WPForms_Field {
 			wp_enqueue_style(
 				'wpforms-choicesjs',
 				WPFORMS_PLUGIN_URL . "assets/css/choices{$min}.css",
-				array(),
+				[],
 				self::CHOICES_VERSION
 			);
 		}

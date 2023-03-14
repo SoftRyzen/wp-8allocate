@@ -102,7 +102,7 @@ function mfcf7_zl_multilinefile_display_warning_message() {
 		return;
 	}
 
-	$has_tags = (bool) $contact_form->form_scan_shortcode( array( 'type' => array( 'multilinefile', 'multilinefile*' ) ));
+	$has_tags = (bool) $contact_form->scan_form_tags( array( 'type' => array( 'multilinefile', 'multilinefile*' ) ));
 	if ( ! $has_tags ) {
 		return;
 	}
@@ -166,7 +166,7 @@ function mfcf7_zl_admin_premium_ver_notice(){
               $query_string = $current_url.'?';
           }
         ?>
-			<p class="mfcf7-premium-notice-btn"><a href="https://codecanyon.net/item/multiline-files-upload-for-contact-form-7/20632083" target="_blank"><?php _e('Get Pro version', 'zl-mfcf7');?></a>&nbsp;<a href="<?php echo $query_string; ?>mfcf7_zl_pro_ver_notice_ignor=0"><?php _e('No Thanks', 'zl-mfcf7');?></a></p>
+			<p class="mfcf7-premium-notice-btn"><a href="https://1.envato.market/9W6qL4" target="_blank"><?php _e('Get Pro version', 'zl-mfcf7');?></a>&nbsp;<a href="<?php echo $query_string; ?>mfcf7_zl_pro_ver_notice_ignor=0"><?php _e('No Thanks', 'zl-mfcf7');?></a></p>
       </div>
       <?php
     }

@@ -15,7 +15,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.7.0
+ * @version 5.2.0
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -43,7 +43,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 								<?php echo sprintf('%s', $thumbnail); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</div>
 							<div class="cart-content">
-								<?php echo sprintf('%s', $product_name); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								<?php echo sprintf('%s', wp_kses_post( $product_name )); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php else : ?>
 							<div class="cart-image">
 								<a href="<?php echo esc_url( $product_permalink ); ?>">
@@ -52,7 +52,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 							</div>
 							<div class="cart-content">
 								<a class="cart-item-title" href="<?php echo esc_url( $product_permalink ); ?>">
-									<?php echo sprintf('%s', $product_name); ?>
+									<?php echo sprintf('%s', wp_kses_post( $product_name )); ?>
 								</a>
 						<?php endif; ?>
 

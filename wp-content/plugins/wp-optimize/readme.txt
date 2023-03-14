@@ -1,11 +1,11 @@
 === WP-Optimize - Cache, Clean, Compress. ===  
-Contributors: DavidAnderson, ruhanirabin, DNutbourne, aporter, snightingale, lumberhack
+Contributors: DavidAnderson, ruhanirabin, DNutbourne, aporter, snightingale, lumberhack, webulous
 Donate link: https://david.dw-perspective.org.uk/donate
-Tags: cache, minify, database, image optimize, performance, clean, spam, speed, caching, smush, smushing
+Tags: cache, minify, caching, image cache, performance cache, clean, spam, speed, database, smush, smushing
 Requires PHP: 5.6
 Requires at least: 4.5
-Tested up to: 5.8
-Stable tag: 3.1.12
+Tested up to: 6.2
+Stable tag: 3.2.13
 License: GPLv2+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,6 +217,9 @@ Go to WP-Optimize -> Cache and enable caching. For most people, that will be eno
 = Is the caching feature compatible with e-commerce plugins? =
 Yes, caching with WP-Optimize Cache allows you to safely cache your products, with plugins like WooCommerce or Easy Digital Downloads, or any e-commerce that uses `DONOTCACHEPAGE` to exclude sensitive pages from caching (e.g. my account, cart or checkout pages).
 
+= Is the caching feature compatible with multilingual plugins? =
+Yes, WP-Optimize works with popular multilingual plugins like WPML or Polylang. However, it's important to note that when using WP-Optimize with multilingual plugins, the URL format for different languages should not include any query parameters, for example `https://example.com/?lang=en`. Instead, it should be in a pretty permalink format, such as `https://example.com/en`.
+
 = Do I need a special setup to use the caching feature? =
 No, if WordPress works properly, WP-Optimize will be able to cache your pages and posts.
 
@@ -364,6 +367,206 @@ If none of the above works, disable processing of JavaScript files in the minify
 
 == Changelog ==
 
+
+= 3.2.13 - 13/Mar/2023 =
+
+* FEATURE: WebP - Ability to convert to webp format from media library
+* FIX: Prevent PHP warning when minify-log files are missing or corrupted, also added appropriate error message
+* FIX: Delete webp files and uncompressed file when media is deleted
+* FIX: Polylang compatibility - now upon updating any post, caches for all translated languages are cleared
+* FIX: Prevent adding unsupported media types to the smush task list
+* FIX: WebP - Unsupported formats throws a fatal error
+* FIX: Compress image UI for webp images
+* FIX: Premium - WebP Images are marked as unused images
+* FIX: Resolved an issue where Beaver Builder's edit mode was not functioning properly when WebP conversion was enabled
+* FIX: Prevent creating multiple cache directories for URLs that contain non-English characters
+* TWEAK: Preload allowed time difference is set to be the same as max execution time
+* TWEAK: Premium - Unused images feature - Add compatibility with Yoast SEO social images
+* TWEAK: Prevent jQuery deprecation notices
+* SECURITY: Fixed a non-persistent XSS vulnerability that could occur on certain servers when the WebP conversion option was enabled. This vulnerability could allow an attacker to execute arbitrary JavaScript code in the victim's browser by tricking them into clicking on a specially crafted link. Thanks to Paolo Elia for reporting this.
+
+= 3.2.12 - 06/Feb/2023 =
+
+* SECURITY: Today's 3.2.11 release (free version only - there was no 3.2.11 Premium release) checked nonces incorrectly, opening up the possibility of an attacker tricking an admin into clicking links crafted to perform unauthorised actions on the WP Optimize configuration on his site.
+
+= 3.2.11 - 06/Feb/2023 =
+
+* FIX: Empty query string updates cache
+* FIX: Cache - Purge cache after string translation update in WPML
+* FIX: Cache - Preload stuck and fails to complete
+* FIX: Prevent PHP warning when `.htaccess` files don't have write permission
+* FIX: Premium – Fixed compatibility issue with WP Hide plugin
+* FIX: Minify - Less than 20KB stylesheets loading order
+* TWEAK: Add cron event only if clear backup images is enabled
+* TWEAK: Cache - Use WordPress GMT offset for cache comment
+* TWEAK: Only allow image types that can be compressed
+* TWEAK: Cached page is not served for sites that have own directory for WordPress files
+
+= 3.2.10 - 28/Nov/2022 =
+
+* FIX: Prevent php warning and increase SendInBlue `mailin` plugin compatibility
+* FIX: Avoid screen juggling while selecting optimizations from dropdown in scheduled clean up
+* FIX: Prevent cache purge upon deactivation using filter
+* FIX: Cache purge ability of all registered user
+* FIX: Recognise WooCommerce product category images as used images
+* FIX: Multisite support in `cached-file-log.php` template
+* TWEAK: Improve Optimization Schedule UI
+* TWEAK: Consolidated error notices by the use of a global WPO notice object.
+* TWEAK: Remove `Reset WebP serving method` button when there are no webp conversion tools
+* TWEAK: Remove query strings from scripts
+* TWEAK: Add `Restrict Content Pro` plugin slug to `plugin.json`
+* TWEAK: Add option to remove orphaned `user meta` data upon run optimization
+* TWEAK: Add `no-cache` headers when minify is enabled and page cacheing is not
+* TWEAK: Ability to remove `.htaccess` rules when gzip compression is not available
+* TWEAK: WebP: Avoid PHP warnings when using hot linked images (Alter HTML method)
+* TWEAK: WebP conversion is unavailable when php shell functions do not exist
+* TWEAK: Improved UI settings for asynchronous loading and page speed testing exclusion tools
+* TWEAK: Add a constant to enable/disable webp feature
+* TWEAK: Set a global context for $wp_file_descriptions context so that it gets assigned to correctly, preventing a subtle visual change in the theme editor
+* TWEAK: Prevent php warning from `webp-convert` library
+* TWEAK: Update currently-active installs number in thank you for installing notice.
+* TWEAK: Replaced deprecated use of jQuery.change()
+
+= 3.2.9 - 06/Sep/2022 =
+
+* FEATURE: Import and export settings
+* FIX: Avoid infinite loop while using unused images export csv
+* FIX: Scheduled cache preloading issue
+* FIX: WebP testing making unnecessary background HTTP checks
+* FIX: Google fonts compatibility with The7 theme
+* FIX: Prevent console error for undefined `wp_optimize` for smush scripts
+* TWEAK: Avoid PHP warnings on cache cleanup
+* FIX: Ability to disable webp serving while caching is on
+* TWEAK: Reset webp conversion method flags daily using cron job
+* TWEAK: Remove orphaned `wpo_weekly_cron_tasks` cron job upon uninstallation
+
+= 3.2.8 - 23/Aug/2022 =
+
+* FIX: Build system error led to a missing file in 3.2.7 which could cause an error when using related functions
+* FIX: Fix incorrect function name in admin class
+
+= 3.2.7 - 15/Aug/2022 =
+
+* FEATURE: A CLI command for generating lists of unused images as a CSV file (Premium)
+* FIX: The unused images CSV downloads have a few redundant images listed
+* FIX: ACF block field images are listed as unused images
+* FIX: Correctly recognize `inherit` in google fonts async loading
+* FIX: Cache - Do not purge when `wp_update_nav_menu` is removed from `wpo_purge_cache_hooks` array
+* TWEAK: Prevent PHP warnings when using `json_decode` result
+* TWEAK: Create cache config file if not present because of site migration
+* TWEAK: Update notice class
+* TWEAK: Recognize WooCommerce scheduled sales and cache accordingly
+* TWEAK: Prevent duplicate `wp-optimize` entry in tables optimization list
+* TWEAK: Test htaccess capability only when needed by webp feature
+* TWEAK: Increase compatibility with Aelia plugins
+
+= 3.2.6 - 15/Jun/2022 =
+
+* FIX: Incorrect static method calling causes parse Error in PHP 5.6.36
+* FIX: WebP - Trailing slash file creation issue in PHP 8 
+* FIX: PHP warning in cache rules file
+* FIX: Asynchronous google fonts loaded twice
+* TWEAK: Conditional Tags anchor tag fix
+
+= 3.2.5 - 03/Jun/2022 =
+
+* FIX: Fix a fatal error that could occur in 3.2.4 if settings had not been saved
+
+= 3.2.4 - 24/May/2022 =
+
+* FEATURE: Create a cron job to delete expired cache files
+* FEATURE: WebP image format can be used to serve images
+* FIX: Incorrect record count after importing
+* FIX: Image smushing issues
+* FIX: Problem with Redirect – Trailing Slash on URLs
+* FIX: Unused images issue with ACF `repeater` and nested fields
+* TWEAK: Added functionality for exclude caching based on conditional tags
+* TWEAK: Update last optimized time for scheduled optimizations
+* TWEAK: Cache - Prevent already header sent warnings while importing posts
+* TWEAK: Improved UI for `actionscheduler_` tables
+* TWEAK: Add filter to allow/disallow `gz` file generation
+* TWEAK: Show error message to user when WP_CACHE constant can't be removed from wp-config.php due to file permission issue.
+
+= 3.2.3 - 09/Mar/2022 =
+
+* FEATURE: Minify: Pre-generate assets
+* FIX: Cache - 'Purge cache permissions' setting does not allow additional roles to access the purge cache tool
+* TWEAK: Make smush details button work in media modal window
+* TWEAK: Do not show overhead in red when the amount is small
+* TWEAK: Avoid PHP Notices caused by "upgrader_process_complete" action
+* TWEAK: Force monolog 2.3.* in order to avoid PHP 7.2+ dependency
+
+= 3.2.2 - 24/Jan/2022 =
+
+* FEATURE: Cache - Allow debugging of which cache file is chosen
+* FEATURE: Premium - Cache - Serve cached content for logged in users, per role
+* FIX: Premium - Unused Images - Fixed trashed images listing
+* FIX: Image selction issue in compressed and unused image is fixed.
+* FIX: ACF plugin compatibility issue with select2 JS library
+* FIX: Premium - Unused Images - Multibyte characters in filename are not recognised correctly
+* FIX: Table optimization displays wrong information about WP All Import plugin tables
+* FIX: Potential PHP fatal error - Call to undefined function _wp_get_current_user()
+* FIX: Minify - correctly minify multiple `calc` function in single property value
+* FIX: SQL error when keeping post revisions and optimizing
+* FIX: Cache - Prevent caching WordPress critical error page
+* FIX: Minify - Google fonts merging issue when the same font is enqueued in both API V1 and V2
+* FIX: Minify - Make `inherit` and `inline` settings work with Google fonts
+* FIX: Database error upon plugin activation
+* TWEAK: Minify - Show a notice if other minification plugins are installed and active
+* TWEAK: Remove unused bundled JavaScript from minify library to avoid irrelevant scan results
+* TWEAK: Image compression - Image compression stats include gains on image sizes
+* TWEAK: Make sure that messages from WP_Error objects in gzip compression are displayed to users.
+* TWEAK: Prevent PHP notice from WooCommerce deprecation
+* TWEAK: Create `task` tables upon activation, if needed.
+* TWEAK: Show error instead of success when table doesn't exist
+* TWEAK: Update seasonal notices
+* TWEAK: Prevent PHP fatal error in media list view, when images are makred as compressed
+* TWEAK: Image edit window - Link does not go to image settings and more/less link not working
+
+= 3.2.1 - 29/Nov/2021 =
+
+* FIX: Apply different image compression levels
+* FIX: Cache - Purge WooCommerce product page after stock update
+* FIX: Database errors after adding a new site
+* FIX: Flatsome theme compatibility with google fonts
+* FIX: Image compression advanced settings, display default backup days instead of empty value.
+* FIX: Image compression was not working when the image extension used capital letters
+* FIX: Premium - Cache - Potential PHP error in User-specific cache
+* FIX: Premium - resolve potential admin-area PHP error if the deprecated mailchimp sync plugin and MC4WP plugin are both active (and potentially other situations where a plugin deactivates another)
+* FIX: Premium - Unused images - compatibility with PHP 8
+* FIX: Premium - Unused images - issue with parenthesis in name
+* FIX: Premium - Unused images - Pagination count doesn't update
+* FIX: Prevent a PHP notice when using with UpdraftCentral
+* FIX: Save prioritize maximum compression setting correctly
+* FIX: Wrong redirect when wiping settings on multisite
+* TWEAK: Premium - add review link at bottom of settings
+* TWEAK: Force monolog/monolog and psr/log versions to retain PHP 5.X compatibility/satisfy wordpress.org SVN hooks
+* TWEAK: Add compatibility with Kinsta
+* TWEAK: Added functionality for to convert MyISAM to InnoDB
+* TWEAK: Add filters for minify input string
+* TWEAK: Cache - Added filter to modify cache exception urls
+* TWEAK: Cache - Optimize preload from sitemap
+* TWEAK: Cache - Serve different versions based on cookie consent
+* TWEAK: changed filter to prevent deprecation notice in php 8.1+
+* TWEAK: Decide automatically whether to inline css or not based on file size
+* TWEAK: Fix typo in text domain name
+* TWEAK: get_hurl function minified.
+* TWEAK: Improve clarity of debug message when DONOTCACHEPAGE constant is used
+* TWEAK: Improve DB UI/UX on multisite
+* TWEAK: Improve minify cache size messages
+* TWEAK: Making Estatik plugin compatible
+* TWEAK: Minify - Add JS translations support
+* TWEAK: Minify HTML only on cache pre-loading
+* TWEAK: Port from previous semaphore classes to Updraft_Semaphore_3_0
+* TWEAK: Premium - Unused images - Show that there are images in the trash without having to re-scan everything
+* TWEAK: Prevent a PHP notice when downloding image compression log file. Fix backup modal styling issue.
+* TWEAK: Prevent fatal error in gzip settings when stylesheet could not be fetched
+* TWEAK: Short-circuit trivial case of nothing in the buffer when page-cacheing, to involve any possible other issues
+* TWEAK: Update comments count after trackbacks and pingbacks deletion
+* TWEAK: Update minified asset when the enqueued scripts and styles version change
+* TWEAK: Use proper constant of includes path in user cache extension
+* TWEAK: Fix path to `wpo-plugins-tables-list.json` in robots.txt
+
 = 3.1.12 - 12/Jul/2021 =
 
 * FEATURE: Ability to defer js files and asynchronously load css files
@@ -431,6 +634,7 @@ If none of the above works, disable processing of JavaScript files in the minify
 * TWEAK: Add visual clue when image compression was cancelled
 * TWEAK: Image compression - multi image selection using Ctrl/Shift keys
 * TWEAK: Premium - Unused images - Reset last clicked image reference when `select none` is clicked
+* FIX: Premium - Unused images - Pagination not working in the trash
 * TWEAK: Prevent bots from indexing plugins list json file
 * TWEAK: Minify - Added a setting to change the time stale cache should be kept
 * TWEAK: Better support for Beaver Builder
@@ -1150,4 +1354,4 @@ If none of the above works, disable processing of JavaScript files in the minify
 * Fix Interface
 
 == Upgrade Notice ==
-* 3.1.12: Ability to defer js files and asynchronously load css files. Option to not aggregate inline styles and scripts; a recommended update for all.
+* 3.2.13: Ability to convert to webp format from media library. A security fix and various tweaks and fixes - a recommended update for all

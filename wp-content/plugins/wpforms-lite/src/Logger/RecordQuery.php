@@ -49,7 +49,7 @@ class RecordQuery {
 
 		global $wpdb;
 
-		$sql   = 'SELECT * FROM ' . Repository::get_table_name();
+		$sql   = 'SELECT SQL_CALC_FOUND_ROWS * FROM ' . Repository::get_table_name();
 		$where = [];
 		if ( ! empty( $search ) ) {
 			$where[] = $wpdb->prepare(
@@ -67,7 +67,7 @@ class RecordQuery {
 		if ( $where ) {
 			$sql .= ' WHERE ' . implode( ' AND ', $where );
 		}
-		$sql .= ' ORDER BY `id` DESC';
+		$sql .= ' ORDER BY `create_at` DESC, `id` DESC';
 		$sql .= $wpdb->prepare( ' LIMIT %d, %d', absint( $offset ), absint( $limit ) );
 
 		return $sql;

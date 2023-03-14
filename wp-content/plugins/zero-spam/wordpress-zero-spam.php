@@ -1,23 +1,23 @@
 <?php
 /**
- * WordPress Zero Spam Plugin
+ * Zero Spam for WordPress Plugin
  *
- * @package    WordPressZeroSpam
+ * @package    ZeroSpam
  * @subpackage WordPress
- * @since      4.0.0
- * @author     Ben Marshall
- * @copyright  2020 Ben Marshall
+ * @since      5.0.0
+ * @author     Highfivery LLC
+ * @copyright  2022 Highfivery LLC
  * @license    GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name:       WordPress Zero Spam
- * Plugin URI:        https://benmarshall.me/wordpress-zero-spam
- * Description:       Tired of all the useless and bloated WordPress spam plugins? The WordPress Zero Spam plugin makes blocking spam a cinch. <strong>Just install, activate and say goodbye to spam.</strong> Based on work by <a href="http://davidwalsh.name/wordpress-comment-spam" target="_blank">David Walsh</a>.
- * Version:           4.10.2
+ * Plugin Name:       Zero Spam for WordPress
+ * Plugin URI:        https://www.highfivery.com/projects/zero-spam/
+ * Description:       Tired of all the ineffective WordPress anti-spam & security plugins? Zero Spam for WordPress makes blocking spam &amp; malicious activity a cinch. <strong>Just activate, configure, and say goodbye to spam.</strong>
+ * Version:           5.4.4
  * Requires at least: 5.2
- * Requires PHP:      7.2
- * Author:            Ben Marshall
- * Author URI:        https://benmarshall.me
+ * Requires PHP:      7.3
+ * Author:            Highfivery LLC
+ * Author URI:        https://www.highfivery.com/
  * Text Domain:       zero-spam
  * Domain Path:       /languages
  * License:           GPL v2 or later
@@ -28,121 +28,70 @@
 defined( 'ABSPATH' ) || die();
 
 // Define plugin constants.
-define( 'WORDPRESS_ZERO_SPAM', __FILE__ );
-define( 'WORDPRESS_ZERO_SPAM_DB_VERSION', '0.6' );
-define( 'WORDPRESS_ZERO_SPAM_VERSION', '4.10.2' );
+define( 'ZEROSPAM', __FILE__ );
+define( 'ZEROSPAM_PATH', plugin_dir_path( ZEROSPAM ) );
+define( 'ZEROSPAM_PLUGIN_BASE', plugin_basename( ZEROSPAM ) );
+define( 'ZEROSPAM_VERSION', '5.4.4' );
 
-/**
- * Include the WordPress Zero Spam plugin class.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'classes/class-wpzerospam.php';
-
-/**
- * Include the WordPress Zero Spam security class.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'classes/class-wpzerospam-security.php';
-
-/**
- * Include the WordPress Zero Spam comments class.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'classes/class-wpzerospam-comments.php';
-
-// Initialize the plugin.
-$wpzerospam          = new WPZeroSpam();
-$wpzerospam_security = new WPZeroSpam_Security();
-
-// Fires the plugin WordPress hooks.
-$wpzerospam->initialize();
-
-/**
- * Install & upgrade functionality.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/install.php';
-
-/**
- * Uninstall functionality.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/uninstall.php';
-
-
-
-
-
-
-
-
-
-
-/**
- * Utility helper functions.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/utilities.php';
-
-/**
- * Helpers.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/helpers.php';
-
-/**
- * Plugin updates.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/updates.php';
-
-/**
- * Plugin CSS & JS scripts.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/scripts.php';
-
-/**
- * Admin interface & functionality.
- */
-require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'inc/admin.php';
-
-/**
- * Initializes the plugin.
- *
- * @since 4.9.12
- *
- * @return void
- */
-if ( ! function_exists( 'zero_spam_setup' ) ) {
-  function zero_spam_setup() {
-    /**
-     * Include the WPZS core comments integration.
-     */
-    require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/comments/comments.php';
-
-    /**
-     * Include the WPZS core registration integration.
-     */
-    require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/registrations/registrations.php';
-
-    /**
-     * Include the WPZS Contact Form 7 integration if it's active.
-     */
-    if ( class_exists( 'WPCF7' ) ) {
-      require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/contact-form-7/contact-form-7.php';
-    }
-  }
-}
-add_action( 'plugins_loaded', 'zero_spam_setup' );
-
-
-
-
-
-if ( wpzerospam_plugin_integration_enabled( 'bp_registrations' ) ) {
-  require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/buddypress/buddypress.php';
+if ( defined( 'ZEROSPAM_DEVELOPMENT_URL' ) ) {
+	define( 'ZEROSPAM_URL', ZEROSPAM_DEVELOPMENT_URL );
+} else {
+	define( 'ZEROSPAM_URL', 'https://www.zerospam.org/' );
 }
 
-if ( wpzerospam_plugin_integration_enabled( 'wpforms' ) ) {
-  require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/wpforms/wpforms.php';
+add_action( 'plugins_loaded', 'zerospam_load_plugin_textdomain' );
+
+if ( ! version_compare( PHP_VERSION, '7.3', '>=' ) ) {
+	add_action( 'admin_notices', 'zerospam_fail_php_version' );
+} elseif ( ! version_compare( get_bloginfo( 'version' ), '5', '>=' ) ) {
+	add_action( 'admin_notices', 'zerospam_fail_wp_version' );
+} else {
+	require_once ZEROSPAM_PATH . 'includes/class-plugin.php';
 }
 
-if ( wpzerospam_plugin_integration_enabled( 'fluentform' ) ) {
-  require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/fluentform/fluentform.php';
+/**
+ * Load plugin textdomain
+ */
+function zerospam_load_plugin_textdomain() {
+	load_plugin_textdomain( 'zero-spam' );
 }
 
-if ( wpzerospam_plugin_integration_enabled( 'formidable' ) ) {
-  require plugin_dir_path( WORDPRESS_ZERO_SPAM ) . 'integrations/formidable/formidable.php';
+/**
+ * Admin notice for minimum PHP version
+ */
+function zerospam_fail_php_version() {
+	$message = sprintf(
+		/* translators: %s: replaced with the PHP version number */
+		esc_html__(
+			'Zero Spam for WordPress requires PHP version %s+, plugin is currently NOT RUNNING.',
+			'zero-spam'
+		),
+		'7.3'
+	);
+	$html_message = sprintf(
+		/* translators: %s: replaced with the error message */
+		'<div class="error">%s</div>',
+		wpautop( $message )
+	);
+	echo wp_kses_post( $html_message );
+}
+
+/**
+ * Admin notice for minimum WordPress version
+ */
+function zerospam_fail_wp_version() {
+	$message = sprintf(
+		/* translators: %s: replaced with the WordPress version number */
+		esc_html__(
+			'Zero Spam for WordPress requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.',
+			'zerospam'
+		),
+		'5'
+	);
+	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
+	echo wp_kses_post( $html_message );
+}
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once ZEROSPAM_PATH . 'includes/class-cli.php';
 }

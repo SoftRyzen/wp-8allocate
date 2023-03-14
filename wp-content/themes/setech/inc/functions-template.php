@@ -131,10 +131,9 @@ function setech__dimox_breadcrumbs(){
 
 	global $post;
 	$home_link	= esc_url( home_url( '/' ) );
-	$link_before  = '<span typeof="v:Breadcrumb">';
+	$link_before  = '<span>';
 	$link_after   = '</span>';
-	$link_attr	= ' property="v:title"';
-	$link		 = $link_before . '<a' . $link_attr . ' href="%1$s">%2$s</a>' . $link_after;
+	$link		 = $link_before . '<a href="%1$s">%2$s</a>' . $link_after;
 	if ( isset( $post->post_parent ) ) {
 		$parent_id	= $parent_id_2 = $post->post_parent;
 	}
@@ -153,7 +152,7 @@ function setech__dimox_breadcrumbs(){
 
 		echo '<nav class="bread-crumbs">';
 		if ( $show_home_link == 1 ) {
-			echo '<a href="' . $home_link . '" property="v:title">' . $text['home'] . '</a>';
+			echo '<a href="' . $home_link . '">' . $text['home'] . '</a>';
 			if ( $frontpage_id == 0 || $parent_id != $frontpage_id ) { echo sprintf("%s", $delimiter ); }
 		}
 

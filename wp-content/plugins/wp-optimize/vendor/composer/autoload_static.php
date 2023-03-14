@@ -4,12 +4,8 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
+class ComposerStaticInit8334f72a286139dc5d1f769668d2fd8c
 {
-    public static $files = array (
-        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
@@ -18,11 +14,6 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
         'W' => 
         array (
             'WebPConvert\\' => 12,
-            'WebPConvertCloudService\\' => 24,
-        ),
-        'S' => 
-        array (
-            'Symfony\\Component\\Process\\' => 26,
         ),
         'P' => 
         array (
@@ -35,10 +26,27 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
             'MatthiasMullie\\PathConverter\\' => 29,
             'MatthiasMullie\\Minify\\' => 22,
         ),
+        'L' => 
+        array (
+            'LocateBinaries\\' => 15,
+        ),
         'I' => 
         array (
             'Intervention\\HttpAuth\\' => 22,
+            'ImageMimeTypeSniffer\\' => 21,
             'ImageMimeTypeGuesser\\' => 21,
+        ),
+        'H' => 
+        array (
+            'HtaccessCapabilityTester\\' => 25,
+        ),
+        'F' => 
+        array (
+            'FileUtil\\' => 9,
+        ),
+        'E' => 
+        array (
+            'ExecWithFallback\\' => 17,
         ),
     );
 
@@ -50,14 +58,6 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
         'WebPConvert\\' => 
         array (
             0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
-        ),
-        'WebPConvertCloudService\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert-cloud-service/src',
-        ),
-        'Symfony\\Component\\Process\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/process',
         ),
         'Psr\\Log\\' => 
         array (
@@ -79,13 +79,33 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
         array (
             0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
+        'LocateBinaries\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/locate-binaries/src',
+        ),
         'Intervention\\HttpAuth\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/httpauth/src',
         ),
+        'ImageMimeTypeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-sniffer/src',
+        ),
         'ImageMimeTypeGuesser\\' => 
         array (
             0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
+        ),
+        'HtaccessCapabilityTester\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/htaccess-capability-tester/src',
+        ),
+        'FileUtil\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/file-util/src',
+        ),
+        'ExecWithFallback\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/exec-with-fallback/src',
         ),
     );
 
@@ -108,20 +128,6 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
                 0 => __DIR__ . '/..' . '/mrclay/jsmin-php/src',
             ),
         ),
-        'C' => 
-        array (
-            'ComponentInstaller' => 
-            array (
-                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
-            ),
-        ),
-        'A' => 
-        array (
-            'Assetic' => 
-            array (
-                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
-            ),
-        ),
     );
 
     public static $classMap = array (
@@ -140,6 +146,7 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
         'Minify_CSSmin' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/CSSmin.php',
         'Minify_CacheInterface' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/CacheInterface.php',
         'Minify_Cache_APC' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/Cache/APC.php',
+        'Minify_Cache_APCu' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/Cache/APCu.php',
         'Minify_Cache_File' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/Cache/File.php',
         'Minify_Cache_Memcache' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/Cache/Memcache.php',
         'Minify_Cache_Null' => __DIR__ . '/..' . '/mrclay/minify/lib/Minify/Cache/Null.php',
@@ -181,15 +188,20 @@ class ComposerStaticInitd467982cb17842eccec21f3b9331bb4e
         'lessc_formatter_compressed' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
         'lessc_formatter_lessjs' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
         'lessc_parser' => __DIR__ . '/..' . '/marcusschwarz/lesserphp/lessc.inc.php',
+        'simplehtmldom\\Debug' => __DIR__ . '/..' . '/simplehtmldom/simplehtmldom/Debug.php',
+        'simplehtmldom\\HtmlDocument' => __DIR__ . '/..' . '/simplehtmldom/simplehtmldom/HtmlDocument.php',
+        'simplehtmldom\\HtmlElement' => __DIR__ . '/..' . '/simplehtmldom/simplehtmldom/HtmlElement.php',
+        'simplehtmldom\\HtmlNode' => __DIR__ . '/..' . '/simplehtmldom/simplehtmldom/HtmlNode.php',
+        'simplehtmldom\\HtmlWeb' => __DIR__ . '/..' . '/simplehtmldom/simplehtmldom/HtmlWeb.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd467982cb17842eccec21f3b9331bb4e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd467982cb17842eccec21f3b9331bb4e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd467982cb17842eccec21f3b9331bb4e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd467982cb17842eccec21f3b9331bb4e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8334f72a286139dc5d1f769668d2fd8c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8334f72a286139dc5d1f769668d2fd8c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8334f72a286139dc5d1f769668d2fd8c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8334f72a286139dc5d1f769668d2fd8c::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,11 +1,17 @@
+# Ignore common files and folders
 .well-known
+.vscode
 node_modules
+**/node_modules/
 *.log
 npm-debug.log*
 *.DS_Store
 
+# Ignore WordPress core files
 wp-admin
 wp-includes
+
+# Ignore WordPress caching and optimization files
 wp-content/ai1wm-backups
 wp-content/cache
 wp-content/wp-rocket-config
@@ -14,8 +20,16 @@ wp-content/uploads
 wp-content/uploads-webpc
 wp-content/w3tc-config
 wp-content/debug.log
-wp-content/all-in-one-seo-pack.log
 
+# Ignore all WordPress themes
+wp-content/themes/*
+
+# Except setech and setech-child
+!wp-content/themes/setech/
+!wp-content/themes/setech-child/
+
+# Ignore specific WordPress configuration files
+wp-content/all-in-one-seo-pack.log
 wp-config.php
 wp-config-test.php
 wp-config-env.php

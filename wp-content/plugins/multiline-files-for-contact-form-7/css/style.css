@@ -1,10 +1,13 @@
 #mfcf7_zl_multifilecontainer span.wpcf7-form-control-wrap {
     padding: 6px 0px;
 }
+
 #mfcf7_zl_multifilecontainer .wpcf7-form-control-wrap a i {
     font-size: 15px;
     margin: 0px 5px;
 }
+
+
 /*#mfcf7_zl_add_file {
   background-color: #004834;
   color: #fff;
@@ -20,15 +23,24 @@
 #mfcf7_zl_add_file:hover {
   background-color: #000;
 }*/
+
 a.mfcf7_zl_delete_file {
     box-shadow: none !important;
 }
+
 a#mfcf7_zl_add_file {
     box-shadow: none !important;
 }
+
 div#mfcf7_zl_multifilecontainer p {
     margin-bottom: 10px;
 }
+
 div#mfcf7_zl_multifilecontainer {
     margin-top: 15px;
+}
+
+.zl-form-control-wrap input,
+.zl-form-control-wrap .mfcf7_zl_delete_file {
+    display: none;
 }

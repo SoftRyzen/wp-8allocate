@@ -1,14 +1,7 @@
 <?php
 defined( 'ABSPATH' ) or die();
-
-if (strripos($_SERVER['REQUEST_URI'], 'blog') !== false
-    || strripos($_SERVER['REQUEST_URI'], 'case-studies') !== false
-) {
-    header('HTTP/1.1 301 Moved Permanently');
-    header('Location: /blog');
-}
-
 ?>
+
 	<?php get_header() ?>
 		<div class="content">
 			<h1><?php echo esc_html_x( '404', '404 Page', 'setech' ) ?></h1>

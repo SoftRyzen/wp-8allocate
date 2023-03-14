@@ -24,26 +24,27 @@ class WPForms_Widget extends WP_Widget {
 	public function __construct() {
 
 		// Widget defaults.
-		$this->defaults = array(
+		$this->defaults = [
 			'title'      => '',
 			'form_id'    => '',
 			'show_title' => false,
 			'show_desc'  => false,
-		);
+		];
 
 		// Widget Slug.
 		$widget_slug = 'wpforms-widget';
 
 		// Widget basics.
-		$widget_ops = array(
-			'classname'   => $widget_slug,
-			'description' => esc_html_x( 'Display a form.', 'Widget', 'wpforms-lite' ),
-		);
+		$widget_ops = [
+			'classname'             => $widget_slug,
+			'description'           => esc_html_x( 'Display a form.', 'Widget', 'wpforms-lite' ),
+			'show_instance_in_rest' => true,
+		];
 
 		// Widget controls.
-		$control_ops = array(
+		$control_ops = [
 			'id_base' => $widget_slug,
-		);
+		];
 
 		// Load widget.
 		parent::__construct( $widget_slug, esc_html_x( 'WPForms', 'Widget', 'wpforms-lite' ), $widget_ops, $control_ops );
@@ -92,8 +93,8 @@ class WPForms_Widget extends WP_Widget {
 
 		$new_instance['title']      = wp_strip_all_tags( $new_instance['title'] );
 		$new_instance['form_id']    = ! empty( $new_instance['form_id'] ) ? (int) $new_instance['form_id'] : 0;
-		$new_instance['show_title'] = isset( $new_instance['show_title'] ) ? '1' : false;
-		$new_instance['show_desc']  = isset( $new_instance['show_desc'] ) ? '1' : false;
+		$new_instance['show_title'] = isset( $new_instance['show_title'] ) && $new_instance['show_title'] ? '1' : false;
+		$new_instance['show_desc']  = isset( $new_instance['show_desc'] ) && $new_instance['show_desc'] ? '1' : false;
 
 		return $new_instance;
 	}

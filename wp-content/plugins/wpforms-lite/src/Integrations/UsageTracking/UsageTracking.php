@@ -2,6 +2,7 @@
 
 namespace WPForms\Integrations\UsageTracking;
 
+use WPForms\Admin\Builder\Templates;
 use WPForms\Integrations\IntegrationInterface;
 
 /**
@@ -27,7 +28,14 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	public function allow_load() {
 
-		return (bool) apply_filters( 'wpforms_usagetracking_is_allowed', true );
+		/**
+		 * Whether the Usage Tracking code is allowed to be loaded.
+		 *
+		 * @since 1.6.1
+		 *
+		 * @param bool $var Boolean value.
+		 */
+		return (bool) apply_filters( 'wpforms_usagetracking_is_allowed', true ); // phpcs:ignore WPForms.PHP.ValidateHooks.InvalidHookName
 	}
 
 	/**
@@ -39,7 +47,14 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	public function is_enabled() {
 
-		return (bool) apply_filters( 'wpforms_integrations_usagetracking_is_enabled', wpforms_setting( self::SETTINGS_SLUG ) );
+		/**
+		 * Whether the Usage Tracking is enabled.
+		 *
+		 * @since 1.6.1
+		 *
+		 * @param bool $var Boolean value taken from the DB.
+		 */
+		return (bool) apply_filters( 'wpforms_integrations_usagetracking_is_enabled', wpforms_setting( self::SETTINGS_SLUG ) );  // phpcs:ignore WPForms.PHP.ValidateHooks.InvalidHookName
 	}
 
 	/**
@@ -87,12 +102,12 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	public function settings_misc_option( $settings ) {
 
-		$settings['misc'][ self::SETTINGS_SLUG ] = array(
+		$settings['misc'][ self::SETTINGS_SLUG ] = [
 			'id'   => self::SETTINGS_SLUG,
 			'name' => esc_html__( 'Allow Usage Tracking', 'wpforms-lite' ),
 			'desc' => esc_html__( 'By allowing us to track usage data, we can better help you, as we will know which WordPress configurations, themes, and plugins we should test.', 'wpforms-lite' ),
 			'type' => 'checkbox',
-		);
+		];
 
 		return $settings;
 	}
@@ -120,13 +135,15 @@ class UsageTracking implements IntegrationInterface {
 
 		global $wpdb;
 
-		$theme_data      = wp_get_theme();
-		$activated_dates = get_option( 'wpforms_activated', [] );
-		$forms           = $this->get_all_forms();
-		$forms_total     = count( $forms );
-		$entries_total   = $this->get_entries_total();
+		$theme_data        = wp_get_theme();
+		$activated_dates   = get_option( 'wpforms_activated', [] );
+		$first_form_date   = get_option( 'wpforms_forms_first_created' );
+		$forms             = $this->get_all_forms();
+		$forms_total       = count( $forms );
+		$entries_total     = $this->get_entries_total();
+		$form_fields_count = $this->get_form_fields_count( $forms );
 
-		return [
+		$data = [
 			// Generic data (environment).
 			'url'                            => home_url(),
 			'php_version'                    => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
@@ -135,6 +152,9 @@ class UsageTracking implements IntegrationInterface {
 			'server_version'                 => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '',
 			'is_ssl'                         => is_ssl(),
 			'is_multisite'                   => is_multisite(),
+			'is_wpcom'                       => defined( 'IS_WPCOM' ) && IS_WPCOM,
+			'is_wpcom_vip'                   => ( defined( 'WPCOM_IS_VIP_ENV' ) && WPCOM_IS_VIP_ENV ) || ( function_exists( 'wpcom_is_vip' ) && wpcom_is_vip() ),
+			'is_wp_cache'                    => defined( 'WP_CACHE' ) && WP_CACHE,
 			'sites_count'                    => $this->get_sites_total(),
 			'active_plugins'                 => $this->get_active_plugins(),
 			'theme_name'                     => $theme_data->name,
@@ -145,15 +165,18 @@ class UsageTracking implements IntegrationInterface {
 			'wpforms_version'                => WPFORMS_VERSION,
 			'wpforms_license_key'            => wpforms_get_license_key(),
 			'wpforms_license_type'           => $this->get_license_type(),
-			'wpforms_is_pro'                 => wpforms()->pro,
+			'wpforms_license_status'         => $this->get_license_status(),
+			'wpforms_is_pro'                 => wpforms()->is_pro(),
 			'wpforms_entries_avg'            => $this->get_entries_avg( $forms_total, $entries_total ),
 			'wpforms_entries_total'          => $entries_total,
 			'wpforms_entries_last_7days'     => $this->get_entries_total( '7days' ),
 			'wpforms_entries_last_30days'    => $this->get_entries_total( '30days' ),
 			'wpforms_forms_total'            => $forms_total,
+			'wpforms_form_fields_count'      => $form_fields_count,
 			'wpforms_challenge_stats'        => get_option( 'wpforms_challenge', [] ),
 			'wpforms_lite_installed_date'    => $this->get_installed( $activated_dates, 'lite' ),
 			'wpforms_pro_installed_date'     => $this->get_installed( $activated_dates, 'pro' ),
+			'wpforms_builder_opened_date'    => (int) get_option( 'wpforms_builder_opened_date', 0 ),
 			'wpforms_settings'               => $this->get_settings(),
 			'wpforms_integration_active'     => $this->get_forms_integrations( $forms ),
 			'wpforms_payments_active'        => $this->get_payments_active( $forms ),
@@ -161,20 +184,66 @@ class UsageTracking implements IntegrationInterface {
 			'wpforms_multiple_notifications' => count( $this->get_forms_with_multiple_notifications( $forms ) ),
 			'wpforms_ajax_form_submissions'  => count( $this->get_ajax_form_submissions( $forms ) ),
 		];
+
+		if ( ! empty( $first_form_date ) ) {
+			$data['wpforms_forms_first_created'] = $first_form_date;
+		}
+
+		return $data;
 	}
 
 	/**
-	 * Get license type.
+	 * Get the license type.
 	 *
 	 * @since 1.6.1
+	 * @since 1.7.2 Clarified the license type.
+	 * @since 1.7.9 Return only the license type, not the status.
 	 *
 	 * @return string
 	 */
 	private function get_license_type() {
 
-		$license_type = wpforms_get_license_type();
+		return wpforms()->is_pro() ? wpforms_get_license_type() : 'lite';
+	}
 
-		return empty( $license_type ) ? 'lite' : $license_type;
+	/**
+	 * Get the license status.
+	 *
+	 * @since 1.7.9
+	 *
+	 * @return string
+	 */
+	private function get_license_status() {
+
+		if ( ! wpforms()->is_pro() ) {
+			return 'lite';
+		}
+
+		$license_type = wpforms_get_license_type();
+		$license_key  = wpforms_get_license_key();
+
+		if ( ! $license_type ) {
+			return empty( $license_key ) ? 'no license' : 'not verified';
+		}
+
+		if ( wpforms_setting( 'is_expired', false, 'wpforms_license' ) ) {
+			return 'expired';
+		}
+
+		if ( wpforms_setting( 'is_disabled', false, 'wpforms_license' ) ) {
+			return 'disabled';
+		}
+
+		if ( wpforms_setting( 'is_invalid', false, 'wpforms_license' ) ) {
+			return 'invalid';
+		}
+
+		// The correct type is returned in get_license_type(), so we "collapse" them here to a single value.
+		if ( in_array( $license_type, [ 'basic', 'plus', 'pro', 'elite', 'ultimate', 'agency' ], true ) ) {
+			$license_type = 'correct';
+		}
+
+		return $license_type;
 	}
 
 	/**
@@ -199,9 +268,18 @@ class UsageTracking implements IntegrationInterface {
 					'authorize_net-test-transaction-key',
 					'authorize_net-live-api-login-id',
 					'authorize_net-live-transaction-key',
+					'square-location-id-sandbox',
+					'square-location-id-production',
+					'geolocation-google-places-api-key',
+					'geolocation-algolia-places-application-id',
+					'geolocation-algolia-places-search-only-api-key',
+					'geolocation-mapbox-search-access-token',
 					'recaptcha-site-key',
 					'recaptcha-secret-key',
 					'recaptcha-fail-msg',
+					'hcaptcha-site-key',
+					'hcaptcha-secret-key',
+					'hcaptcha-fail-msg',
 				]
 			)
 		);
@@ -217,13 +295,16 @@ class UsageTracking implements IntegrationInterface {
 			$data[ $key ] = $value;
 		}
 
-		return $data;
+		// Add favorite templates to the settings array.
+		return array_merge( $data, $this->get_favorite_templates() );
 	}
 
 	/**
 	 * Get timezone offset.
 	 * We use `wp_timezone_string()` when it's available (WP 5.3+),
 	 * otherwise fallback to the same code, copy-pasted.
+	 *
+	 * @see wp_timezone_string()
 	 *
 	 * @since 1.6.1
 	 *
@@ -331,7 +412,7 @@ class UsageTracking implements IntegrationInterface {
 		$integrations = array_filter( $integrations );
 
 		if ( count( $integrations ) > 0 ) {
-			$integrations = call_user_func_array( 'array_merge', $integrations );
+			$integrations = call_user_func_array( 'array_merge', array_values( $integrations ) );
 		}
 
 		return array_count_values( $integrations );
@@ -371,7 +452,7 @@ class UsageTracking implements IntegrationInterface {
 		$payments = array_filter( $payments );
 
 		if ( count( $payments ) > 0 ) {
-			$payments = call_user_func_array( 'array_merge', $payments );
+			$payments = call_user_func_array( 'array_merge', array_values( $payments ) );
 		}
 
 		return array_count_values( $payments );
@@ -461,7 +542,8 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	private function get_entries_total( $period = 'all' ) {
 
-		if ( ! wpforms()->pro ) {
+		if ( ! wpforms()->is_pro() ) {
+
 			switch ( $period ) {
 				case '7days':
 				case '30days':
@@ -506,6 +588,35 @@ class UsageTracking implements IntegrationInterface {
 	}
 
 	/**
+	 * Forms field occurrences.
+	 *
+	 * @since 1.7.9
+	 *
+	 * @param array $forms List of forms.
+	 *
+	 * @return array List of field occurrences in all forms created.
+	 */
+	private function get_form_fields_count( $forms ) {
+
+		// Bail early, in case there are no forms created yet!
+		if ( empty( $forms ) ) {
+			return [];
+		}
+
+		$fields         = array_map(
+			static function( $form ) {
+
+				return isset( $form->post_content['fields'] ) ? $form->post_content['fields'] : [];
+			},
+			$forms
+		);
+		$fields_flatten = array_merge( [], ...$fields );
+		$field_types    = array_column( $fields_flatten, 'type' );
+
+		return array_count_values( $field_types );
+	}
+
+	/**
 	 * Average entries count.
 	 *
 	 * @since 1.6.1
@@ -529,14 +640,14 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	private function get_all_forms() {
 
-		$forms = wpforms()->form->get( '' );
+		$forms = wpforms()->get( 'form' )->get( '' );
 
 		if ( ! is_array( $forms ) ) {
 			return [];
 		}
 
 		return array_map(
-			static function ( $form ) {
+			static function( $form ) {
 
 				$form->post_content = wpforms_decode( $form->post_content );
 
@@ -544,5 +655,27 @@ class UsageTracking implements IntegrationInterface {
 			},
 			$forms
 		);
+	}
+
+	/**
+	 * Get the favorite templates.
+	 *
+	 * @since 1.7.7
+	 *
+	 * @return array
+	 */
+	private function get_favorite_templates() {
+
+		$settings  = [];
+		$templates = (array) get_option( Templates::FAVORITE_TEMPLATES_OPTION, [] );
+
+		foreach ( $templates as $user_templates ) {
+			foreach ( $user_templates as $template => $v ) {
+				$name              = 'fav_templates_' . str_replace( '-', '_', $template );
+				$settings[ $name ] = empty( $settings[ $name ] ) ? 1 : ++ $settings[ $name ];
+			}
+		}
+
+		return $settings;
 	}
 }
